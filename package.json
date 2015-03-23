@@ -1,0 +1,45 @@
+{
+  "name": "hjs-webpack",
+  "description": "Presets for setting up webpack with hotloading react and ES6(2015) using Babel.",
+  "version": "0.0.0",
+  "author": "Henrik Joreteg <henrik@andyet.net>",
+  "bin": {
+    "hjs-dev-server": "./bin/dev-server.js"
+  },
+  "bugs": {
+    "url": "https://github.com/henrikjoreteg/hjs-webpack/issues"
+  },
+  "dependencies": {
+    "autoprefixer-stylus": "^0.5.0",
+    "babel-core": "^4.7.13",
+    "babel-loader": "^4.2.0",
+    "find-root": "^0.1.1",
+    "html-webpack-plugin": "^1.1.0",
+    "lodash.defaults": "^3.0.0",
+    "minimist": "^1.1.1",
+    "react": "^0.13.1",
+    "react-hot-loader": "^1.2.3",
+    "webpack": "^1.7.3",
+    "webpack-dev-server": "^1.7.0",
+    "yeticss": "^5.0.2"
+  },
+  "devDependencies": {
+    "babel": "^4.7.16",
+    "standard": "^3.1.2"
+  },
+  "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
+  "keywords": [
+    "config",
+    "human javascript",
+    "webpack"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/henrikjoreteg/hjs-webpack"
+  },
+  "scripts": {
+    "test": "standard"
+  }
+}
