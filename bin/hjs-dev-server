@@ -1,5 +1,4 @@
-#!/bin/env node
-// runs a dev server
+#!/usr/bin/env node
 var fs = require('fs')
 var path = require('path')
 var webpack = require('webpack')
