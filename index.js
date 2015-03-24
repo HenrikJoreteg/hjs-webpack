@@ -128,7 +128,7 @@ function buildFilename (pack, ext) {
 }
 
 function getHTML (name) {
-  return '<!doctype>\n<!-- webpack dev server needs this file while running. feel free to .gitignore -->\n<script src="' + name + '"></script>'
+  return '<!doctype>\n<!-- webpack dev server needs this file while running. feel free to .gitignore -->\n<script src="/' + name + '"></script>'
 }
 
 function checkRequired (opts) {
