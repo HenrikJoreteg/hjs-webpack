@@ -6,16 +6,16 @@ I really dislike setting up build scripts. Most of the time I want to do the exa
 
 While developing:
 
-    - easy to setup and run dev server
-    - transpile ES6+, JSX, Stylus code
-    - hotload (a.k.a. live reload) modules when changed
+  - easy to setup and run dev server
+  - transpile ES6+, JSX, Stylus code
+  - hotload (a.k.a. live reload) modules when changed
 
 When ready to ship:
 
-    - minify and bundle all the things
-    - output minfied, uniquely named static files into public directory
-    - be able to generate/customized static HTML file(s) used to deliver my JS app
-    - be ready to just upload it all to something like [surge.sh](http://surge.sh/)
+  - minify and bundle all the things
+  - output minfied, uniquely named static files into public directory
+  - be able to generate/customized static HTML file(s) used to deliver my JS app
+  - be ready to just upload it all to something like [surge.sh](http://surge.sh/)
 
 [webpack](http://webpack.github.io) and the [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html) can do all these things quite well. But, it sure is a pain to set it all up.
 
