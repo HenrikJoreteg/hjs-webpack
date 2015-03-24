@@ -4,7 +4,7 @@ var webpack = require('webpack')
 var findRoot = require('find-root')
 var defaults = require('lodash.defaults')
 var getBaseConfig = require('./lib/base-config')
-var getPackage  = require('./lib/get-package')
+var getPackage = require('./lib/get-package')
 
 var PWD = process.env.PWD
 
@@ -13,7 +13,6 @@ module.exports = function (opts) {
   var rootFolder = opts.rootFolder || findRoot(PWD)
   var outputFolder = path.resolve(opts.out)
   var indexHtmlPath = path.join(rootFolder, 'index.html')
-  var outputHtmlFile = path.join(outputFolder, 'index.html')
 
   // add in our defaults
   var spec = defaults(opts, {
