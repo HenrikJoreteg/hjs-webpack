@@ -3,6 +3,7 @@ var path = require('path')
 var webpack = require('webpack')
 var findRoot = require('find-root')
 var defaults = require('lodash.defaults')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var getBaseConfig = require('./lib/base-config')
 var getPackage = require('./lib/get-package')
 
@@ -31,6 +32,7 @@ module.exports = function (opts) {
 
   if (!spec.output.filename) {
     spec.output.filename = spec.isDev ? 'app.js' : buildFilename(spec.package)
+    spec.output.cssFilename = spec.isDev ? 'app.css' : buildFilename(spec.package, 'css')
   }
 
   if (spec.isDev && !fs.existsSync(indexHtmlPath)) {
@@ -51,6 +53,11 @@ module.exports = function (opts) {
     }
   }
 
+  // include stylus
+
+
+
+
   // dev specific stuff
   if (spec.isDev) {
     // debugging option
@@ -70,26 +77,53 @@ module.exports = function (opts) {
 
     // add react-hot as module loader
     config.module.loaders[0].loaders.unshift('react-hot')
+
+    config.module.loaders.push(
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      {
+        test: /\.styl$/,
+        loader: 'style-loader!css-loader!stylus-loader'
+      }
+    )
+
   } else {
     // minify in production
-    config.plugins = config.plugins.concat([
+    config.plugins.push(
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false
         },
         sourceMap: false
+      }),
+      new ExtractTextPlugin(config.output.cssFilename, {
+        allChunks: true
       })
-    ])
+    )
+
+    // extract in production
+    config.module.loaders.push(
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+      },
+      {
+        test: /\.styl$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
+      }
+    )
   }
 
   return config
 }
 
-function buildFilename (pack) {
+function buildFilename (pack, ext) {
   return [
     pack.name,
     pack.version,
-    'js'
+    ext || 'js'
   ].join('.')
 }
 
