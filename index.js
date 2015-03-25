@@ -6,7 +6,6 @@ var defaults = require('lodash.defaults')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var getBaseConfig = require('./lib/base-config')
 var getPackage = require('./lib/get-package')
-
 var PWD = process.env.PWD
 
 module.exports = function (opts) {
@@ -44,19 +43,14 @@ module.exports = function (opts) {
 
   // check for any module replacements
   if (spec.replace) {
-    for (var regex in spec.replace) {
+    for (var item in spec.replace) {
       // allow for simple strings
-      if (typeof regex === 'string') {
-        regex = new RegExp('^' + regex + '$')
+      if (typeof item === 'string') {
+        var regex = new RegExp('^' + item + '$')
       }
-      config.plugins.push(new webpack.NormalModuleReplacementPlugin(regex, spec.replace[regex]))
+      config.plugins.push(new webpack.NormalModuleReplacementPlugin(regex, path.resolve(spec.replace[item])))
     }
   }
-
-  // include stylus
-
-
-
 
   // dev specific stuff
   if (spec.isDev) {
