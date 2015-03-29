@@ -33,6 +33,7 @@
     "react-hot-loader": "*",
     "style-loader": "*",
     "stylus-loader": "*",
+    "url-loader": "*",
     "webpack-dev-server": "*",
     "yeticss": "*"
   },
@@ -41,7 +42,7 @@
     "url": "https://github.com/henrikjoreteg/hjs-webpack"
   },
   "scripts": {
-    "test": "standard",
-    "prepublish": "standard"
+    "prepublish": "standard",
+    "test": "standard"
   }
 }
