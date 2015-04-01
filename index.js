@@ -1,18 +1,13 @@
-var fs = require('fs')
 var path = require('path')
 var webpack = require('webpack')
-var findRoot = require('find-root')
 var defaults = require('lodash.defaults')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var getBaseConfig = require('./lib/base-config')
 var getPackage = require('./lib/get-package')
-var PWD = process.env.PWD
 
 module.exports = function (opts) {
   checkRequired(opts)
-  var rootFolder = opts.rootFolder || findRoot(PWD)
   var outputFolder = path.resolve(opts.out)
-  var indexHtmlPath = path.join(rootFolder, 'index.html')
 
   // add in our defaults
   var spec = defaults(opts, {
@@ -33,11 +28,6 @@ module.exports = function (opts) {
   if (!spec.output.filename) {
     spec.output.filename = spec.isDev ? 'app.js' : buildFilename(spec.package)
     spec.output.cssFilename = spec.isDev ? 'app.css' : buildFilename(spec.package, 'css')
-  }
-
-  if (spec.isDev && !fs.existsSync(indexHtmlPath)) {
-    console.log('creating needed index.html file in' + indexHtmlPath)
-    fs.writeFileSync(indexHtmlPath, getHTML(spec.output.filename), 'utf8')
   }
 
   var config = getBaseConfig(spec)
@@ -120,10 +110,6 @@ function buildFilename (pack, ext) {
     pack.version,
     ext || 'js'
   ].join('.')
-}
-
-function getHTML (name) {
-  return '<!doctype>\n<!-- webpack dev server needs this file while running. feel free to .gitignore -->\n<script src="/' + name + '"></script>'
 }
 
 function checkRequired (opts) {
