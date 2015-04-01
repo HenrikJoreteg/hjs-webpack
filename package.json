@@ -1,7 +1,7 @@
 {
   "name": "hjs-webpack",
   "description": "Presets for setting up webpack with hotloading react and ES6(2015) using Babel.",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "author": "Henrik Joreteg <henrik@andyet.net>",
   "bin": {
     "hjs-dev-server": "./bin/hjs-dev-server"
