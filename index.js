@@ -77,6 +77,8 @@ module.exports = function (opts) {
   } else {
     // minify in production
     config.plugins.push(
+      new webpack.optimize.DedupePlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(true),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false
