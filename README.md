@@ -1,7 +1,5 @@
 #hjs-webpack
 
-**note: this is experimental early stuff use at your own risk**
-
 I really dislike setting up build scripts. Most of the time I want to do the exact same thing:
 
 While developing:
