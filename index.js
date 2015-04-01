@@ -19,7 +19,8 @@ module.exports = function (opts) {
     entry: path.resolve(opts.in),
     output: {
       path: outputFolder + '/',
-      filename: null
+      filename: null,
+      publicPath: '/'
     },
     configFile: null,
     isDev: true,

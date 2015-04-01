@@ -42,7 +42,6 @@
     "url": "https://github.com/henrikjoreteg/hjs-webpack"
   },
   "scripts": {
-    "prepublish": "standard",
     "test": "standard"
   }
 }
