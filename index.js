@@ -47,6 +47,11 @@ module.exports = function (opts) {
     }
   }
 
+  // check for any module definitions
+  if (spec.define) {
+    config.plugins.push(new webpack.DefinePlugin(spec.define))
+  }
+
   // dev specific stuff
   if (spec.isDev) {
     // debugging option
