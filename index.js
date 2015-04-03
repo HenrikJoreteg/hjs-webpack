@@ -39,7 +39,11 @@ module.exports = function (opts) {
       if (typeof item === 'string') {
         var regex = new RegExp('^' + item + '$')
       }
-      config.plugins.push(new webpack.NormalModuleReplacementPlugin(regex, path.resolve(spec.replace[item])))
+      var newResource = spec.replace[item]
+      if (typeof newResource === 'string') {
+        newResource = path.resolve(newResource)
+      }
+      config.plugins.push(new webpack.NormalModuleReplacementPlugin(regex, newResource))
     }
   }
 
