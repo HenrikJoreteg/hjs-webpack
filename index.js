@@ -20,7 +20,8 @@ module.exports = function (opts) {
     configFile: null,
     isDev: true,
     package: null,
-    replace: null
+    replace: null,
+    port: 3000
   })
 
   spec.package = getPackage(spec.package)
@@ -59,7 +60,7 @@ module.exports = function (opts) {
 
     // add dev server and hotloading clientside code
     config.entry.unshift(
-      'webpack-dev-server/client?http://0.0.0.0:3000',
+      'webpack-dev-server/client?http://0.0.0.0:' + spec.port,
       'webpack/hot/only-dev-server'
     )
 
@@ -92,10 +93,16 @@ module.exports = function (opts) {
         compress: {
           warnings: false
         },
+        output: {
+          comments: false
+        },
         sourceMap: false
       }),
       new ExtractTextPlugin(config.output.cssFilename, {
         allChunks: true
+      }),
+      new webpack.DefinePlugin({
+        'process.env': {NODE_ENV: JSON.stringify('production')}
       })
     )
 
