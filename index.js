@@ -15,6 +15,8 @@ module.exports = function (opts) {
     output: {
       path: outputFolder + '/',
       filename: null,
+      cssFilename: null,
+      hash: false,
       publicPath: '/'
     },
     configFile: null,
@@ -28,8 +30,11 @@ module.exports = function (opts) {
   spec.package = getPackage(spec.package)
 
   if (!spec.output.filename) {
-    spec.output.filename = spec.isDev ? 'app.js' : buildFilename(spec.package)
-    spec.output.cssFilename = spec.isDev ? 'app.css' : buildFilename(spec.package, 'css')
+    spec.output.filename = spec.isDev ? 'app.js' : buildFilename(spec.package, spec.output.hash, 'js')
+  }
+
+  if (!spec.output.cssFilename) {
+    spec.output.cssFilename = spec.isDev ? 'app.css' : buildFilename(spec.package, spec.output.hash, 'css')
   }
 
   var config = getBaseConfig(spec)
@@ -123,10 +128,11 @@ module.exports = function (opts) {
   return config
 }
 
-function buildFilename (pack, ext) {
+function buildFilename (pack, hash, ext) {
   return [
     pack.name,
-    pack.version,
+    // extract-text-plugin uses [contenthash] and webpack uses [hash]
+    hash ? (ext === 'css' ? '[contenthash]' : '[hash]') : pack.version,
     ext || 'js'
   ].join('.')
 }
