@@ -12,11 +12,11 @@ module.exports = function (opts) {
   // add in our defaults
   var spec = defaults(opts, {
     entry: path.resolve(opts.in),
-    output: {
+    output: defaults(opts.output || {}, {
       path: outputFolder + '/',
       filename: null,
       publicPath: '/'
-    },
+    }),
     configFile: null,
     isDev: true,
     package: null,
