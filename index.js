@@ -21,7 +21,8 @@ module.exports = function (opts) {
     isDev: true,
     package: null,
     replace: null,
-    port: 3000
+    port: 3000,
+    host: 'localhost'
   })
 
   spec.package = getPackage(spec.package)
@@ -60,7 +61,7 @@ module.exports = function (opts) {
 
     // add dev server and hotloading clientside code
     config.entry.unshift(
-      'webpack-dev-server/client?http://0.0.0.0:' + spec.port,
+      'webpack-dev-server/client?http://' + spec.host + ':' + spec.port,
       'webpack/hot/only-dev-server'
     )
 

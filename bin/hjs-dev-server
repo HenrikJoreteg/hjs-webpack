@@ -15,7 +15,7 @@ if (argv.config) {
 }
 
 argv.port = argv.port || 3000;
-argv.address = argv.address || argv.host || '0.0.0.0'
+argv.address = argv.address || argv.host || 'localhost'
 
 // run it
 new WebpackDevServer(webpack(argv.config), {
@@ -25,5 +25,5 @@ new WebpackDevServer(webpack(argv.config), {
   if (err) {
     console.log(err)
   }
-  console.log('development server running at: http://localhost:' + argv.port)
+  console.log('development server running at: http://' + argv.address + ':' + argv.port)
 })
