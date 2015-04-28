@@ -74,6 +74,17 @@ module.exports = function (opts) {
       'webpack/hot/only-dev-server'
     )
 
+    config.devServer = {
+      port: spec.port,
+      info: false,
+      historyApiFallback: true,
+      host: spec.hostname,
+      // For some reason simply setting this doesn't seem to be enough
+      // which is why we also do the manual entry above and the
+      // manual adding of the hot module replacment plugin below
+      hot: true
+    }
+
     // add dev plugins
     config.plugins = config.plugins.concat([
       new webpack.HotModuleReplacementPlugin(),

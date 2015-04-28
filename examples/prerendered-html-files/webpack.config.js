@@ -32,5 +32,6 @@ module.exports = getConfig({
       // or perhaps an appcache manifest
       // cache.manifest: buildSomeString()
     }
-  }
+  },
+  hostname: 'loki.local'
 })

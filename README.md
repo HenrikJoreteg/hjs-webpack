@@ -81,7 +81,7 @@ I usually add something like the following scripts:
 
 ```
 "scripts": {
-  "start": "hjs-dev-server",
+  "start": "webpack-dev-server",
   "prebuild": "rm -rf public && mkdir public"
   "build": "NODE_ENV=production webpack",
   "deploy": "npm run build && surge -p public -d somedomain.com"
@@ -92,7 +92,7 @@ Assiming you've got some JS written that you've set as your `in` in the `webpack
 
 When you're wanting to do a build, just run `npm run build`. The `prebuild` script should clear and re-create a folder called `public` (you'll have to tweak this a bit if you're on windows). The build will generate your files into `public`.
 
-Now there's a static site that can be deployed to something like [Surge.sh](http://surge.sh) or [DivShot](http://divshot.com), which I do by running `npm run deploy`.
+Now there's a static site in `public` that can be deployed to something like [Surge.sh](http://surge.sh) or [DivShot](http://divshot.com), which I do by running `npm run deploy`.
 
 **Step 4. Dealing with styles
 
