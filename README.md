@@ -138,6 +138,32 @@ Path to directory where we're going to put generated files.
 
 A boolean to indicate whether or not everything is in production mode (minified, etc.) or development mode (everything hotloaded and unminified).
 
+### `output.filename` (optional, string)
+
+This is passed directly to `webpack`, so you can use all the [configuration options available there](https://github.com/webpack/docs/wiki/configuration#outputfilename).
+
+By default a filename is created for you based on the following rules:
+
+- If `isDev` is `true`, then the filename is `app.js`
+- If `isDev` is `false`, then the filename `NAME.VERSION.js` where `NAME` and `VERSION` are pulled from your `package.json` file
+- If `output.hash` is true, then instead of `VERSION` your filename will contain the `HASH` of the compiled file
+
+### `output.cssFilename` (optional, string)
+
+This is passed directly to the `extract-text-webpack-plugin`, so you can use all the [configuration options available there](https://github.com/webpack/extract-text-webpack-plugin#api).
+
+By default a filename is created for you based on the following rules:
+
+- If `isDev` is `true`, then the filename is `app.css`
+- If `isDev` is `false`, then the filename `NAME.VERSION.css` where `NAME` and `VERSION` are pulled from your `package.json` file
+- If `output.hash` is true, then instead of `VERSION` your filename will contain the `HASH` of the compiled file
+
+### `output.hash` (optional, boolean, default is `false`)
+
+This is used in conjunction with the `output.filename` and `output.cssFilename` options above, and is only used if `isDev` is `false`. If `hash` is `true` then the filenames of your JS and CSS files will contain the hash of the compiled file. This is useful to fingerprint your asset files so that they can be cached for as long as possible.
+
+Note that as per the suggestion [in the webpack docs](https://github.com/webpack/docs/wiki/configuration#output), the `OccurenceOrderPlugin` is already used so you will get consistent ordering of modules.
+
 ### `html` (optional, can be boolean or function)
 
 This option is `true` by default. This means, by default, we'll serve and generate a very basic HTML file that looks like this:
