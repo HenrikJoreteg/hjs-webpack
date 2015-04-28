@@ -185,7 +185,7 @@ If you just want to do JS and CSS and handle all the html yourself, simply add `
 
 **using an `html` function to generate specific files**
 
-This is where it gets interesting. Imagine pre-rendering all known structural content for a Native Web App to static files. Users get pixels on the screen immediately, your JS takes over when downloaded. If you're using React, this "taking over" can be completely seemless and invisible to the user. It's also possible with this approach to write an app that works entirely without JS. See the [prerendered-html-files example](https://github.com/HenrikJoreteg/hjs-webpack/tree/master/examples/prerendered-html-files).
+This is where it gets interesting. Imagine pre-rendering all known structural content for a Native Web App to static files. Users get pixels on the screen immediately, your JS takes over when downloaded. If you're using React, this "taking over" can be completely seamless and invisible to the user. It's also possible with this approach to write an app that works entirely without JS. See the [prerendered-html-files example](https://github.com/HenrikJoreteg/hjs-webpack/tree/master/examples/prerendered-html-files).
 
 Your function should produce an object.
 
