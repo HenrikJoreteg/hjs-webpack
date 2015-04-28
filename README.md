@@ -278,6 +278,16 @@ Big thanks to co-maintainer [@LukeKarrys](http://twitter.com/lukekarrys) for hel
 
 Beware that this is all highly opinionated and contains a lot of personal preferences. If you want to add or remove major things, feel free to open issues or send PRs, but you may just want to fork it.
 
+## Changelog
+
+- 2.0.0 instead of including our own pre-configured dev server: `hjs-dev-server` you can now just use `webpack-dev-server` in your npm `scripts` and it gets configured via `devServer` property of config.
+  - much more complete documentation
+  - support for passing options to `defaultTemplate()` function
+  - simplified/unified configuration
+  - support for setting global `hostname` (see above)
+  - now includes main babel package by default
+  - add warnings/instructions about npm `3.x.x`'s handling of peer dependencies
+
 ## license
 
 MIT
