@@ -70,12 +70,7 @@ module.exports = getConfig({
   // commonly named `www` or `public`. This
   // is where your fully static site should
   // end up for simple deployment.
-  out: 'public',
-
-  // If you set `html` to `true` in development
-  // the dev-server will serve a basic/blank HTML page
-  // with references to your JS assets.
-  html: true
+  out: 'public'
 })
 
 ```
@@ -98,6 +93,30 @@ Assiming you've got some JS written that you've set as your `in` in the `webpack
 When you're wanting to do a build, just run `npm run build`. The `prebuild` script should clear and re-create a folder called `public` (you'll have to tweak this a bit if you're on windows). The build will generate your files into `public`.
 
 Now there's a static site that can be deployed to something like [Surge.sh](http://surge.sh) or [DivShot](http://divshot.com), which I do by running `npm run deploy`.
+
+**Step 4. Dealing with styles
+
+Since we're using webpack under the hood, this is done the "webpack way".
+
+Basically you can `require` your styles as if they were JavaScript files.
+
+Simply to this in your application code:
+
+```
+require('./path/to/your/css/main.css')
+```
+
+Be sure to include the extension: `.css` in your require statment. If you use `.styl` you can write [Stylus](https://learnboost.github.io/stylus/) seamlessly and at the top of your stylus files you've got access to [yeti.css](http://yeticss.com/) for easy styling.
+
+Try creating a file called `main.styl` containing:
+
+```css
+@import 'yeticss'
+```
+
+Require it from your main application file (see `in` section below) and you should get some nice default styles.
+
+**note** in devlopment mode these will be live-reloaded (hot loaded) in production, these will be extracted into their own files, including intelligent handling of referenced URLs within your stylesheets. Things like font-files will be extracted if they're over a certain size. You shouldn't have to worry about this too much, it should just work seamlessly.
 
 ## Examples
 
@@ -196,6 +215,30 @@ Your `html` function will be called with a context object that contains the foll
   - `{charset: 'utf-16'}
   - `{title: 'your app'}` sets `<title>`
   - `{head: 'any string'} anything else you want to put in the `head`, other meta tags, or whatnot.
+  - `{metaViewport: false} set to false if you don't want the default viewport tag
+
+## Developing on multiple devices at once
+
+If you're building an app that you want to look good on all devices it's nice to be able to run them all at once.
+
+Hotloading makes this extremely nice and convenient.
+
+If you're on a mac, this is fairly simple. Just add a `hostname` option to your config like so:
+
+```js
+module.exports = getConfig({
+  isDev: env === 'development',
+  in: 'src/app.js',
+  out: 'public',
+
+  // set this to whatever your machine name is
+  // plus `.local`
+  // my machine is `loki` so I do:
+  hostname: 'loki.local'
+})
+```
+
+Now when you run the development instead of going to localhost open: `http://{{yourmachine}}.local:3000` on any device that's on your local network, they should all connect and all hotload your style and JS changes.
 
 ## credits
 
