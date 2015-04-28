@@ -17,12 +17,12 @@ module.exports = function (opts) {
       filename: null,
       publicPath: '/'
     },
-    configFile: null,
     isDev: true,
     package: null,
     replace: null,
     port: 3000,
-    host: 'localhost'
+    hostname: 'localhost',
+    html: true
   })
 
   spec.package = getPackage(spec.package)
@@ -33,6 +33,9 @@ module.exports = function (opts) {
   }
 
   var config = getBaseConfig(spec)
+
+  // re-attach original spec items so they can be accessed from dev-server script
+  config.spec = spec
 
   // check for any module replacements
   if (spec.replace) {
@@ -61,7 +64,7 @@ module.exports = function (opts) {
 
     // add dev server and hotloading clientside code
     config.entry.unshift(
-      'webpack-dev-server/client?http://' + spec.host + ':' + spec.port,
+      'webpack-dev-server/client?http://' + spec.hostname + ':' + spec.port,
       'webpack/hot/only-dev-server'
     )
 

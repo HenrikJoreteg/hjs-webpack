@@ -9,21 +9,24 @@ var rootFolder = findRoot(process.env.PWD)
 
 // get config
 if (argv.config) {
+
+    console.log('config', argv.config)
   argv.config = require(path.resolve(argv.config));
+  console.log(argv.config)
 } else {
   argv.config = require(path.resolve(path.join(rootFolder, 'webpack.config.js')))
 }
 
-argv.port = argv.port || 3000;
-argv.address = argv.address || argv.host || 'localhost'
+var hostname = argv.config.spec.hostname
+var port = argv.config.spec.port
 
 // run it
 new WebpackDevServer(webpack(argv.config), {
   historyApiFallback: true,
   hot: true
-}).listen(argv.port, argv.address, function (err, result) {
+}).listen(port, hostname, function (err, result) {
   if (err) {
     console.log(err)
   }
-  console.log('development server running at: http://' + argv.address + ':' + argv.port)
+  console.log('development server running at: http://' + hostname + ':' + port)
 })

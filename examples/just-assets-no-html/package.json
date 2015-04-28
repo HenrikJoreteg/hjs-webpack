@@ -1,0 +1,15 @@
+{
+  "name": "just-assets-no-html",
+  "version": "1.0.0",
+  "author": "Henrik Joreteg <henrik@andyet.net>",
+  "dependencies": {
+    "hjs-webpack": "latest"
+  },
+  "license": "MIT",
+  "main": "app.js",
+  "scripts": {
+    "start": "hjs-dev-server",
+    "prebuild": "rm -rf public && mkdir public",
+    "build": "NODE_ENV=production webpack"
+  }
+}
