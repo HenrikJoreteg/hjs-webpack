@@ -1,6 +1,7 @@
 var React = require('react')
 
 module.exports = React.createClass({
+  displayName: 'HomePage',
   // quick and dirty internal nav handler
   onClick: function (e) {
     e.preventDefault()

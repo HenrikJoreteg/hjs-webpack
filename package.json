@@ -43,5 +43,11 @@
   },
   "scripts": {
     "test": "standard"
+  },
+  "standard": {
+    "ignore": [
+      "examples/*/public/*",
+      "examples/*/node_modules/*"
+    ]
   }
 }

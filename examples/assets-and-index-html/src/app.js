@@ -1,9 +1,10 @@
-var styles = require('./styles.styl')
+require('./styles.styl')
 var React = require('react')
 
 console.log(document.head)
 
 var Hello = React.createClass({
+  displayName: 'Hello',
   render: function () {
     return (
       <div className='container'>

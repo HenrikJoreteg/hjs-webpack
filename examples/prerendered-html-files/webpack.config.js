@@ -10,7 +10,6 @@ var OtherPage = require('./src/other-page')
 var getConfig = require('hjs-webpack')
 var isDev = process.env.NODE_ENV !== 'production'
 
-
 module.exports = getConfig({
   in: 'src/app.js',
   out: 'public',
@@ -24,7 +23,6 @@ module.exports = getConfig({
     return {
       'index.html': data.defaultTemplate({html: homePageHtmlString}),
       'other/index.html': data.defaultTemplate({html: otherPageHtmlString})
-
 
       // here we might also create an app manifest.json
       // app-manifest.json: JSON.stringify(something)
