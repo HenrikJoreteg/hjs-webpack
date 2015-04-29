@@ -32,11 +32,11 @@ npm install hjs-webpack
 
 hjs-webpack specifies many of its dependencies as `peerDependencies` in order to let you decide which version of, say, babel or React that you want to use in your project without us specifying that directly for you.
 
-In `npm 3.x.x` peerDependencies will no longer be installed by default.
+In npm `3.x.x` `peerDependencies` will no longer be installed by default.
 
 When this happens, you'll want to run the following to install the related dependencies as well.
 
-Included here for you copy/paste convenience:
+Included here for you copy/paste enjoyment:
 
 ```
 npm i --save autoprefixer-stylus babel babel-loader css-loader react-hot-loader style-loader stylus-loader url-loader webpack-dev-server yeticss
@@ -94,7 +94,7 @@ When you're wanting to do a build, just run `npm run build`. The `prebuild` scri
 
 Now there's a static site in `public` that can be deployed to something like [Surge.sh](http://surge.sh) or [DivShot](http://divshot.com), which I do by running `npm run deploy`.
 
-**Step 4. Dealing with styles
+**Step 4. Dealing with styles**
 
 Since we're using webpack under the hood, this is done the "webpack way".
 
@@ -120,7 +120,11 @@ Require it from your main application file (see `in` section below) and you shou
 
 ## Examples
 
-There are 3 example projects in the [/examples](https://github.com/HenrikJoreteg/hjs-webpack/tree/master/examples) directory.
+There are 3 example projects in the [/examples](https://github.com/HenrikJoreteg/hjs-webpack/tree/master/examples) directory with various config setups:
+
+1. Only generating CSS/JS
+2. Generating CSS/JS and using included HTML template
+3. Pre-rendering app layout and the public homepage HTML with React as part of the build process
 
 ## Config options
 
@@ -240,8 +244,8 @@ Your `html` function will be called with a context object that contains the foll
   - `{html: 'your string}` and it'll add it to the <body>
   - `{charset: 'utf-16'}
   - `{title: 'your app'}` sets `<title>`
-  - `{head: 'any string'} anything else you want to put in the `head`, other meta tags, or whatnot.
-  - `{metaViewport: false} set to false if you don't want the default viewport tag
+  - `{head: 'any string'}` anything else you want to put in the `head`, other meta tags, or whatnot.
+  - `{metaViewport: false}` set to false if you don't want the default viewport tag
 
 ## Developing on multiple devices at once
 
