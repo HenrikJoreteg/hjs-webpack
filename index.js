@@ -102,6 +102,10 @@ module.exports = function (opts) {
       {
         test: /\.styl$/,
         loader: 'style-loader!css-loader!stylus-loader'
+      },
+      {
+        test: /\.less/,
+        loader: 'style-loader!css-loader!less-loader'
       }
     )
 
@@ -136,6 +140,10 @@ module.exports = function (opts) {
       {
         test: /\.styl$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
+      },
+      {
+        test: /\.less/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
       }
     )
   }
