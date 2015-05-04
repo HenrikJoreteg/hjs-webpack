@@ -30,7 +30,6 @@
     "babel": "*",
     "babel-loader": "*",
     "css-loader": "*",
-    "less-loader": "*",
     "react-hot-loader": "*",
     "style-loader": "*",
     "stylus-loader": "*",

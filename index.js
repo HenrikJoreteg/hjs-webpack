@@ -25,7 +25,8 @@ module.exports = function (opts) {
     replace: null,
     port: 3000,
     hostname: 'localhost',
-    html: true
+    html: true,
+    urlLoaderLimit: 10000
   })
 
   spec.package = getPackage(spec.package)
@@ -104,7 +105,7 @@ module.exports = function (opts) {
         loader: 'style-loader!css-loader!stylus-loader'
       },
       {
-        test: /\.less/,
+        test: /\.less$/,
         loader: 'style-loader!css-loader!less-loader'
       }
     )

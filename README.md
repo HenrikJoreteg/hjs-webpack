@@ -168,6 +168,10 @@ This is used in conjunction with the `output.filename` and `output.cssFilename` 
 
 Note that as per the suggestion [in the webpack docs](https://github.com/webpack/docs/wiki/configuration#output), the `OccurenceOrderPlugin` is already used so you will get consistent ordering of modules.
 
+### `urlLoaderLimit` (optional, number, default: `10000`)
+
+This is the default threshold to use for whether urls referenced in stylesheets will be inlined or extracted during build (we're just pre-configuring the [url-loader](https://github.com/webpack/url-loader)).
+
 ### `html` (optional, can be boolean or function)
 
 This option is `true` by default. This means, by default, we'll serve and generate a very basic HTML file that looks like this:
@@ -270,6 +274,18 @@ module.exports = getConfig({
 
 Now when you run the development instead of going to localhost open: `http://{{yourmachine}}.local:3000` on any device that's on your local network, they should all connect and all hotload your style and JS changes.
 
+## other loaders
+
+There's a few loaders configured, but not automatically installed:
+
+**less**
+
+`require('styles.less')` and npm install `less-loader`
+
+**jade**
+
+`require('styles.jade')` and npm install `jade-loader`
+
 ## credits
 
 This is mostly just some add-ons to [webpack](http://webpack.github.io/) so most of the credit goes there.
@@ -283,6 +299,9 @@ Big thanks to co-maintainer [@LukeKarrys](http://twitter.com/lukekarrys) for hel
 Beware that this is all highly opinionated and contains a lot of personal preferences. If you want to add or remove major things, feel free to open issues or send PRs, but you may just want to fork it.
 
 ## Changelog
+
+- 2.1.0 pre-configure `.jade` and `.less` loaders as optional installs.
+  - add option for `urlLoaderLimit`
 
 - 2.0.0 instead of including our own pre-configured dev server: `hjs-dev-server` you can now just use `webpack-dev-server` in your npm `scripts` and it gets configured via `devServer` property of config.
   - much more complete documentation
