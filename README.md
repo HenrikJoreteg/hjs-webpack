@@ -88,7 +88,7 @@ I usually add something like the following scripts:
 }
 ```
 
-Assiming you've got some JS written that you've set as your `in` in the `webpack.config.js` you can run `npm start` and open a browser to `http://localhost:3000` and you everything should Just Work™.
+Assuming you've got some JS written that you've set as your `in` in the `webpack.config.js` you can run `npm start` and open a browser to `http://localhost:3000` and you everything should Just Work™.
 
 When you're wanting to do a build, just run `npm run build`. The `prebuild` script should clear and re-create a folder called `public` (you'll have to tweak this a bit if you're on windows). The build will generate your files into `public`.
 
@@ -100,7 +100,7 @@ Since we're using webpack under the hood, this is done the "webpack way".
 
 Basically you can `require` your styles as if they were JavaScript files.
 
-Simply to this in your application code:
+Simply do this in your application code:
 
 ```
 require('./path/to/your/css/main.css')
