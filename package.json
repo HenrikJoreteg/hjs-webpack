@@ -26,10 +26,11 @@
   "license": "MIT",
   "main": "index.js",
   "peerDependencies": {
-    "autoprefixer-stylus": "*",
+    "autoprefixer-core": "*",
     "babel": "*",
     "babel-loader": "*",
     "css-loader": "*",
+    "postcss-loader": "*",
     "react-hot-loader": "*",
     "style-loader": "*",
     "stylus-loader": "*",

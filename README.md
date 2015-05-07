@@ -39,7 +39,7 @@ When this happens, you'll want to run the following to install the related depen
 Included here for you copy/paste enjoyment:
 
 ```
-npm i --save autoprefixer-stylus babel babel-loader css-loader react-hot-loader style-loader stylus-loader url-loader webpack-dev-server yeticss
+npm i --save autoprefixer-core babel babel-loader css-loader postcss-loader react-hot-loader style-loader stylus-loader url-loader webpack-dev-server yeticss
 ```
 
 ## usage
