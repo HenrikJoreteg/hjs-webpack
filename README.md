@@ -284,7 +284,7 @@ There's a few loaders configured, but not automatically installed:
 
 **jade**
 
-`require('styles.jade')` and npm install `jade-loader`
+`require('template.jade')` and npm install `jade-loader`
 
 ## credits
 
