@@ -36,7 +36,7 @@ In npm `3.x.x` `peerDependencies` will no longer be installed by default.
 
 When this happens, you'll want to run the following to install the related dependencies as well.
 
-Included here for you copy/paste enjoyment:
+Included here for your copy/paste enjoyment:
 
 ```
 npm i --save autoprefixer-stylus babel babel-loader css-loader react-hot-loader style-loader stylus-loader url-loader webpack-dev-server yeticss
