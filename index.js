@@ -98,15 +98,15 @@ module.exports = function (opts) {
     config.module.loaders.push(
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: 'style-loader!css-loader!postcss-loader'
       },
       {
         test: /\.styl$/,
-        loader: 'style-loader!css-loader!stylus-loader'
+        loader: 'style-loader!css-loader!postcss-loader!stylus-loader'
       },
       {
         test: /\.less$/,
-        loader: 'style-loader!css-loader!less-loader'
+        loader: 'style-loader!css-loader!postcss-loader!less-loader'
       }
     )
 
@@ -136,15 +136,15 @@ module.exports = function (opts) {
     config.module.loaders.push(
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
       },
       {
         test: /\.styl$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!stylus-loader')
       },
       {
         test: /\.less/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!less-loader')
       }
     )
   }
