@@ -300,6 +300,9 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.2.0 use `autoprefixer-core` and `postcss-loader` to add autoprefixing to all configured style loaders
+  - don't resolve .styl extensions
+
 - 2.1.0 pre-configure `.jade` and `.less` loaders as optional installs.
   - add option for `urlLoaderLimit`
 
