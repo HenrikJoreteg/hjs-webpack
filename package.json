@@ -29,6 +29,7 @@
     "babel": "*",
     "babel-loader": "*",
     "css-loader": "*",
+    "json-loader": "*",
     "postcss-loader": "*",
     "react-hot-loader": "*",
     "style-loader": "*",
