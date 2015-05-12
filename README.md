@@ -22,6 +22,8 @@ So, this is just a simplified, opinionated way to configure webpack for developm
 
 If no one uses it but me, it will have still served its purpose.
 
+A screencast showing how to use this module is here: http://learn.humanjavascript.com/react-ampersand/setting-up-webpack
+
 ## install
 
 ```
@@ -290,7 +292,7 @@ There's a few loaders configured, but not automatically installed:
 
 This is mostly just some add-ons to [webpack](http://webpack.github.io/) so most of the credit goes there.
 
-If you're interested in building apps this way. Keep an eye on http://learn.humanjavascript.com and follow me on twitter [@HenrikJoreteg](http://twitter.com/henrikjoreteg).
+If you're interested in building apps this way, watch the free section of the tutorials at http://learn.humanjavascript.com it shows basic usage of this module. Also, you can follow me on twitter [@HenrikJoreteg](http://twitter.com/henrikjoreteg).
 
 Big thanks to co-maintainer [@LukeKarrys](http://twitter.com/lukekarrys) for helping find/fix some really annoying bugs.
 
