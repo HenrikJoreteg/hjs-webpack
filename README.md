@@ -84,7 +84,7 @@ I usually add something like the following scripts:
 ```
 "scripts": {
   "start": "webpack-dev-server",
-  "prebuild": "rm -rf public && mkdir public"
+  "prebuild": "rm -rf public && mkdir public",
   "build": "NODE_ENV=production webpack",
   "deploy": "npm run build && surge -p public -d somedomain.com"
 }
