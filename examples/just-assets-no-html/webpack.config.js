@@ -5,5 +5,6 @@ module.exports = getConfig({
   in: 'src/app.js',
   out: 'public',
   isDev: isDev,
-  html: false
+  html: false,
+  clearBeforeBuild: true
 })

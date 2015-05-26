@@ -4,12 +4,11 @@ This can be especially interesting if used to pre-render known HTML with React.
 
 ```js
 var getConfig = require('hjs-webpack')
-var isDev = process.env.NODE_ENV !== 'production'
 
 module.exports = getConfig({
   in: './app.js',
   out: 'public',
-  isDev: isDev,
+  clearBeforeBuild: true,
   html: function (data) {
     // here we return an object where each key is a file to be generated
     return {

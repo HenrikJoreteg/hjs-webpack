@@ -58,13 +58,9 @@ Put it at the root of your project, a typical config looks something like this:
 
 ```js
 var getConfig = require('hjs-webpack')
-var env = process.env.NODE_ENV || 'development'
 
 
 module.exports = getConfig({
-  // a boolean specifying whether to minify, output files, etc
-  isDev: env === 'development',
-
   // entry point for the app
   in: 'src/app.js',
 
@@ -72,7 +68,14 @@ module.exports = getConfig({
   // commonly named `www` or `public`. This
   // is where your fully static site should
   // end up for simple deployment.
-  out: 'public'
+  out: 'public',
+
+  // This will destroy and re-create your
+  // `out` folder before building so you always
+  // get a fresh folder. Usually you want this
+  // but since it's destructive we make it 
+  // false by default
+  clearBeforeBuild: true
 })
 
 ```
@@ -84,15 +87,14 @@ I usually add something like the following scripts:
 ```
 "scripts": {
   "start": "webpack-dev-server",
-  "prebuild": "rm -rf public && mkdir public",
-  "build": "NODE_ENV=production webpack",
+  "build": "webpack",
   "deploy": "npm run build && surge -p public -d somedomain.com"
 }
 ```
 
 Assuming you've got some JS written that you've set as your `in` in the `webpack.config.js` you can run `npm start` and open a browser to `http://localhost:3000` and you everything should Just Work™.
 
-When you're wanting to do a build, just run `npm run build`. The `prebuild` script should clear and re-create a folder called `public` (you'll have to tweak this a bit if you're on windows). The build will generate your files into `public`.
+When you're wanting to do a build, just run `npm run build`. The build will generate your files into `public`.
 
 Now there's a static site in `public` that can be deployed to something like [Surge.sh](http://surge.sh) or [DivShot](http://divshot.com), which I do by running `npm run deploy`.
 
@@ -140,9 +142,15 @@ This should just be the path to the file that serves as the main entry point of 
 
 Path to directory where we're going to put generated files.
 
-### `isDev`
+### `clearBeforeBuild` (optional, boolean, default=false)
+
+A boolean to specify whether to clear the `out` folder before building.
+
+### `isDev` (optional, boolean, default=varies based on command)
 
 A boolean to indicate whether or not everything is in production mode (minified, etc.) or development mode (everything hotloaded and unminified).
+
+By default this value is `true` if the command you ran contains `webpack-dev-server` and `false` otherwise. The option exists here in case you need to override the default.
 
 ### `output.filename` (optional, string)
 
@@ -248,7 +256,7 @@ Your `html` function will be called with a context object that contains the foll
 2. `context.css`: the name of the generated CSS file
 3. `context.defaultTemplate()` a convenience method you can call to generate the basic HTML shown above. This takes a few options too if you just want to make minor tweaks. If you want to do more, just don't use the default template, generate your own instead. The options are:
   - `{html: 'your string}` and it'll add it to the <body>
-  - `{charset: 'utf-16'}
+  - `{charset: 'utf-8'}` what charset to set
   - `{title: 'your app'}` sets `<title>`
   - `{head: 'any string'}` anything else you want to put in the `head`, other meta tags, or whatnot.
   - `{metaViewport: false}` set to false if you don't want the default viewport tag
@@ -263,7 +271,6 @@ If you're on a mac, this is fairly simple. Just add a `hostname` option to your 
 
 ```js
 module.exports = getConfig({
-  isDev: env === 'development',
   in: 'src/app.js',
   out: 'public',
 
@@ -301,6 +308,12 @@ Big thanks to co-maintainer [@LukeKarrys](http://twitter.com/lukekarrys) for hel
 Beware that this is all highly opinionated and contains a lot of personal preferences. If you want to add or remove major things, feel free to open issues or send PRs, but you may just want to fork it.
 
 ## Changelog
+
+- 2.3.0 configure `isDev` default automatically based on whether the command used contains `webpack-dev-server` or not (still respects explicitly configured, so not a breaking change)
+  - add `clearBeforeBuild` option to clear build folder first.
+  - doc fixes/improvements
+
+- 2.2.2 use `process.cwd()` over `process.env.PWD` to find root.
 
 - 2.2.1 include `json-loader` by default.
 

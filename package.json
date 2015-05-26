@@ -10,7 +10,8 @@
     "extract-text-webpack-plugin": "^0.5.0",
     "find-root": "^0.1.1",
     "lodash.assign": "^3.1.0",
-    "lodash.defaults": "^3.0.0"
+    "lodash.defaults": "^3.0.0",
+    "rimraf": "^2.3.4"
   },
   "devDependencies": {
     "standard": "^3.1.2"

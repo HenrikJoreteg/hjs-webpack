@@ -1,9 +1,15 @@
+var fs = require('fs')
 var path = require('path')
+var rimraf = require('rimraf')
 var webpack = require('webpack')
 var defaults = require('lodash.defaults')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var getBaseConfig = require('./lib/base-config')
 var getPackage = require('./lib/get-package')
+
+// figure out if we're running `webpack` or `webpack-dev-server`
+// we'll use this as the default for `isDev`
+var isDev = process.argv[1].indexOf('webpack-dev-server') !== -1
 
 module.exports = function (opts) {
   checkRequired(opts)
@@ -20,13 +26,14 @@ module.exports = function (opts) {
       publicPath: '/'
     }),
     configFile: null,
-    isDev: true,
+    isDev: isDev,
     package: null,
     replace: null,
     port: 3000,
     hostname: 'localhost',
     html: true,
-    urlLoaderLimit: 10000
+    urlLoaderLimit: 10000,
+    clearBeforeBuild: false
   })
 
   spec.package = getPackage(spec.package)
@@ -111,6 +118,12 @@ module.exports = function (opts) {
     )
 
   } else {
+    // clear out output folder if so configured
+    if (spec.clearBeforeBuild) {
+      rimraf.sync(outputFolder)
+      fs.mkdirSync(outputFolder)
+    }
+
     // minify in production
     config.plugins.push(
       new webpack.optimize.DedupePlugin(),
@@ -162,8 +175,8 @@ function buildFilename (pack, hash, ext) {
 }
 
 function checkRequired (opts) {
-  var props = ['out', 'in', 'isDev']
+  var props = ['out', 'in']
   if (!opts || !props.every(function (prop) { return opts.hasOwnProperty(prop) })) {
-    throw new Error('Must pass in options with `in`, `out`, and `isDev` properties')
+    throw new Error('Must pass in options object with `in` and `out` properties')
   }
 }

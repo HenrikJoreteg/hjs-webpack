@@ -29,7 +29,6 @@
   "main": "app.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "prebuild": "rm -rf public && mkdir public",
-    "build": "NODE_ENV=production webpack"
+    "build": "webpack"
   }
 }

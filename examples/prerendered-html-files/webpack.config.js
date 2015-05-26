@@ -8,12 +8,11 @@ var OtherPage = require('./src/other-page')
 
 // our hjs-webpack, of course
 var getConfig = require('hjs-webpack')
-var isDev = process.env.NODE_ENV !== 'production'
 
 module.exports = getConfig({
   in: 'src/app.js',
   out: 'public',
-  isDev: isDev,
+  clearBeforeBuild: true,
   html: function (data) {
     // use React's `renderToString` method to return an HTML string from our
     // components (dynamic values can be passed into `createElement` too)
