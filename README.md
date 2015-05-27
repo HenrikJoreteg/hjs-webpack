@@ -311,6 +311,7 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 - 2.3.0 configure `isDev` default automatically based on whether the command used contains `webpack-dev-server` or not (still respects explicitly configured, so not a breaking change)
   - add `clearBeforeBuild` option to clear build folder first.
+  - both the above changes allow an app to share configs because you're not having to clear the build dir, or set environment variables two different ways for different platforms (a.k.a. better windows support).
   - doc fixes/improvements
 
 - 2.2.2 use `process.cwd()` over `process.env.PWD` to find root.
