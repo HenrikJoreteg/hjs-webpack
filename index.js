@@ -29,7 +29,7 @@ module.exports = function (opts) {
     isDev: isDev,
     package: null,
     replace: null,
-    port: 3000,
+    port: process.env.PORT || 3000,
     hostname: 'localhost',
     html: true,
     urlLoaderLimit: 10000,
