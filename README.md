@@ -120,7 +120,7 @@ Try creating a file called `main.styl` containing:
 
 Require it from your main application file (see `in` section below) and you should get some nice default styles.
 
-**note** in devlopment mode these will be live-reloaded (hot loaded) in production, these will be extracted into their own files, including intelligent handling of referenced URLs within your stylesheets. Things like font-files will be extracted if they're over a certain size. You shouldn't have to worry about this too much, it should just work seamlessly.
+**note** in devlopment mode these will be live-reloaded (hot loaded) in production, these will be extracted into their own files, including intelligent handling of referenced URLs within your stylesheets. Things like font-files and images will be extracted if they're over a certain size. You shouldn't have to worry about this too much, it should just work seamlessly.
 
 ## Examples
 
