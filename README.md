@@ -309,9 +309,11 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
-- 2.4.0
+- 2.5.0
   - Use passed in `urlLoaderLimit`
   - Add default url loader for images
+
+- 2.4.0 Resolve `.jsx` extension
 
 - 2.3.0 configure `isDev` default automatically based on whether the command used contains `webpack-dev-server` or not (still respects explicitly configured, so not a breaking change)
   - add `clearBeforeBuild` option to clear build folder first.
