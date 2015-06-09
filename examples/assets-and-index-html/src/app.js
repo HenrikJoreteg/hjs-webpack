@@ -1,7 +1,6 @@
 require('./styles.styl')
 var React = require('react')
-
-console.log(document.head)
+var andyetImgSrc = require('./andyet.svg')
 
 var Hello = React.createClass({
   displayName: 'Hello',
@@ -12,6 +11,7 @@ var Hello = React.createClass({
           <h1>Assets + HTML Example</h1>
         </header>
         <p>Generates, base HTML, CSS, and JS on build</p>
+        <img src={andyetImgSrc} style={{backgroundColor: 'black'}} />
       </div>
     )
   }
