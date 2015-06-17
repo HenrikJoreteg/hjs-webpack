@@ -182,6 +182,20 @@ Note that as per the suggestion [in the webpack docs](https://github.com/webpack
 
 This is the default threshold to use for whether urls referenced in stylesheets will be inlined or extracted during build (we're just pre-configuring the [url-loader](https://github.com/webpack/url-loader)).
 
+### `devServer` (optional, object)
+
+These options are passed through to the [`webpack-dev-server`](http://webpack.github.io/docs/webpack-dev-server.html#api) with a few defaults:
+
+```js
+{
+  port, // pulled from top level option "port"
+  host, // // pulled from top level option "hostname"
+  info: false,
+  historyApiFallback: true,
+  hot: true
+}
+```
+
 ### `html` (optional, can be boolean or function)
 
 This option is `true` by default. This means, by default, we'll serve and generate a very basic HTML file that looks like this:
@@ -308,6 +322,9 @@ Big thanks to co-maintainer [@LukeKarrys](http://twitter.com/lukekarrys) for hel
 Beware that this is all highly opinionated and contains a lot of personal preferences. If you want to add or remove major things, feel free to open issues or send PRs, but you may just want to fork it.
 
 ## Changelog
+
+- 2.6.0
+  - Allow `devServer` options to be passed in
 
 - 2.5.0
   - Use passed in `urlLoaderLimit`
