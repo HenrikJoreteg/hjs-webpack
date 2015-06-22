@@ -323,6 +323,10 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.6.1
+  - Fix less filename test when in production mode
+  - Add documentation about using html function's css context and cssFilename in production mode
+
 - 2.6.0
   - Allow `devServer` options to be passed in
 
