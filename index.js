@@ -157,7 +157,7 @@ module.exports = function (opts) {
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!stylus-loader')
       },
       {
-        test: /\.less/,
+        test: /\.less$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!less-loader')
       }
     )
