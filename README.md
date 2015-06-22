@@ -164,7 +164,7 @@ By default a filename is created for you based on the following rules:
 
 ### `output.cssFilename` (optional, string)
 
-This is passed directly to the `extract-text-webpack-plugin`, so you can use all the [configuration options available there](https://github.com/webpack/extract-text-webpack-plugin#api).
+This is passed directly to the `extract-text-webpack-plugin`, so you can use all the [configuration options available there](https://github.com/webpack/extract-text-webpack-plugin#api). Note: this is only used if `isDev` is `true`, since in development mode the css bundle is inserted dynamically into the document by the [`style-loader`](https://github.com/webpack/style-loader).
 
 By default a filename is created for you based on the following rules:
 
@@ -267,7 +267,7 @@ html: function (context, callback) {
 Your `html` function will be called with a context object that contains the following:
 
 1. `context.main`: the name of the generated JS file
-2. `context.css`: the name of the generated CSS file
+2. `context.css`: the name of the generated CSS file. This only exists if `isDev` is `false`, since in development mode the css bundle is inserted dynamically into the document by the [`style-loader`](https://github.com/webpack/style-loader).
 3. `context.defaultTemplate()` a convenience method you can call to generate the basic HTML shown above. This takes a few options too if you just want to make minor tweaks. If you want to do more, just don't use the default template, generate your own instead. The options are:
   - `{html: 'your string}` and it'll add it to the <body>
   - `{charset: 'utf-8'}` what charset to set
