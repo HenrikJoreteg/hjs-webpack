@@ -196,6 +196,18 @@ These options are passed through to the [`webpack-dev-server`](http://webpack.gi
 }
 ```
 
+### `replace` (optional, object)
+
+You can supply an object of require names with paths to the files you want that name to represent. This makes it easy to do things like swapping out config files based on build mode, etc.
+
+Adding this to your config, would mean that any time you did: `require('config')` within your application code, you'd end up with the file specified by the path.
+
+```js
+{
+  'config': '/some/path/config.json'
+}
+```
+
 ### `html` (optional, can be boolean or function)
 
 This option is `true` by default. This means, by default, we'll serve and generate a very basic HTML file that looks like this:
@@ -322,6 +334,10 @@ Big thanks to co-maintainer [@LukeKarrys](http://twitter.com/lukekarrys) for hel
 Beware that this is all highly opinionated and contains a lot of personal preferences. If you want to add or remove major things, feel free to open issues or send PRs, but you may just want to fork it.
 
 ## Changelog
+
+- 2.7.0
+  - Expose `isDev` flag to `html` function context
+  - Document `replace` option in readme.
 
 - 2.6.1
   - Fix less filename test when in production mode
