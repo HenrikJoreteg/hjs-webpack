@@ -286,6 +286,13 @@ Your `html` function will be called with a context object that contains the foll
   - `{title: 'your app'}` sets `<title>`
   - `{head: 'any string'}` anything else you want to put in the `head`, other meta tags, or whatnot.
   - `{metaViewport: false}` set to false if you don't want the default viewport tag
+4. `context.isDev`: boolean specifying whether or not we're in dev mode.
+
+### `serveCustomHtmlInDev` (optional, boolean, default is `true`)
+
+By default, if you supply an `html` function it will always be used, whether you're in development mode or not.
+
+Set this option to `false` to only use your `html` function when building for production. Note, that `.isDev` is attached to the context object passed to the `html` function as described above, so alternately you could just use that value to branch your logic within that function. Using this option cirumvents the custom `html` function entirely during development.
 
 ## Developing on multiple devices at once
 
@@ -334,6 +341,10 @@ Big thanks to co-maintainer [@LukeKarrys](http://twitter.com/lukekarrys) for hel
 Beware that this is all highly opinionated and contains a lot of personal preferences. If you want to add or remove major things, feel free to open issues or send PRs, but you may just want to fork it.
 
 ## Changelog
+
+- 2.8.0
+  - add `serveCustomHtmlInDev` as an explicit option
+  - properly document new option and `isDev` in html function
 
 - 2.7.0
   - Expose `isDev` flag to `html` function context

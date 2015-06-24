@@ -34,6 +34,7 @@ module.exports = function (opts) {
     html: true,
     urlLoaderLimit: 10000,
     clearBeforeBuild: false,
+    serveCustomHtmlInDev: true,
     devServer: defaults(opts.devServer || {}, {
       info: false,
       historyApiFallback: true,
