@@ -286,6 +286,7 @@ Your `html` function will be called with a context object that contains the foll
   - `{title: 'your app'}` sets `<title>`
   - `{head: 'any string'}` anything else you want to put in the `head`, other meta tags, or whatnot.
   - `{metaViewport: false}` set to false if you don't want the default viewport tag
+  - `{relative: false}` set to false if you want to turn off relative links `/` useful for gh-pages
 4. `context.isDev`: boolean specifying whether or not we're in dev mode.
 
 ### `serveCustomHtmlInDev` (optional, boolean, default is `true`)
@@ -341,6 +342,10 @@ Big thanks to co-maintainer [@LukeKarrys](http://twitter.com/lukekarrys) for hel
 Beware that this is all highly opinionated and contains a lot of personal preferences. If you want to add or remove major things, feel free to open issues or send PRs, but you may just want to fork it.
 
 ## Changelog
+
+- 2.8.1
+  - Fix typo in `examples/just-assets-no-html/README.md`
+  - add documentation for relative links in html
 
 - 2.8.0
   - add `serveCustomHtmlInDev` as an explicit option
