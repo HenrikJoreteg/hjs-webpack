@@ -1,4 +1,4 @@
-Simple, no-hmtl configuration
+Simple, no-html configuration
 
 All you have to do is serve HTML *somehow* that includes the following script tag.
 

@@ -286,6 +286,7 @@ Your `html` function will be called with a context object that contains the foll
   - `{title: 'your app'}` sets `<title>`
   - `{head: 'any string'}` anything else you want to put in the `head`, other meta tags, or whatnot.
   - `{metaViewport: false}` set to false if you don't want the default viewport tag
+  - `{relative: false}` set to false if you want to turn off relative links `/` useful for gh-pages
 4. `context.isDev`: boolean specifying whether or not we're in dev mode.
 
 ### `serveCustomHtmlInDev` (optional, boolean, default is `true`)
