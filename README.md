@@ -343,6 +343,10 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.8.1
+  - Fix typo in `examples/just-assets-no-html/README.md`
+  - add documentation for relative links in html
+
 - 2.8.0
   - add `serveCustomHtmlInDev` as an explicit option
   - properly document new option and `isDev` in html function
