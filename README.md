@@ -46,13 +46,13 @@ npm i --save autoprefixer-core babel babel-loader css-loader json-loader postcss
 
 ## usage
 
-**Step 1. install it into your project**
+#### Step 1. install it into your project
 
 ```
 npm install --save hjs-webpack
 ```
 
-**Step 2. create a webpack.config.js**
+#### Step 2. create a webpack.config.js
 
 Put it at the root of your project, a typical config looks something like this:
 
@@ -80,7 +80,7 @@ module.exports = getConfig({
 
 ```
 
-**Step 3. configure `scripts` section of package.json**
+#### Step 3. configure `scripts` section of package.json
 
 I usually add something like the following scripts:
 
@@ -98,7 +98,7 @@ When you're wanting to do a build, just run `npm run build`. The build will gene
 
 Now there's a static site in `public` that can be deployed to something like [Surge.sh](http://surge.sh) or [DivShot](http://divshot.com), which I do by running `npm run deploy`.
 
-**Step 4. Dealing with styles**
+#### Step 4. Dealing with styles
 
 Since we're using webpack under the hood, this is done the "webpack way".
 
@@ -122,6 +122,43 @@ Require it from your main application file (see `in` section below) and you shou
 
 **note** in devlopment mode these will be live-reloaded (hot loaded) in production, these will be extracted into their own files, including intelligent handling of referenced URLs within your stylesheets. Things like font-files and images will be extracted if they're over a certain size. You shouldn't have to worry about this too much, it should just work seamlessly.
 
+#### Step 5. Dealing with images and static files
+
+**option #1: requiring files** 
+
+Webpack lets us do `var url = require('something.png')` from within your app code and `url` is something you can safely set as the `src` of an image tag, for example. When you build the project, it uses the [url-loader](https://github.com/webpack/url-loader) and will base64 encode and inline it if it's smaller than the [urlLoaderLimit](hjs-webpack#urlloaderlimit-optional-number-default-10000) and hash and export it otherwise.
+
+When you do this, webpack will hash the file and use that as a name. If you basically just want to require a file so webpack knows about it, the following syntax will copy the favicon to the `out` directory (at the root) but leave the name unchanged: `require('file?name=favicon.ico!./real/path/to/your/favicon.ico')`
+
+But, letting webpack handle images isn't always what you want to do. Sometimes you want just a simple folder of static assets and be able to reference them like you're used to. That's why there's another option:
+
+**option #2: just put 'em in your `out` directory**
+
+You can also just put your assests in the `out` directory and tell hjs-webpack to ignore them by setting a glob pattern as the  `clearBeforeBuild` option.
+
+Assume an `out` directory called `public` that looks like this:
+
+```
+public/
+  some-other-generated-file.html
+  index.html
+  yourapp.1.1.1.css
+  yourapp.1.1.1.js
+  favicon.ico
+
+  images/
+    some-pic.png
+
+```
+
+Then, instead of setting `clearBeforeBuild: true` you can set it to a glob string like so: `clearBeforeBuild: '!(images|favicon.ico)'`.
+
+Now when you build it'll clear everything that matches the glob pattern an nothing else. 
+
+In this case, it'd leave the `images` directory and your `favicon.ico` alone (more details in options section below).
+
+**note** The development server will treat the `out` directory as the `contentBase` which means, that the favicon, in this case would be available at `/favicon.ico` despite being in `public`.
+
 ## Examples
 
 There are 3 example projects in the [/examples](https://github.com/HenrikJoreteg/hjs-webpack/tree/master/examples) directory with various config setups:
@@ -142,9 +179,24 @@ This should just be the path to the file that serves as the main entry point of 
 
 Path to directory where we're going to put generated files.
 
-### `clearBeforeBuild` (optional, boolean, default=false)
+### `clearBeforeBuild` (optional, boolean or glob string, default=false)
 
 A boolean to specify whether to clear the `out` folder before building.
+
+If you wish to only clear *some* of this directory you can also pass a [glob string](https://github.com/isaacs/node-glob#glob-primer). Globs are the file path matching strings you've probably seen in on the command line or in a `.gitigore` (i.e. `**/*.js*`).
+
+The most common think you'd probably want to do while using this module would probably be to exclude a directory from being cleared. The following example would clear out the `public` directory but leave the `public/images` and `public/static` folders intact if they exist.
+
+```
+getConfig({
+  in: 'src/app.js',
+  out: 'public',
+  clearBeforeBuild: '!(images|static)'  
+})
+
+```
+
+So, just to be clear, everything that matches the glob string *within* the out folder will be deleted when building.
 
 ### `isDev` (optional, boolean, default=varies based on command)
 
@@ -288,6 +340,9 @@ Your `html` function will be called with a context object that contains the foll
   - `{metaViewport: false}` set to false if you don't want the default viewport tag
   - `{relative: false}` set to false if you want to turn off relative links `/` useful for gh-pages
 4. `context.isDev`: boolean specifying whether or not we're in dev mode.
+5. `context.package`: the parsed `package.json` file as an object.
+6. `context.stats`: the stats object returned by webpack. Of likely interest is `context.stats.hash` (a hash of current build). `context.stats.assets` is an array of all the assets that will be generated, this can be useful for generating cache manifests, etc. Overall, this is a big object that lists all the modules in your whole app, you likely won't need most of it, but it's all there in case you do ([a sample can be found here](https://raw.githubusercontent.com/webpack/analyse/master/app/pages/upload/example.json)).
+
 
 ### `serveCustomHtmlInDev` (optional, boolean, default is `true`)
 
@@ -342,6 +397,12 @@ Big thanks to co-maintainer [@LukeKarrys](http://twitter.com/lukekarrys) for hel
 Beware that this is all highly opinionated and contains a lot of personal preferences. If you want to add or remove major things, feel free to open issues or send PRs, but you may just want to fork it.
 
 ## Changelog
+
+- 2.9.0
+  - Allow globs for `clearBeforeBuild`.
+  - Expose webpack `stats` object to context
+  - Expose parsed `package.json` object to `html` function context argument.
+  - Set `out` folder as `contentBase` for the dev server.
 
 - 2.8.1
   - Fix typo in `examples/just-assets-no-html/README.md`

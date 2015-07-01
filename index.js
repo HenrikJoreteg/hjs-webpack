@@ -41,7 +41,8 @@ module.exports = function (opts) {
       // For some reason simply setting this doesn't seem to be enough
       // which is why we also do the manual entry above and the
       // manual adding of the hot module replacment plugin below
-      hot: true
+      hot: true,
+      contentBase: outputFolder
     })
   })
 
@@ -122,8 +123,18 @@ module.exports = function (opts) {
   } else {
     // clear out output folder if so configured
     if (spec.clearBeforeBuild) {
-      rimraf.sync(outputFolder)
-      fs.mkdirSync(outputFolder)
+      // allow passing a glob (limit to within folder though)
+      if (typeof spec.clearBeforeBuild === 'string') {
+        // create the output folder if it doesn't exist
+        // just for convenience
+        if (!fs.existsSync(outputFolder)) {
+          fs.mkdirSync(outputFolder)
+        }
+        rimraf.sync(outputFolder + '/' + spec.clearBeforeBuild)
+      } else {
+        rimraf.sync(outputFolder)
+        fs.mkdirSync(outputFolder)
+      }
     }
 
     // minify in production
