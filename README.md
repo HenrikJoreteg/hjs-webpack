@@ -384,6 +384,10 @@ There's a few loaders configured, but not automatically installed:
 
 `require('template.jade')` and npm install `jade-loader`
 
+## changing babel config
+
+If you want to tweak babel settings you can create a file at the root of your project called `.babelrc` that contains config settings. See [bablerc docs](https://babeljs.io/docs/usage/babelrc/) for more options.
+
 ## credits
 
 This is mostly just some add-ons to [webpack](http://webpack.github.io/) so most of the credit goes there.
