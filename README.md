@@ -380,6 +380,10 @@ There's a few loaders configured, but not automatically installed:
 
 `require('styles.less')` and npm install `less-loader`
 
+**sass**
+
+`require('styles.scss')` and npm install `sass-loader`
+
 **jade**
 
 `require('template.jade')` and npm install `jade-loader`
