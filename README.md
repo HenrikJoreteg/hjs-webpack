@@ -406,6 +406,9 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.10.0
+  - Add `sass-loader` for `.scss` and ``sass` files
+
 - 2.9.0
   - Allow globs for `clearBeforeBuild`.
   - Expose webpack `stats` object to context
