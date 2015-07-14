@@ -382,7 +382,7 @@ There's a few loaders configured, but not automatically installed:
 
 **sass**
 
-`require('styles.scss')` and npm install `sass-loader`
+`require('styles.sass')` or `require('styles.scss')` and npm install `sass-loader`
 
 **jade**
 

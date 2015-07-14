@@ -121,6 +121,10 @@ module.exports = function (opts) {
       {
 	test: /\.scss$/,
 	loader: 'style-loader!css-loader!postcss-loader!sass-loader'
+      },
+      {
+	test: /\.sass$/,
+	loader: "style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax"
       }
     )
 
@@ -179,6 +183,10 @@ module.exports = function (opts) {
       {
 	test: /\.scss$/,
 	loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader')
+      },
+      {
+	test: /\.sass$/,
+	loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader?indentedSyntax')
       }
     )
   }
