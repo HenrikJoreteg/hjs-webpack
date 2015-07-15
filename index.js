@@ -124,7 +124,7 @@ module.exports = function (opts) {
       },
       {
         test: /\.sass$/,
-        loader: "style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax"
+        loader: 'style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax'
       }
     )
 
