@@ -119,12 +119,12 @@ module.exports = function (opts) {
         loader: 'style-loader!css-loader!postcss-loader!less-loader'
       },
       {
-	test: /\.scss$/,
-	loader: 'style-loader!css-loader!postcss-loader!sass-loader'
+        test: /\.scss$/,
+        loader: 'style-loader!css-loader!postcss-loader!sass-loader'
       },
       {
-	test: /\.sass$/,
-	loader: "style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax"
+        test: /\.sass$/,
+        loader: "style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax"
       }
     )
 
@@ -181,12 +181,12 @@ module.exports = function (opts) {
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!less-loader')
       },
       {
-	test: /\.scss$/,
-	loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader')
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader')
       },
       {
-	test: /\.sass$/,
-	loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader?indentedSyntax')
+        test: /\.sass$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader?indentedSyntax')
       }
     )
   }
