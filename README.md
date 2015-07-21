@@ -407,6 +407,9 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.11.0
+  - Add ability to pass `metaTags` object as a `defaultTempate` option for easily adding `<meta>` tags.
+
 - 2.10.0
   - Add `sass-loader` for `.scss` and ``sass` files
 
