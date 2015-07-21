@@ -339,6 +339,7 @@ Your `html` function will be called with a context object that contains the foll
   - `{head: 'any string'}` anything else you want to put in the `head`, other meta tags, or whatnot.
   - `{metaViewport: false}` set to false if you don't want the default viewport tag
   - `{relative: false}` set to false if you want to turn off relative links `/` useful for gh-pages
+  - `{metaTags: {}}` lets you easily add `<meta>` tags to the document head. Takes an object where the key is the `name` and the value is the `content`.
 4. `context.isDev`: boolean specifying whether or not we're in dev mode.
 5. `context.package`: the parsed `package.json` file as an object.
 6. `context.stats`: the stats object returned by webpack. Of likely interest is `context.stats.hash` (a hash of current build). `context.stats.assets` is an array of all the assets that will be generated, this can be useful for generating cache manifests, etc. Overall, this is a big object that lists all the modules in your whole app, you likely won't need most of it, but it's all there in case you do ([a sample can be found here](https://raw.githubusercontent.com/webpack/analyse/master/app/pages/upload/example.json)).
