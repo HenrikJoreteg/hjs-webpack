@@ -120,19 +120,19 @@ Try creating a file called `main.styl` containing:
 
 Require it from your main application file (see `in` section below) and you should get some nice default styles.
 
-**note** in devlopment mode these will be live-reloaded (hot loaded) in production, these will be extracted into their own files, including intelligent handling of referenced URLs within your stylesheets. Things like font-files and images will be extracted if they're over a certain size. You shouldn't have to worry about this too much, it should just work seamlessly.
+**Note** in development mode these will be live-reloaded (hot loaded). In production, these will be extracted into their own files, including intelligent handling of referenced URLs within your stylesheets. Things like font-files and images will be extracted if they're over a certain size. You shouldn't have to worry about this too much. It should just work seamlessly.
 
 #### Step 5. Dealing with images and static files
 
-**option #1: requiring files** 
+**Option #1: requiring files** 
 
-Webpack lets us do `var url = require('something.png')` from within your app code and `url` is something you can safely set as the `src` of an image tag, for example. When you build the project, it uses the [url-loader](https://github.com/webpack/url-loader) and will base64 encode and inline it if it's smaller than the [urlLoaderLimit](hjs-webpack#urlloaderlimit-optional-number-default-10000) and hash and export it otherwise.
+Webpack lets us do `var url = require('something.png')` from within our app code and `url` is something you can safely set as the `src` of an image tag, for example. When you build the project, it uses the [url-loader](https://github.com/webpack/url-loader) and will base64 encode and inline it if it's smaller than the [urlLoaderLimit](hjs-webpack#urlloaderlimit-optional-number-default-10000) and hash and export it otherwise.
 
 When you do this, webpack will hash the file and use that as a name. If you basically just want to require a file so webpack knows about it, the following syntax will copy the favicon to the `out` directory (at the root) but leave the name unchanged: `require('file?name=favicon.ico!./real/path/to/your/favicon.ico')`
 
 But, letting webpack handle images isn't always what you want to do. Sometimes you want just a simple folder of static assets and be able to reference them like you're used to. That's why there's another option:
 
-**option #2: just put 'em in your `out` directory**
+**Option #2: just put 'em in your `out` directory**
 
 You can also just put your assests in the `out` directory and tell hjs-webpack to ignore them by setting a glob pattern as the  `clearBeforeBuild` option.
 
@@ -157,7 +157,7 @@ Now when you build it'll clear everything that matches the glob pattern an nothi
 
 In this case, it'd leave the `images` directory and your `favicon.ico` alone (more details in options section below).
 
-**note** The development server will treat the `out` directory as the `contentBase` which means, that the favicon, in this case would be available at `/favicon.ico` despite being in `public`.
+**note** The development server will treat the `out` directory as the `contentBase` which means in this case the favicon would be available at `/favicon.ico` despite being in `public`.
 
 ## Examples
 
@@ -185,7 +185,7 @@ A boolean to specify whether to clear the `out` folder before building.
 
 If you wish to only clear *some* of this directory you can also pass a [glob string](https://github.com/isaacs/node-glob#glob-primer). Globs are the file path matching strings you've probably seen in on the command line or in a `.gitigore` (i.e. `**/*.js*`).
 
-The most common think you'd probably want to do while using this module would probably be to exclude a directory from being cleared. The following example would clear out the `public` directory but leave the `public/images` and `public/static` folders intact if they exist.
+The most common thing you'd probably want to do while using this module would be to exclude a directory from being cleared. The following example would clear out the `public` directory but leave the `public/images` and `public/static` folders intact if they exist.
 
 ```
 getConfig({
@@ -232,7 +232,7 @@ Note that as per the suggestion [in the webpack docs](https://github.com/webpack
 
 ### `urlLoaderLimit` (optional, number, default: `10000`)
 
-This is the default threshold to use for whether urls referenced in stylesheets will be inlined or extracted during build (we're just pre-configuring the [url-loader](https://github.com/webpack/url-loader)).
+This is the default threshold to use for whether URLs referenced in stylesheets will be inlined or extracted during build (we're just pre-configuring the [url-loader](https://github.com/webpack/url-loader)).
 
 ### `devServer` (optional, object)
 
@@ -252,7 +252,7 @@ These options are passed through to the [`webpack-dev-server`](http://webpack.gi
 
 You can supply an object of require names with paths to the files you want that name to represent. This makes it easy to do things like swapping out config files based on build mode, etc.
 
-Adding this to your config, would mean that any time you did: `require('config')` within your application code, you'd end up with the file specified by the path.
+Adding this to your config would mean that any time you did: `require('config')` within your application code, you'd end up with the file specified by the path.
 
 ```js
 {
@@ -297,7 +297,7 @@ html: function (context) {
 }
 ```
 
-So if you want to produce other files, you can do so just by adding them to the returned object:
+So if you want to produce other files, you can do so by adding them to the returned object:
 
 ```js
 html: function (context) {
@@ -342,14 +342,14 @@ Your `html` function will be called with a context object that contains the foll
   - `{metaTags: {}}` lets you easily add `<meta>` tags to the document head. Takes an object where the key is the `name` and the value is the `content`.
 4. `context.isDev`: boolean specifying whether or not we're in dev mode.
 5. `context.package`: the parsed `package.json` file as an object.
-6. `context.stats`: the stats object returned by webpack. Of likely interest is `context.stats.hash` (a hash of current build). `context.stats.assets` is an array of all the assets that will be generated, this can be useful for generating cache manifests, etc. Overall, this is a big object that lists all the modules in your whole app, you likely won't need most of it, but it's all there in case you do ([a sample can be found here](https://raw.githubusercontent.com/webpack/analyse/master/app/pages/upload/example.json)).
+6. `context.stats`: the stats object returned by webpack. Of likely interest is `context.stats.hash` (a hash of current build). `context.stats.assets` is an array of all the assets that will be generated. This can be useful for generating cache manifests, etc. Overall, this is a big object that lists all the modules in your whole app. You likely won't need most of it, but it's all there in case you do. ([A sample can be found here](https://raw.githubusercontent.com/webpack/analyse/master/app/pages/upload/example.json)).
 
 
 ### `serveCustomHtmlInDev` (optional, boolean, default is `true`)
 
 By default, if you supply an `html` function it will always be used, whether you're in development mode or not.
 
-Set this option to `false` to only use your `html` function when building for production. Note, that `.isDev` is attached to the context object passed to the `html` function as described above, so alternately you could just use that value to branch your logic within that function. Using this option cirumvents the custom `html` function entirely during development.
+Set this option to `false` to only use your `html` function when building for production. Note, that `.isDev` is attached to the context object passed to the `html` function as described above, so alternately you could just use that value to branch your logic within that function. Using this option circumvents the custom `html` function entirely during development.
 
 ## Developing on multiple devices at once
 
@@ -357,7 +357,7 @@ If you're building an app that you want to look good on all devices it's nice to
 
 Hotloading makes this extremely nice and convenient.
 
-If you're on a mac, this is fairly simple. Just add a `hostname` option to your config like so:
+If you're on a Mac, this is fairly simple. Just add a `hostname` option to your config like so:
 
 ```js
 module.exports = getConfig({
@@ -373,7 +373,7 @@ module.exports = getConfig({
 
 Now when you run the development instead of going to localhost open: `http://{{yourmachine}}.local:3000` on any device that's on your local network, they should all connect and all hotload your style and JS changes.
 
-## other loaders
+## Other loaders
 
 There's a few loaders configured, but not automatically installed:
 
@@ -389,15 +389,15 @@ There's a few loaders configured, but not automatically installed:
 
 `require('template.jade')` and npm install `jade-loader`
 
-## changing babel config
+## Changing Babel config
 
-If you want to tweak babel settings you can create a file at the root of your project called `.babelrc` that contains config settings. See [bablerc docs](https://babeljs.io/docs/usage/babelrc/) for more options.
+If you want to tweak Babel settings you can create a file at the root of your project called `.babelrc` that contains config settings. See [bablerc docs](https://babeljs.io/docs/usage/babelrc/) for more options.
 
-## credits
+## Credits
 
 This is mostly just some add-ons to [webpack](http://webpack.github.io/) so most of the credit goes there.
 
-If you're interested in building apps this way, watch the free section of the tutorials at http://learn.humanjavascript.com it shows basic usage of this module. Also, you can follow me on twitter [@HenrikJoreteg](http://twitter.com/henrikjoreteg).
+If you're interested in building apps this way, watch the free section of the tutorials at http://learn.humanjavascript.com. It shows basic usage of this module. Also, you can follow me on twitter [@HenrikJoreteg](http://twitter.com/henrikjoreteg).
 
 Big thanks to co-maintainer [@LukeKarrys](http://twitter.com/lukekarrys) for helping find/fix some really annoying bugs.
 
