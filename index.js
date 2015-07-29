@@ -104,8 +104,11 @@ module.exports = function (opts) {
       new webpack.NoErrorsPlugin()
     ])
 
-    // add react-hot as module loader
-    config.module.loaders[0].loaders.unshift('react-hot')
+    // add react-hot as module loader if it is installed
+    if (isInstalled('react-hot')) {
+      config.module.loaders[0].loaders.unshift('react-hot')
+    }
+
 
     config.module.loaders.push(
       {
