@@ -26,3 +26,7 @@ class StylesheetReloadingApp extends React.Component {
 }
 
 React.render(<StylesheetReloadingApp />, document.body);
+
+if (module.hot) {
+  module.hot.accept();
+}
