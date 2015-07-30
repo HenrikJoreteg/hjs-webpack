@@ -1,10 +1,10 @@
 {
-  "name": "hjs-webpack",
-  "description": "Presets for setting up webpack with hotloading react and ES6(2015) using Babel.",
-  "version": "2.11.0",
-  "author": "Henrik Joreteg <henrik@andyet.net>",
+  "name": "chcokr-webpack",
+  "description": "Personal fork of hjs-webpack",
+  "version": "0.0.0",
+  "author": "YJ Yang <chcokr@gmail.com>",
   "bugs": {
-    "url": "https://github.com/henrikjoreteg/hjs-webpack/issues"
+    "url": "https://github.com/chcokr/chcokr-webpack/issues"
   },
   "dependencies": {
     "extract-text-webpack-plugin": "^0.5.0",
@@ -17,7 +17,7 @@
   "devDependencies": {
     "standard": "^3.1.2"
   },
-  "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
+  "homepage": "https://github.com/chcokr/chcokr-webpack",
   "keywords": [
     "config",
     "human javascript",
@@ -30,8 +30,12 @@
     "babel": "*",
     "babel-loader": "*",
     "css-loader": "*",
+    "eval": "*",
+    "jsdom": "^3.0.0",
     "json-loader": "*",
+    "postcss": "*",
     "postcss-loader": "*",
+    "react": "*",
     "react-hot-loader": "*",
     "style-loader": "*",
     "stylus-loader": "*",
@@ -41,7 +45,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/henrikjoreteg/hjs-webpack"
+    "url": "https://github.com/chcokr/chcokr-webpack"
   },
   "scripts": {
     "test": "standard"

@@ -12,6 +12,14 @@ var getPackage = require('./lib/get-package')
 var isDev = process.argv[1].indexOf('webpack-dev-server') !== -1
 
 module.exports = function (opts) {
+  // <chcokr>
+  // Some personal defaults
+  opts = opts || {};
+  opts.in =
+    isDev ? 'node_modules/chcokr-webpack/devEntry.jsx' :
+      'node_modules/chcokr-webpack/prodEntry.jsx';
+  // </chcokr>
+
   checkRequired(opts)
   var outputFolder = path.resolve(opts.out)
 
@@ -128,6 +136,12 @@ module.exports = function (opts) {
       }
     )
 
+    // <chcokr>
+    config.node = {
+      fs: 'empty' // this makes Autoprefixer work in the browser
+    };
+    // </chcokr>
+
   } else {
     // clear out output folder if so configured
     if (spec.clearBeforeBuild) {
@@ -189,6 +203,11 @@ module.exports = function (opts) {
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader?indentedSyntax')
       }
     )
+
+    // <chcokr>
+    // This allows Stilr extraction
+    config.output.libraryTarget = 'umd';
+    // </chcokr>
   }
 
   return config
