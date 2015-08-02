@@ -1,12 +1,18 @@
-import autoprefixer from 'autoprefixer-core';
-import postcss from 'postcss';
 import React from 'react';
 import {Navigation, TransitionHook} from 'react-router';
-import stilr from 'stilr';
 
 function getStilrCSSObj() {
+  if (process.env.NODE_ENV !== 'production') {
+    const autoprefixer = require('autoprefixer-core');
+    const postcss = require('postcss');
+    const stilr = require('stilr');
+    return {
+      stilrCSS: postcss(autoprefixer()).process(stilr.render()).css
+    };
+  }
+
   return {
-    stilrCSS: postcss(autoprefixer()).process(stilr.render()).css
+    stilrCSS: "This shouldn't show up in production!"
   };
 }
 
