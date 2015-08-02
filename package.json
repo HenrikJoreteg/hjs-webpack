@@ -49,6 +49,7 @@
     "url": "https://github.com/chcokr/chcokr-webpack"
   },
   "scripts": {
+    "prepublish": "babel StylesheetHotLoad.jsx > StylesheetHotLoad.js",
     "test": "standard"
   },
   "standard": {
