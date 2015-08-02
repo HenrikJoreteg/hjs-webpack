@@ -37,7 +37,7 @@
     "postcss-loader": "*",
     "react": "*",
     "react-hot-loader": "*",
-    "react-router": "*",
+    "react-router": "1.x",
     "style-loader": "*",
     "stylus-loader": "*",
     "url-loader": "*",
