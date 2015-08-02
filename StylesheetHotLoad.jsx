@@ -45,3 +45,5 @@ const StylesheetHotLoad = React.createClass({
     );
   }
 });
+
+module.exports = StylesheetHotLoad;
