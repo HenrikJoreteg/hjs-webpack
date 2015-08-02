@@ -1,7 +1,7 @@
 import autoprefixer from 'autoprefixer-core';
 import postcss from 'postcss';
 import React from 'react';
-import {Router, Route, Link, Navigation, TransitionHook} from 'react-router';
+import {Navigation, TransitionHook} from 'react-router';
 import stilr from 'stilr';
 
 function getStilrCSSObj() {
