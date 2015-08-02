@@ -1,7 +1,7 @@
 {
   "name": "chcokr-webpack",
   "description": "Personal fork of hjs-webpack",
-  "version": "0.0.0",
+  "version": "0.1.0-alpha",
   "author": "YJ Yang <chcokr@gmail.com>",
   "bugs": {
     "url": "https://github.com/chcokr/chcokr-webpack/issues"
