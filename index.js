@@ -11,7 +11,7 @@ var isInstalled = require('./lib/is-installed')
 
 // figure out if we're running `webpack` or `webpack-dev-server`
 // we'll use this as the default for `isDev`
-var isDev = process.argv[1].indexOf('webpack-dev-server') !== -1
+var isDev = (process.argv[1] || '').indexOf('webpack-dev-server') !== -1
 
 module.exports = function (opts) {
   checkRequired(opts)
