@@ -2,4 +2,3 @@
 node_modules
 examples/**/public/*
 npm-debug.log
-StylesheetHotLoad.js
