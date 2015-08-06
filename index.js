@@ -180,6 +180,13 @@ module.exports = function (opts) {
       })
     )
 
+    // <chcokr>
+    // TEMP!!
+    config.node = {
+      fs: 'empty' // this makes Autoprefixer work in the browser
+    };
+    // </chcokr>
+
     // extract in production
     config.module.loaders.push(
       {
