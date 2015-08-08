@@ -407,6 +407,9 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.12.2
+  - Fix `react-hot-loader` is installed check
+
 - 2.12.1
   - Don't assume `process.argv[1]` exists. This can happen if running via `node -p`, thanks [@eins78](http://github.com/eins78).
 
