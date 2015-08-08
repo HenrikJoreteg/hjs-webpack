@@ -105,7 +105,7 @@ module.exports = function (opts) {
     ])
 
     // add react-hot as module loader if it is installed
-    if (isInstalled('react-hot')) {
+    if (isInstalled('react-hot-loader')) {
       config.module.loaders[0].loaders.unshift('react-hot')
     }
 
