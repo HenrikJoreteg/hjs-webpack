@@ -32,6 +32,7 @@
     "css-loader": "*",
     "json-loader": "*",
     "postcss-loader": "*",
+    "react": "*",
     "react-hot-loader": "*",
     "style-loader": "*",
     "stylus-loader": "*",
