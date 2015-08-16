@@ -407,6 +407,9 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.12.3
+  - Add `react` to peer deps
+
 - 2.12.2
   - Fix `react-hot-loader` is installed check
 
