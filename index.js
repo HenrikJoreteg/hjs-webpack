@@ -109,20 +109,19 @@ module.exports = function (opts) {
       config.module.loaders[0].loaders.unshift('react-hot')
     }
 
-
     config.module.loaders.push(
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader!postcss-loader'
       }
-    );
+    )
 
     // Add optional loaders
     optionalLoaders.forEach(function (item) {
       if (isInstalled(item.pkg)) {
-        config.module.loaders.push(item.config.dev);
+        config.module.loaders.push(item.config.dev)
       }
-    });
+    })
 
   } else {
     // clear out output folder if so configured
@@ -167,14 +166,14 @@ module.exports = function (opts) {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
       }
-    );
+    )
 
     // Add optional loaders
     optionalLoaders.forEach(function (item) {
       if (isInstalled(item.pkg)) {
-        config.module.loaders.push(item.config.production);
+        config.module.loaders.push(item.config.production)
       }
-    });
+    })
   }
 
   return config
