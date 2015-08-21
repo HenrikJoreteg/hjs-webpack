@@ -407,6 +407,10 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.12.4
+  - Update `extract-text-webpack-plugin` and other dependencies
+  - Get `npm test` passing for `standard` linting
+
 - 2.12.3
   - Add `react` to peer deps
 
