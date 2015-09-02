@@ -407,6 +407,10 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.130.0
+  - use cheap-module-eval-source-map devtool in dev [#63](https://github.com/HenrikJoreteg/hjs-webpack/issues/63)
+  - remove noerrors plugin and for react-hot-loader@^1.3.0 [#62](https://github.com/HenrikJoreteg/hjs-webpack/issues/62)
+
 - 2.12.4
   - Update `extract-text-webpack-plugin` and other dependencies
   - Get `npm test` passing for `standard` linting
