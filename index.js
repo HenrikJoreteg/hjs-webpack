@@ -100,8 +100,7 @@ module.exports = function (opts) {
 
     // add dev plugins
     config.plugins = config.plugins.concat([
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
+      new webpack.HotModuleReplacementPlugin()
     ])
 
     // add react-hot as module loader if it is installed
