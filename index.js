@@ -86,7 +86,11 @@ module.exports = function (opts) {
   // dev specific stuff
   if (spec.isDev) {
     // debugging option
-    config.devtool = 'eval'
+    // https://webpack.github.io/docs/configuration.html#devtool
+    // https://github.com/HenrikJoreteg/hjs-webpack/issues/63
+    // Supports original code (before transforms) with pretty good initial
+    // build speed and good rebuild speed
+    config.devtool = 'cheap-module-eval-source-map'
 
     // add dev server and hotloading clientside code
     config.entry.unshift(
@@ -100,8 +104,7 @@ module.exports = function (opts) {
 
     // add dev plugins
     config.plugins = config.plugins.concat([
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
+      new webpack.HotModuleReplacementPlugin()
     ])
 
     // add react-hot as module loader if it is installed

@@ -33,7 +33,7 @@
     "json-loader": "*",
     "postcss-loader": "*",
     "react": "*",
-    "react-hot-loader": "*",
+    "react-hot-loader": "^1.3.0",
     "style-loader": "*",
     "stylus-loader": "*",
     "url-loader": "*",
