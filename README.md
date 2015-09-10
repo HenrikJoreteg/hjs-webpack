@@ -407,7 +407,11 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
-- 2.130.0
+- 2.13.1
+  - Replace `autoprefixer-core` with `autoprefixer`
+  - Update `examples/` dependencies
+
+- 2.13.0
   - use cheap-module-eval-source-map devtool in dev [#63](https://github.com/HenrikJoreteg/hjs-webpack/issues/63)
   - remove noerrors plugin and for react-hot-loader@^1.3.0 [#62](https://github.com/HenrikJoreteg/hjs-webpack/issues/62)
 
