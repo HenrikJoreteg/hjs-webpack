@@ -26,7 +26,7 @@
   "license": "MIT",
   "main": "index.js",
   "peerDependencies": {
-    "autoprefixer-core": "*",
+    "autoprefixer": "*",
     "babel": "*",
     "babel-loader": "*",
     "css-loader": "*",
