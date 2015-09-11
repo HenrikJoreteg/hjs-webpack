@@ -333,7 +333,7 @@ Your `html` function will be called with a context object that contains the foll
 1. `context.main`: the name of the generated JS file
 2. `context.css`: the name of the generated CSS file. This only exists if `isDev` is `false`, since in development mode the css bundle is inserted dynamically into the document by the [`style-loader`](https://github.com/webpack/style-loader).
 3. `context.defaultTemplate()` a convenience method you can call to generate the basic HTML shown above. This takes a few options too if you just want to make minor tweaks. If you want to do more, just don't use the default template, generate your own instead. The options are:
-  - `{html: 'your string}` and it'll add it to the <body>
+  - `{html: '<div id="my-container">Some custom markup</div>'}` This markup will be added inside the `<body>` tag
   - `{charset: 'utf-8'}` what charset to set
   - `{title: 'your app'}` sets `<title>`
   - `{head: 'any string'}` anything else you want to put in the `head`, other meta tags, or whatnot.
