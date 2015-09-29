@@ -407,6 +407,9 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.13.2
+  - Pin dependencies (setup Greekeeper.io)
+
 - 2.13.1
   - Replace `autoprefixer-core` with `autoprefixer`
   - Update `examples/` dependencies
