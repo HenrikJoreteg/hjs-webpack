@@ -126,7 +126,7 @@ Require it from your main application file (see `in` section below) and you shou
 
 **Option #1: requiring files** 
 
-Webpack lets us do `var url = require('something.png')` from within our app code and `url` is something you can safely set as the `src` of an image tag, for example. When you build the project, it uses the [url-loader](https://github.com/webpack/url-loader) and will base64 encode and inline it if it's smaller than the [urlLoaderLimit](hjs-webpack#urlloaderlimit-optional-number-default-10000) and hash and export it otherwise.
+Webpack lets us do `var url = require('something.png')` from within our app code and `url` is something you can safely set as the `src` of an image tag, for example. When you build the project, it uses the [url-loader](https://github.com/webpack/url-loader) and will base64 encode and inline it if it's smaller than the [urlLoaderLimit](#urlloaderlimit-optional-number-default-10000) and hash and export it otherwise.
 
 When you do this, webpack will hash the file and use that as a name. If you basically just want to require a file so webpack knows about it, the following syntax will copy the favicon to the `out` directory (at the root) but leave the name unchanged: `require('file?name=favicon.ico!./real/path/to/your/favicon.ico')`
 
