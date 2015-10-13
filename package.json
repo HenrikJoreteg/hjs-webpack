@@ -35,7 +35,7 @@
     "react": "*",
     "react-hot-loader": "^1.3.0",
     "style-loader": "*",
-    "stylus-loader": "*",
+    "stylus-loader": "1.4.0",
     "url-loader": "*",
     "webpack-dev-server": "*",
     "yeticss": "*"
