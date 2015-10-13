@@ -32,6 +32,7 @@ module.exports = function (opts) {
     package: null,
     replace: null,
     port: 3000,
+    https: false,
     hostname: 'localhost',
     html: true,
     urlLoaderLimit: 10000,
@@ -94,13 +95,14 @@ module.exports = function (opts) {
 
     // add dev server and hotloading clientside code
     config.entry.unshift(
-      'webpack-dev-server/client?http://' + spec.hostname + ':' + spec.port,
+      'webpack-dev-server/client?' + (spec.https ? 'https://' : 'http://') + spec.hostname + ':' + spec.port,
       'webpack/hot/only-dev-server'
     )
 
     config.devServer = spec.devServer
     config.devServer.port = spec.port
     config.devServer.host = spec.hostname
+    config.devServer.https = spec.https
 
     // add dev plugins
     config.plugins = config.plugins.concat([
