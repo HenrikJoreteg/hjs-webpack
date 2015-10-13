@@ -407,6 +407,9 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.14.0
+  - Add https support
+
 - 2.13.2
   - Pin dependencies (setup Greekeeper.io)
 
