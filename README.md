@@ -244,9 +244,14 @@ These options are passed through to the [`webpack-dev-server`](http://webpack.gi
   host, // // pulled from top level option "hostname"
   info: false,
   historyApiFallback: true,
-  hot: true
+  hot: true,
+  https // pulled from top level option "https"
 }
 ```
+
+### `https` (optional, boolean, default: `false`)
+
+This is used to start `webpack-dev-server` with its self signed certificate, so you can load the application with an https url.  It also configures hot module replacement to also use https. 
 
 ### `replace` (optional, object)
 
