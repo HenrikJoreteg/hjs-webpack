@@ -412,6 +412,9 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
+- 2.14.1
+  - Only use react-hot-loader if specified by devServer `hot` option
+
 - 2.14.0
   - Add https support
 
