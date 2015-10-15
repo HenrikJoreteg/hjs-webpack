@@ -27,7 +27,7 @@
   "main": "index.js",
   "peerDependencies": {
     "autoprefixer": "*",
-    "babel": "*",
+    "babel": "5.8.23",
     "babel-loader": "*",
     "css-loader": "*",
     "json-loader": "*",
