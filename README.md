@@ -30,18 +30,26 @@ A screencast showing how to use this module is here: http://learn.humanjavascrip
 npm install hjs-webpack
 ```
 
-**note about `peerDependencies`**
+### Optional dependencies
 
-hjs-webpack specifies many of its dependencies as `peerDependencies` in order to let you decide which version of, say, babel or React that you want to use in your project without us specifying that directly for you.
+`hjs-webpack` relies on a number of optional dependencies to add functionality for things like CSS preprocessing, ES2015 transpiling, templates, and plugins. It doesn't make sense to specifiy all the loaders as `peerDependencies` since not every person will want every loader and missing `peerDependencies` cause commands like `npm ls` to error which isn't great.
 
-In npm `3.x.x` `peerDependencies` will no longer be installed by default.
+So in order to get this additional functionality you should `npm install` the loaders and plugins you want `hjs-webpack` to use. If `hjs-webpack` detects that they are installed, then they will be used automatically without any further configuration.
 
-When this happens, you'll want to run the following to install the related dependencies as well.
-
-Included here for your copy/paste enjoyment:
+If you want to install all of them, you can run the following command, or edit it to use only the dependencies you need:
 
 ```
-npm i --save autoprefixer babel babel-loader css-loader json-loader postcss-loader react react-hot-loader style-loader stylus-loader url-loader webpack-dev-server yeticss
+npm install --save-dev autoprefixer babel-loader css-loader json-loader postcss-loader react-hot-loader style-loader stylus-loader url-loader yeticss
+```
+
+Note that all of the CSS preprocessors require `css-loader postcss-loader style-loader` to be installed.
+
+### Peer dependencies
+
+`hjs-webpack` does have one `peerDependency` on `webpack-dev-server`. In npm `3.x.x` `peerDependencies` will no longer be installed by default. When this happens, you'll want to run the following to manually install it with the following command:
+
+```
+npm install webpack-dev-server --save-dev
 ```
 
 ## usage
