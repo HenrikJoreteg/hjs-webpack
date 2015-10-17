@@ -36,13 +36,36 @@ npm install hjs-webpack
 
 So in order to get this additional functionality you should `npm install` the loaders and plugins you want `hjs-webpack` to use. If `hjs-webpack` detects that they are installed, then they will be used automatically without any further configuration.
 
-If you want to install all of them, you can run the following command, or edit it to use only the dependencies you need:
+Here's some more information about the available loaders and plugins and what they each do. You should install each that you want with `npm install --save-dev`.
 
-```
-npm install --save-dev autoprefixer babel-loader css-loader json-loader postcss-loader react-hot-loader style-loader stylus-loader url-loader yeticss
-```
+#### CSS
 
-Note that all of the CSS preprocessors require `css-loader postcss-loader style-loader` to be installed.
+*Note that all of the CSS loaders and plugins require [`css-loader`](https://www.npmjs.com/package/css-loader) [`postcss-loader`](https://www.npmjs.com/package/postcss-loader) [`style-loader`](https://www.npmjs.com/package/style-loader) to be installed.*
+
+[`less-loader`](https://www.npmjs.com/package/less-loader) Require compiled less files. Extension: `less`.
+
+[`stylus-loader`](https://www.npmjs.com/package/stylus-loader) Require compiled stylus files. Extension: `styl`.
+
+[`sass-loader`](https://www.npmjs.com/package/sass-loader) Require compiled sass files using the regular or indented syntax. Extensions: `sass scss`.
+
+[`yeticss`](https://www.npmjs.com/package/yeticss) A plugin to add the yeticss library as a `stylus` plugin.
+
+[`autoprefixer`](https://www.npmjs.com/package/autoprefixer) A plugin to auto prefix all your CSS with the necessary vendor prefixes.
+
+#### JS/JSX/JSON
+
+[`babel-loader`](https://www.npmjs.com/package/babel-loader) Require transpiled JS with built-in support for ES2015 and JSX. Extensions: 'js jsx'.
+
+[`json-loader`](https://www.npmjs.com/package/json-loader) Require parsed JSON objects. Extension: 'json'.
+
+#### Assets
+
+[`url-loader`](https://www.npmjs.com/package/url-loader) Require assets that return data url if the size is less than the [`urlLoaderLimit`](#urlloaderlimit-optional-number-default-10000). Extensions: `jpg jpeg png gif otf eot svg ttf woff`. 
+
+#### Templates
+
+[`jade-loader`](https://www.npmjs.com/package/jade-loader) Require jade files as compiled functions. Extension: `jade`.
+
 
 ### Peer dependencies
 
