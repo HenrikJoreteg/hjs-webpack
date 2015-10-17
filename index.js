@@ -6,7 +6,7 @@ var defaults = require('lodash.defaults')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var getBaseConfig = require('./lib/base-config')
 var getPackage = require('./lib/get-package')
-var optionalLoaders = require('./lib/optional-loaders')
+var installedStyleLoaders = require('./lib/installed-style-loaders')
 var isInstalled = require('./lib/is-installed')
 
 // figure out if we're running `webpack` or `webpack-dev-server`
@@ -114,20 +114,10 @@ module.exports = function (opts) {
       config.module.loaders[0].loaders.unshift('react-hot')
     }
 
-    config.module.loaders.push(
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
-      }
-    )
-
     // Add optional loaders
-    optionalLoaders.forEach(function (item) {
-      if (isInstalled(item.pkg)) {
-        config.module.loaders.push(item.config.dev)
-      }
+    installedStyleLoaders.forEach(function (item) {
+      config.module.loaders.push(item.dev)
     })
-
   } else {
     // clear out output folder if so configured
     if (spec.clearBeforeBuild) {
@@ -166,18 +156,9 @@ module.exports = function (opts) {
       })
     )
 
-    config.module.loaders.push(
-      {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
-      }
-    )
-
     // Add optional loaders
-    optionalLoaders.forEach(function (item) {
-      if (isInstalled(item.pkg)) {
-        config.module.loaders.push(item.config.production)
-      }
+    installedStyleLoaders.forEach(function (item) {
+      config.module.loaders.push(item.production)
     })
   }
 

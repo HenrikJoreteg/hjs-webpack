@@ -15,7 +15,9 @@
     "rimraf": "2.4.3"
   },
   "devDependencies": {
-    "standard": "5.3.1"
+    "standard": "5.3.1",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.0"
   },
   "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
   "keywords": [
@@ -26,19 +28,7 @@
   "license": "MIT",
   "main": "index.js",
   "peerDependencies": {
-    "autoprefixer": "*",
-    "babel": "*",
-    "babel-loader": "*",
-    "css-loader": "*",
-    "json-loader": "*",
-    "postcss-loader": "*",
-    "react": "*",
-    "react-hot-loader": "^1.3.0",
-    "style-loader": "*",
-    "stylus-loader": "*",
-    "url-loader": "*",
-    "webpack-dev-server": "*",
-    "yeticss": "*"
+    "webpack-dev-server": "*"
   },
   "repository": {
     "type": "git",

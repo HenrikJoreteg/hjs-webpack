@@ -30,18 +30,49 @@ A screencast showing how to use this module is here: http://learn.humanjavascrip
 npm install hjs-webpack
 ```
 
-**note about `peerDependencies`**
+### Optional dependencies
 
-hjs-webpack specifies many of its dependencies as `peerDependencies` in order to let you decide which version of, say, babel or React that you want to use in your project without us specifying that directly for you.
+`hjs-webpack` relies on a number of optional dependencies to add functionality for things like CSS preprocessing, ES2015 transpiling, templates, and plugins. It doesn't make sense to specifiy all the loaders as `peerDependencies` since not every person will want every loader and missing `peerDependencies` cause commands like `npm ls` to error which isn't great.
 
-In npm `3.x.x` `peerDependencies` will no longer be installed by default.
+So in order to get this additional functionality you should `npm install` the loaders and plugins you want `hjs-webpack` to use. If `hjs-webpack` detects that they are installed, then they will be used automatically without any further configuration.
 
-When this happens, you'll want to run the following to install the related dependencies as well.
+Here's some more information about the available loaders and plugins and what they each do. You should install each that you want with `npm install --save-dev`.
 
-Included here for your copy/paste enjoyment:
+#### CSS
+
+*Note that all of the CSS loaders and plugins require [`css-loader`](https://www.npmjs.com/package/css-loader) [`postcss-loader`](https://www.npmjs.com/package/postcss-loader) [`style-loader`](https://www.npmjs.com/package/style-loader) to be installed.*
+
+[`less-loader`](https://www.npmjs.com/package/less-loader) Require compiled less files. Extension: `less`.
+
+[`stylus-loader`](https://www.npmjs.com/package/stylus-loader) Require compiled stylus files. Extension: `styl`.
+
+[`sass-loader`](https://www.npmjs.com/package/sass-loader) Require compiled sass files using the regular or indented syntax. Extensions: `sass scss`.
+
+[`yeticss`](https://www.npmjs.com/package/yeticss) A plugin to add the yeticss library as a `stylus` plugin.
+
+[`autoprefixer`](https://www.npmjs.com/package/autoprefixer) A plugin to auto prefix all your CSS with the necessary vendor prefixes.
+
+#### JS/JSX/JSON
+
+[`babel-loader`](https://www.npmjs.com/package/babel-loader) Require transpiled JS with built-in support for ES2015 and JSX. Extensions: 'js jsx'.
+
+[`json-loader`](https://www.npmjs.com/package/json-loader) Require parsed JSON objects. Extension: 'json'.
+
+#### Assets
+
+[`url-loader`](https://www.npmjs.com/package/url-loader) Require assets that return data url if the size is less than the [`urlLoaderLimit`](#urlloaderlimit-optional-number-default-10000). Extensions: `jpg jpeg png gif otf eot svg ttf woff`. 
+
+#### Templates
+
+[`jade-loader`](https://www.npmjs.com/package/jade-loader) Require jade files as compiled functions. Extension: `jade`.
+
+
+### Peer dependencies
+
+`hjs-webpack` does have one `peerDependency` on `webpack-dev-server`. In npm `3.x.x` `peerDependencies` will no longer be installed by default. When this happens, you'll want to run the following to manually install it with the following command:
 
 ```
-npm i --save autoprefixer babel babel-loader css-loader json-loader postcss-loader react react-hot-loader style-loader stylus-loader url-loader webpack-dev-server yeticss
+npm install webpack-dev-server --save-dev
 ```
 
 ## usage
@@ -412,98 +443,7 @@ Beware that this is all highly opinionated and contains a lot of personal prefer
 
 ## Changelog
 
-- 2.14.1
-  - Only use react-hot-loader if specified by devServer `hot` option
-
-- 2.14.0
-  - Add https support
-
-- 2.13.2
-  - Pin dependencies (setup Greekeeper.io)
-
-- 2.13.1
-  - Replace `autoprefixer-core` with `autoprefixer`
-  - Update `examples/` dependencies
-
-- 2.13.0
-  - use cheap-module-eval-source-map devtool in dev [#63](https://github.com/HenrikJoreteg/hjs-webpack/issues/63)
-  - remove noerrors plugin and for react-hot-loader@^1.3.0 [#62](https://github.com/HenrikJoreteg/hjs-webpack/issues/62)
-
-- 2.12.4
-  - Update `extract-text-webpack-plugin` and other dependencies
-  - Get `npm test` passing for `standard` linting
-
-- 2.12.3
-  - Add `react` to peer deps
-
-- 2.12.2
-  - Fix `react-hot-loader` is installed check
-
-- 2.12.1
-  - Don't assume `process.argv[1]` exists. This can happen if running via `node -p`, thanks [@eins78](http://github.com/eins78).
-
-- 2.12.0
-  - Don't force install of React or React Hot-Loader only use them and other optional installs if installed. Thanks [@FWeinb](http://github.com/FWeinb)
-
-- 2.11.0
-  - Add ability to pass `metaTags` object as a `defaultTempate` option for easily adding `<meta>` tags.
-
-- 2.10.0
-  - Add `sass-loader` for `.scss` and ``sass` files
-
-- 2.9.0
-  - Allow globs for `clearBeforeBuild`.
-  - Expose webpack `stats` object to context
-  - Expose parsed `package.json` object to `html` function context argument.
-  - Set `out` folder as `contentBase` for the dev server.
-
-- 2.8.1
-  - Fix typo in `examples/just-assets-no-html/README.md`
-  - add documentation for relative links in html
-
-- 2.8.0
-  - add `serveCustomHtmlInDev` as an explicit option
-  - properly document new option and `isDev` in html function
-
-- 2.7.0
-  - Expose `isDev` flag to `html` function context
-  - Document `replace` option in readme.
-
-- 2.6.1
-  - Fix less filename test when in production mode
-  - Add documentation about using html function's css context and cssFilename in production mode
-
-- 2.6.0
-  - Allow `devServer` options to be passed in
-
-- 2.5.0
-  - Use passed in `urlLoaderLimit`
-  - Add default url loader for images
-
-- 2.4.0 Resolve `.jsx` extension
-
-- 2.3.0 configure `isDev` default automatically based on whether the command used contains `webpack-dev-server` or not (still respects explicitly configured, so not a breaking change)
-  - add `clearBeforeBuild` option to clear build folder first.
-  - both the above changes allow an app to share configs because you're not having to clear the build dir, or set environment variables two different ways for different platforms (a.k.a. better windows support).
-  - doc fixes/improvements
-
-- 2.2.2 use `process.cwd()` over `process.env.PWD` to find root.
-
-- 2.2.1 include `json-loader` by default.
-
-- 2.2.0 use `autoprefixer-core` and `postcss-loader` to add autoprefixing to all configured style loaders
-  - don't resolve .styl extensions
-
-- 2.1.0 pre-configure `.jade` and `.less` loaders as optional installs.
-  - add option for `urlLoaderLimit`
-
-- 2.0.0 instead of including our own pre-configured dev server: `hjs-dev-server` you can now just use `webpack-dev-server` in your npm `scripts` and it gets configured via `devServer` property of config.
-  - much more complete documentation
-  - support for passing options to `defaultTemplate()` function
-  - simplified/unified configuration
-  - support for setting global `hostname` (see above)
-  - now includes main babel package by default
-  - add warnings/instructions about npm `3.x.x`'s handling of peer dependencies
+See the [`CHANGELOG.md`](CHANGELOG.md)
 
 ## license
 
