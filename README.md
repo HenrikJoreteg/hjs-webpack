@@ -54,13 +54,21 @@ Here's some more information about the available loaders and plugins and what th
 
 #### JS/JSX/JSON
 
-[`babel-loader`](https://www.npmjs.com/package/babel-loader) Require transpiled JS with built-in support for ES2015 and JSX. Extensions: 'js jsx'.
+[`babel-loader`](https://www.npmjs.com/package/babel-loader) Require transpiled JS with built-in support for ES2015 and JSX. Extensions: 'js jsx babel'.
 
 [`json-loader`](https://www.npmjs.com/package/json-loader) Require parsed JSON objects. Extension: 'json'.
 
+[`coffee-loader`](https://www.npmjs.com/package/coffee-loader) Require CoffeeScript. Extension: 'coffee'.
+
+[`cjsx-loader`](https://www.npmjs.com/package/cjsx-loader) Require CoffeeScript with support for JSX. `coffee-loader` must also be installed. Extension: 'cjsx'.
+
+[`awesome-typescript-loader`](https://www.npmjs.com/package/awesome-typescript-loader) Require TypeScript. Extension: 'ts'.
+
+[`livescript-loader`](https://www.npmjs.com/package/livescript-loader) Require LiveScript. Extension: 'ls'.
+
 #### Assets
 
-[`url-loader`](https://www.npmjs.com/package/url-loader) Require assets that return data url if the size is less than the [`urlLoaderLimit`](#urlloaderlimit-optional-number-default-10000). Extensions: `jpg jpeg png gif otf eot svg ttf woff`. 
+[`url-loader`](https://www.npmjs.com/package/url-loader) Require assets that return data url if the size is less than the [`urlLoaderLimit`](#urlloaderlimit-optional-number-default-10000). Extensions: `jpg jpeg png gif svg otf eot svg ttf woff`.
 
 #### Templates
 
@@ -104,7 +112,7 @@ module.exports = getConfig({
   // This will destroy and re-create your
   // `out` folder before building so you always
   // get a fresh folder. Usually you want this
-  // but since it's destructive we make it 
+  // but since it's destructive we make it
   // false by default
   clearBeforeBuild: true
 })
@@ -155,7 +163,7 @@ Require it from your main application file (see `in` section below) and you shou
 
 #### Step 5. Dealing with images and static files
 
-**Option #1: requiring files** 
+**Option #1: requiring files**
 
 Webpack lets us do `var url = require('something.png')` from within our app code and `url` is something you can safely set as the `src` of an image tag, for example. When you build the project, it uses the [url-loader](https://github.com/webpack/url-loader) and will base64 encode and inline it if it's smaller than the [urlLoaderLimit](#urlloaderlimit-optional-number-default-10000) and hash and export it otherwise.
 
@@ -184,7 +192,7 @@ public/
 
 Then, instead of setting `clearBeforeBuild: true` you can set it to a glob string like so: `clearBeforeBuild: '!(images|favicon.ico)'`.
 
-Now when you build it'll clear everything that matches the glob pattern an nothing else. 
+Now when you build it'll clear everything that matches the glob pattern an nothing else.
 
 In this case, it'd leave the `images` directory and your `favicon.ico` alone (more details in options section below).
 
@@ -282,7 +290,7 @@ These options are passed through to the [`webpack-dev-server`](http://webpack.gi
 
 ### `https` (optional, boolean, default: `false`)
 
-This is used to start `webpack-dev-server` with its self signed certificate, so you can load the application with an https url.  It also configures hot module replacement to also use https. 
+This is used to start `webpack-dev-server` with its self signed certificate, so you can load the application with an https url.  It also configures hot module replacement to also use https.
 
 ### `replace` (optional, object)
 
