@@ -1,5 +1,8 @@
 ## Changelog
 
+- 3.1.0
+  - Add support for the following loaders: `coffee cjsx typescript livescript`.
+
 - 3.0.0
   - Remove `peerDependencies` and make them optional. See the [optional dependencies](README.md#optional-dependencies) section in the README for new installation instructions. [#26](https://github.com/HenrikJoreteg/hjs-webpack/issues/26) [#80](https://github.com/HenrikJoreteg/hjs-webpack/pull/80)
 
