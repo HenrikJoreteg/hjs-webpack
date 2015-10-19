@@ -54,17 +54,17 @@ Here's some more information about the available loaders and plugins and what th
 
 #### JS/JSX/JSON
 
-[`babel-loader`](https://www.npmjs.com/package/babel-loader) Require transpiled JS with built-in support for ES2015 and JSX. Extensions: 'js jsx babel'.
+[`babel-loader`](https://www.npmjs.com/package/babel-loader) Require transpiled JS with built-in support for ES2015 and JSX. Extensions: `js jsx babel`.
 
-[`json-loader`](https://www.npmjs.com/package/json-loader) Require parsed JSON objects. Extension: 'json'.
+[`json-loader`](https://www.npmjs.com/package/json-loader) Require parsed JSON objects. Extension: `json`.
 
-[`coffee-loader`](https://www.npmjs.com/package/coffee-loader) Require CoffeeScript. Extension: 'coffee'.
+[`coffee-loader`](https://www.npmjs.com/package/coffee-loader) Require CoffeeScript. Extension: `coffee`.
 
-[`cjsx-loader`](https://www.npmjs.com/package/cjsx-loader) Require CoffeeScript with support for JSX. `coffee-loader` must also be installed. Extension: 'cjsx'.
+[`cjsx-loader`](https://www.npmjs.com/package/cjsx-loader) Require CoffeeScript with support for JSX. `coffee-loader` must also be installed. Extension: `cjsx`.
 
-[`awesome-typescript-loader`](https://www.npmjs.com/package/awesome-typescript-loader) Require TypeScript. Extension: 'ts'.
+[`awesome-typescript-loader`](https://www.npmjs.com/package/awesome-typescript-loader) Require TypeScript. Extension: `ts`.
 
-[`livescript-loader`](https://www.npmjs.com/package/livescript-loader) Require LiveScript. Extension: 'ls'.
+[`livescript-loader`](https://www.npmjs.com/package/livescript-loader) Require LiveScript. Extension: `ls`.
 
 #### Assets
 
