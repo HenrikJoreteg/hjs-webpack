@@ -417,25 +417,52 @@ module.exports = getConfig({
 
 Now when you run the development instead of going to localhost open: `http://{{yourmachine}}.local:3000` on any device that's on your local network, they should all connect and all hotload your style and JS changes.
 
-## Other loaders
+## Extending `hjs-webpack`
 
-There's a few loaders configured, but not automatically installed:
+`hjs-webpack` is not designed to take all the same options as `webpack`. Instead it is designed to take the [config options](#config-options) listed above and return an object that is then consumed by `webpack`. That means that if you want to change/add/remove anything in the config, it is the same as manipulating any JavaScript object.
 
-**less**
+Here's an example where `hjs-webpack` is used to create the base `webpack` config, and then it is manipulated to add a new loader, plugin, and option.
 
-`require('styles.less')` and npm install `less-loader`
+```js
+var webpack = require('webpack')
+var createConfig = require('hjs-webpack')
+var config = createConfig(myHjsWebpackOptions)
 
-**sass**
+// Add xml-loader
+config.module.loaders.push({ test: /\.xml$/, loader: 'xml-loader' })
 
-`require('styles.sass')` or `require('styles.scss')` and npm install `sass-loader`
+// Add module noParse option
+config.module.noParse = [/dont-parse-this/, /also-this/]
 
-**jade**
+// Add webpack PrefetchPlugin
+config.plugins.push(new webpack.PrefetchPlugin([context], request))
 
-`require('template.jade')` and npm install `jade-loader`
+// Add a separate entry point for jQuery
+config.resolve.alias = { jquery:'jquery/src/jquery.js' }
+config.plugins.push(
+  new webpack.ProvidePlugin({
+    jQuery: 'jquery',
+    $: 'jquery',
+    'window.jQuery':'jquery'
+  }),
+  new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
+);
+config.entry = {
+  // Add entries for vendors
+  vendors: ['jquery'],
+  // Reassign previous single entry to main entry
+  main: config.entry
+};
 
-## Changing Babel config
+// Export the newly manipulated config
+module.exports = config
+```
 
-If you want to tweak Babel settings you can create a file at the root of your project called `.babelrc` that contains config settings. See [bablerc docs](https://babeljs.io/docs/usage/babelrc/) for more options.
+
+
+### Changing Babel config
+
+Since `hjs-webpack` already has a babel loader, the easiest way to tweak Babel settings is to create a file at the root of your project called `.babelrc` that contains config settings. See [bablerc docs](https://babeljs.io/docs/usage/babelrc/) for more options.
 
 ## Credits
 
