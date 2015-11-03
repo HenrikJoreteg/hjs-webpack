@@ -1,5 +1,8 @@
 ## Changelog
 
+- 4.0.0
+  - Remove `relative` option from template in lieu of a more flexible `publicPath` option.
+
 - 3.1.0
   - Add support for the following loaders: `coffee cjsx typescript livescript`.
 

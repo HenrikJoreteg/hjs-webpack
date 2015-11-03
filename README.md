@@ -382,7 +382,7 @@ Your `html` function will be called with a context object that contains the foll
   - `{title: 'your app'}` sets `<title>`
   - `{head: 'any string'}` anything else you want to put in the `head`, other meta tags, or whatnot.
   - `{metaViewport: false}` set to false if you don't want the default viewport tag
-  - `{relative: false}` set to false if you want to turn off relative links `/` useful for gh-pages
+  - `{publicPath: 'http://mycdn.com/'}`  (default `/`) pass in path that will prefix the generated css/js files in the template. Note, there is `output.publicPath` provided by webpack, but doesn't easily allow for switching based on envirnoment. In this method we've got access to `context.isDev` and can easily switch based on that.
   - `{metaTags: {}}` lets you easily add `<meta>` tags to the document head. Takes an object where the key is the `name` and the value is the `content`.
 4. `context.isDev`: boolean specifying whether or not we're in dev mode.
 5. `context.package`: the parsed `package.json` file as an object.
