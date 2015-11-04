@@ -313,13 +313,13 @@ This option is `true` by default. This means, by default, we'll serve and genera
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 <link rel="stylesheet" href="/assets-and-index-html.1.0.0.css"/>
-<body></body>
+<body><div id="root"></div></body>
 <script src="/app.js"></script>
 ```
 
 Note the `<meta charset>` tag and mobile viewport settings are there by default.
 
-The empty `<body>` followed by the main script tag is also intentional. The ordering ensures we don't have to wait for `DOMReady` in our clientside code, you can safely assume that *both* `document.body` and `document.head` will be available when your script executes.
+The `<body>` followed by the main script tag is also intentional. The ordering ensures we don't have to wait for `DOMReady` in our clientside code, you can safely assume that *both* `document.body` and `document.head` will be available when your script executes.
 
 If you just want to do JS and CSS and handle all the html yourself, simply add `html: false` to your config (see examples directory for example).
 
@@ -377,7 +377,7 @@ Your `html` function will be called with a context object that contains the foll
 1. `context.main`: the name of the generated JS file
 2. `context.css`: the name of the generated CSS file. This only exists if `isDev` is `false`, since in development mode the css bundle is inserted dynamically into the document by the [`style-loader`](https://github.com/webpack/style-loader).
 3. `context.defaultTemplate()` a convenience method you can call to generate the basic HTML shown above. This takes a few options too if you just want to make minor tweaks. If you want to do more, just don't use the default template, generate your own instead. The options are:
-  - `{html: '<div id="my-container">Some custom markup</div>'}` This markup will be added inside the `<body>` tag
+  - `{html: '<div id="my-container">Some custom markup</div>'}` This markup will be added inside the `<body>` tag. By default it adds a `<div id="root"></div>` as a mount target for React apps.
   - `{charset: 'utf-8'}` what charset to set
   - `{title: 'your app'}` sets `<title>`
   - `{head: 'any string'}` anything else you want to put in the `head`, other meta tags, or whatnot.
