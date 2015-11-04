@@ -1,5 +1,8 @@
 ## Changelog
 
+- 5.0.0
+  - Make `defaultTemplate` render `<div id="root"></div>` into the body by default as a mount point for React. See [#89](https://github.com/HenrikJoreteg/hjs-webpack/issues/89) for reasoning.
+
 - 4.0.0
   - Remove `relative` option from template in lieu of a more flexible `publicPath` option.
 
