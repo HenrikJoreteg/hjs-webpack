@@ -126,8 +126,9 @@ I usually add something like the following scripts:
 ```
 "scripts": {
   "start": "webpack-dev-server",
-  "build": "webpack",
-  "deploy": "npm run build && surge -p public -d somedomain.com"
+  "build": "webpack --optimize-minimize",
+  "predeploy": "npm run build",
+  "deploy": "surge -p public -d somedomain.com"
 }
 ```
 
