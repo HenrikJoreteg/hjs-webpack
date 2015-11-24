@@ -1,5 +1,5 @@
 // this lets us require files with JSX/ES6 in them
-require('babel/register')
+require('babel-core/register')
 
 // require React and our two React components
 var React = require('react')
