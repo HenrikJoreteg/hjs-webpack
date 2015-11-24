@@ -6,5 +6,8 @@ module.exports = getConfig({
   out: 'public',
   isDev: isDev,
   html: false,
-  clearBeforeBuild: true
+  clearBeforeBuild: true,
+  devServer: {
+    contentBase: __dirname
+  }
 })
