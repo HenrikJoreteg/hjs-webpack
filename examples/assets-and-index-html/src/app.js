@@ -1,6 +1,7 @@
-require('./styles.styl')
+require('./styles.styl');
 
-var React = require('react')
-var Hello = require('./Hello')
+import React from 'react';
+import {render} from 'react-dom';
+import Hello from './Hello';
 
-React.render(<Hello/>, document.body)
+render(<Hello/>, document.body);

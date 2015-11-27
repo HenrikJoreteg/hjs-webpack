@@ -1,13 +1,12 @@
-var React = require('react')
+import React from 'react';
 
-module.exports = React.createClass({
-  displayName: 'OtherPage',
+class OtherPage extends React.Component {
   // quick and dirty internal nav handler
-  onClick: function (e) {
-    e.preventDefault()
-    window.router.history.navigate('/')
-  },
-  render: function () {
+  onClick(e) {
+    e.preventDefault();
+    window.router.history.navigate('/');
+  }
+  render() {
     return (
       <div className='container'>
         <header role='banner'>
@@ -15,6 +14,8 @@ module.exports = React.createClass({
         </header>
         <a href='/' onClick={this.onClick}>go to /</a>
       </div>
-    )
+    );
   }
-})
+};
+
+export default OtherPage;

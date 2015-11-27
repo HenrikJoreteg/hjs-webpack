@@ -1,13 +1,12 @@
-var React = require('react')
+import React from 'react';
 
-module.exports = React.createClass({
-  displayName: 'HomePage',
+class HomePage extends React.Component {
   // quick and dirty internal nav handler
-  onClick: function (e) {
+  onClick(e) {
     e.preventDefault()
     window.router.history.navigate('/other')
-  },
-  render: function () {
+  }
+  render() {
     return (
       <div className='container'>
         <header role='banner'>
@@ -20,4 +19,6 @@ module.exports = React.createClass({
       </div>
     )
   }
-})
+};
+
+export default HomePage;
