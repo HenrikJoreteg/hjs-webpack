@@ -1,17 +1,18 @@
-var React = require('react')
-var andyetImgSrc = require('./andyet.svg')
+import React from 'react';
+const andyetImgSrc = require('./andyet.png');
 
-module.exports = React.createClass({
-  displayName: 'Hello',
-  render: function () {
+class Hello extends React.Component {
+  render() {
     return (
       <div className='container'>
         <header role='banner'>
           <h1>Assets + HTML Example</h1>
         </header>
         <p>Generates, base HTML, CSS, and JS on build</p>
-        <img src={andyetImgSrc} style={{backgroundColor: 'black'}} />
+        <img src={andyetImgSrc} style={{backgroundColor: '#e6eaed'}} />
       </div>
-    )
+    );
   }
-})
+};
+
+export default Hello;

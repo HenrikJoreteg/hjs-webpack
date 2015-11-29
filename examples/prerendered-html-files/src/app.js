@@ -1,25 +1,26 @@
-require('./styles.styl')
+require('./styles.styl');
 
-var React = require('react')
-var AmpRouter = require('ampersand-router')
-var HomePage = require('./home-page')
-var OtherPage = require('./other-page')
+import React from 'react';
+import {render} from 'react-dom';
+import AmpRouter from 'ampersand-router';
+import HomePage from './home-page';
+import OtherPage from './other-page';
 
-var Router = AmpRouter.extend({
+const Router = AmpRouter.extend({
   routes: {
     '': 'home',
     'other': 'other'
   },
 
   home: function () {
-    React.render(<HomePage/>, document.body)
+    render(<HomePage/>, document.body);
   },
 
   other: function () {
-    React.render(<OtherPage/>, document.body)
+    render(<OtherPage/>, document.body);
   }
-})
+});
 
-var router = new Router()
-window.router = router
-router.history.start()
+let router = new Router();
+window.router = router;
+router.history.start();

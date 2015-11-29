@@ -1,8 +1,7 @@
-var React = require('react')
+import React from 'react';
 
-module.exports = React.createClass({
-  displayName: 'Hello',
-  render: function () {
+class Hello extends React.Component {
+  render() {
     return (
       <div className='container'>
         <header role='banner'>
@@ -12,6 +11,8 @@ module.exports = React.createClass({
         <p><code>&lt;script src=&quot;/app.js&quot;&gt;&lt;/script&gt;</code></p>
         <p>Building only generates CSS and JS.</p>
       </div>
-    )
+    );
   }
-})
+}
+
+export default Hello;
