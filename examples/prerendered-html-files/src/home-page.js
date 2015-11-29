@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
 class HomePage extends React.Component {
   // quick and dirty internal nav handler
-  onClick(e) {
+  onClick (e) {
     e.preventDefault()
     window.router.history.navigate('/other')
   }
-  render() {
+  render () {
     return (
       <div className='container'>
         <header role='banner'>
@@ -19,6 +19,6 @@ class HomePage extends React.Component {
       </div>
     )
   }
-};
+}
 
-export default HomePage;
+export default HomePage

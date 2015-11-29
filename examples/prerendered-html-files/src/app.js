@@ -1,10 +1,10 @@
-require('./styles.styl');
+require('./styles.styl')
 
-import React from 'react';
-import {render} from 'react-dom';
-import AmpRouter from 'ampersand-router';
-import HomePage from './home-page';
-import OtherPage from './other-page';
+import React from 'react'
+import {render} from 'react-dom'
+import AmpRouter from 'ampersand-router'
+import HomePage from './home-page'
+import OtherPage from './other-page'
 
 const Router = AmpRouter.extend({
   routes: {
@@ -13,14 +13,14 @@ const Router = AmpRouter.extend({
   },
 
   home: function () {
-    render(<HomePage/>, document.body);
+    render(<HomePage/>, document.getElementById('root'))
   },
 
   other: function () {
-    render(<OtherPage/>, document.body);
+    render(<OtherPage/>, document.getElementById('root'))
   }
-});
+})
 
-let router = new Router();
-window.router = router;
-router.history.start();
+let router = new Router()
+window.router = router
+router.history.start()

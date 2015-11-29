@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
 class OtherPage extends React.Component {
   // quick and dirty internal nav handler
-  onClick(e) {
-    e.preventDefault();
-    window.router.history.navigate('/');
+  onClick (e) {
+    e.preventDefault()
+    window.router.history.navigate('/')
   }
-  render() {
+  render () {
     return (
       <div className='container'>
         <header role='banner'>
@@ -14,8 +14,8 @@ class OtherPage extends React.Component {
         </header>
         <a href='/' onClick={this.onClick}>go to /</a>
       </div>
-    );
+    )
   }
-};
+}
 
-export default OtherPage;
+export default OtherPage

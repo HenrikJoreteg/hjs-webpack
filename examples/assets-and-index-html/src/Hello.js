@@ -1,8 +1,8 @@
-import React from 'react';
-const andyetImgSrc = require('./andyet.png');
+import React from 'react'
+const andyetImgSrc = require('./andyet.png')
 
 class Hello extends React.Component {
-  render() {
+  render () {
     return (
       <div className='container'>
         <header role='banner'>
@@ -11,8 +11,8 @@ class Hello extends React.Component {
         <p>Generates, base HTML, CSS, and JS on build</p>
         <img src={andyetImgSrc} style={{backgroundColor: '#e6eaed'}} />
       </div>
-    );
+    )
   }
-};
+}
 
-export default Hello;
+export default Hello

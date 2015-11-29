@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 class Hello extends React.Component {
-  render() {
+  render () {
     return (
       <div className='container'>
         <header role='banner'>
@@ -11,8 +11,8 @@ class Hello extends React.Component {
         <p><code>&lt;script src=&quot;/app.js&quot;&gt;&lt;/script&gt;</code></p>
         <p>Building only generates CSS and JS.</p>
       </div>
-    );
+    )
   }
 }
 
-export default Hello;
+export default Hello
