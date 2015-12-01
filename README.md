@@ -70,7 +70,7 @@ Here's some more information about the available loaders and plugins and what th
 
 [`url-loader`](https://www.npmjs.com/package/url-loader) Require assets that return data url if the size is less than the [`urlLoaderLimit`](#urlloaderlimit-optional-number-default-10000). Extensions: `jpg jpeg png gif svg otf eot svg ttf woff`.
 
-[`worker-loader`](https://www.npmjs.com/package/worker-loader) To be used for WebWorkers, as described in docs. You can `require` scripts within your worker code... which is awesome. If installed, any file ending in `worker.js` for example `main.worker.js` or even just `worker.js` will be loaded as a worker and packaged up as a separate file when built. If you also have babel-loader installed you can write whatever flavor of JS you've configured with babel in your worker code as well.
+[`worker-loader`](https://www.npmjs.com/package/worker-loader) This lets us more easily write code for WebWorkers. Once you `npm install worker-loader` you can write worker code using whatever other transpiler you're using and being able to `require` or `import` code from npm just like you would normally. If this is installed, simply name your file ending in `worker.js` for example `main.worker.js` or even just `worker.js` and it will be loaded as a worker and packaged up as a separate file when built. In addition, `worker-loader` supports inlining the code for workers and loading it as a data-uri as can be seen here: https://github.com/webpack/worker-loader/blob/master/createInlineWorker.js. To use this feature name your file `SOMETHING.thread.js` or just `thread.js` instead and it will be inlined if that feature is supported by the browser running your app (it will fallback to being loaded as a separate file otherwise).
 
 #### Templates
 
