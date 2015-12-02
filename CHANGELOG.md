@@ -1,5 +1,8 @@
 ## Changelog
 
+- 5.1.0
+  - Add worker-loader
+
 - 5.0.1
   - Update dependencies
 
