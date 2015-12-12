@@ -1,5 +1,8 @@
 ## Changelog
 
+- 5.2.0
+  - Use `url-loader` for `.woff2` files
+
 - 5.1.0
   - Add worker-loader
 
