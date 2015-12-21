@@ -1,5 +1,8 @@
 ## Changelog
 
+- 6.0.0
+  - Change font loaders to match query strings and separate all font loaders into separate loader entries. This should now work out of the box with projects like [`bootstrap-webpack`](https://github.com/bline/bootstrap-webpack) and [`font-awesome-webpack`](https://github.com/gowravshekar/font-awesome-webpack). This is a breaking change because existing modifications to font loaders in a user's `webpack.config.js` may clash with the new font loaders. See [#115](https://github.com/HenrikJoreteg/hjs-webpack/issues/115) for more info.
+
 - 5.2.0
   - Use `url-loader` for `.woff2` files
 
