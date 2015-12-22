@@ -24,7 +24,7 @@ var serverConfig = config.devServer
 
 var app = express()
 var compiler = webpack(config)
-console.log(JSON.stringify(config.module, null, 2))
+
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
   publicPath: config.output.publicPath

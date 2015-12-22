@@ -7,7 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var getBaseConfig = require('./lib/base-config')
 var getPackage = require('./lib/get-package')
 var installedStyleLoaders = require('./lib/installed-style-loaders')
-var isInstalled = require('./lib/is-installed')
+var installedHotLoaders = require('./lib/installed-hot-loaders')
 
 // figure out if we're running `webpack` or `webpack-dev-server`
 // we'll use this as the default for `isDev`
@@ -112,32 +112,9 @@ module.exports = function (opts) {
       new webpack.NoErrorsPlugin()
     ])
 
-    // add react-hot as module loader if it is installed
-    if (isInstalled('babel-loader') &&
-        isInstalled('babel-plugin-react-transform') &&
-        isInstalled('react-transform-catch-errors') &&
-        isInstalled('react-transform-hmr') &&
-        isInstalled('redbox-react') &&
-        isInstalled('webpack-hot-middleware') &&
-        config.spec.devServer.hot) {
-      // var index = Object.keys(config.module.loaders).find(function (i) {
-      //   console.log(config.module.loaders[i])
-      //   return config.module.loaders[i].loader === 'babel-loader'
-      // })[0]
-      // console.log(Object.keys(config.module.loaders), index)
-      // console.log(config.module)
-      // config.module.loaders[index].query = {
-      //   plugins: ['react-transform', {
-      //     transforms: [{
-      //       transform: 'react-transform-hmr',
-      //       imports: ['react'],
-      //       locals: ['module']
-      //     }, {
-      //       transform: 'react-transform-catch-errors',
-      //       imports: ['react', 'redbox-react']
-      //     }]
-      //   }]
-      // }
+    // Add react-hot module loader if it is installed
+    if (config.spec.devServer.hot) {
+      installedHotLoaders.load(config)
     }
 
     // Add optional loaders
