@@ -11,7 +11,7 @@ var isInstalled = require('./lib/is-installed')
 
 // figure out if we're running `webpack` or `webpack-dev-server`
 // we'll use this as the default for `isDev`
-var isDev = (process.argv[1] || '').indexOf('webpack-dev-server') !== -1
+var isDev = (process.argv[1] || '').indexOf('hjs-dev-server') !== -1
 
 module.exports = function (opts) {
   checkRequired(opts)
@@ -45,7 +45,10 @@ module.exports = function (opts) {
       // which is why we also do the manual entry above and the
       // manual adding of the hot module replacment plugin below
       hot: true,
-      contentBase: outputFolder
+      contentBase: outputFolder,
+      port: 3000,
+      hostname: 'localhost',
+      https: false
     })
   })
 
@@ -95,8 +98,7 @@ module.exports = function (opts) {
 
     // add dev server and hotloading clientside code
     config.entry.unshift(
-      'webpack-dev-server/client?' + (spec.https ? 'https://' : 'http://') + spec.hostname + ':' + spec.port,
-      'webpack/hot/only-dev-server'
+      'webpack-hot-middleware/client'
     )
 
     config.devServer = spec.devServer
@@ -106,17 +108,36 @@ module.exports = function (opts) {
 
     // add dev plugins
     config.plugins = config.plugins.concat([
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin()
     ])
 
     // add react-hot as module loader if it is installed
-    if (isInstalled('react-hot-loader') && config.spec.devServer.hot) {
-      config.module.loaders.forEach(function (loader) {
-        var loaders = loader.loaders || []
-        if (loaders.indexOf('babel-loader') > -1 || loaders.indexOf('coffee-loader') > -1) {
-          loaders.unshift('react-hot')
-        }
-      })
+    if (isInstalled('babel-loader') &&
+        isInstalled('babel-plugin-react-transform') &&
+        isInstalled('react-transform-catch-errors') &&
+        isInstalled('react-transform-hmr') &&
+        isInstalled('redbox-react') &&
+        isInstalled('webpack-hot-middleware') &&
+        config.spec.devServer.hot) {
+      // var index = Object.keys(config.module.loaders).find(function (i) {
+      //   console.log(config.module.loaders[i])
+      //   return config.module.loaders[i].loader === 'babel-loader'
+      // })[0]
+      // console.log(Object.keys(config.module.loaders), index)
+      // console.log(config.module)
+      // config.module.loaders[index].query = {
+      //   plugins: ['react-transform', {
+      //     transforms: [{
+      //       transform: 'react-transform-hmr',
+      //       imports: ['react'],
+      //       locals: ['module']
+      //     }, {
+      //       transform: 'react-transform-catch-errors',
+      //       imports: ['react', 'redbox-react']
+      //     }]
+      //   }]
+      // }
     }
 
     // Add optional loaders
