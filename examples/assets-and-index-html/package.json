@@ -33,7 +33,7 @@
   "license": "MIT",
   "main": "app.js",
   "scripts": {
-    "start": "../../bin/hjs-dev-server.js webpack.config.js",
+    "start": "hjs-dev-server webpack.config.js",
     "build": "webpack"
   }
 }

@@ -30,11 +30,17 @@ app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath
 }))
 
-app.use(require('webpack-hot-middleware')(compiler))
+if (serverConfig.hot) {
+  app.use(require('webpack-hot-middleware')(compiler))
+}
+
+if (serverConfig.contentBase) {
+  app.use(express.static(serverConfig.contentBase))
+}
 
 app.listen(serverConfig.port, serverConfig.host, function (err) {
   if (err) {
-    console.log(err)
+    console.error(err)
     return
   }
 

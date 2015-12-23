@@ -96,24 +96,14 @@ module.exports = function (opts) {
     // build speed and good rebuild speed
     config.devtool = 'cheap-module-eval-source-map'
 
-    // add dev server and hotloading clientside code
-    config.entry.unshift(
-      'webpack-hot-middleware/client'
-    )
-
     config.devServer = spec.devServer
     config.devServer.port = spec.port
     config.devServer.host = spec.hostname
     config.devServer.https = spec.https
 
-    // add dev plugins
-    config.plugins = config.plugins.concat([
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
-    ])
-
     // Add react-hot module loader if it is installed
     if (config.spec.devServer.hot) {
+      // configure babel loader
       installedHotLoaders.load(config)
     }
 

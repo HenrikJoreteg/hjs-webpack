@@ -15,17 +15,11 @@
     "rimraf": "^2.4.4"
   },
   "devDependencies": {
-    "babel-loader": "^6.2.0",
-    "babel-plugin-react-transform": "^1.1.1",
     "express": "^4.13.3",
     "precommit-hook": "^3.0.0",
-    "react-transform-catch-errors": "^1.0.0",
-    "react-transform-hmr": "^1.0.1",
     "standard": "5.4.1",
-    "stylus-loader": "^1.4.2",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
-    "webpack-hot-middleware": "^2.6.0"
+    "webpack-dev-middleware": "^1.4.0"
   },
   "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
   "keywords": [
@@ -35,8 +29,8 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "peerDependencies": {
-    "webpack-dev-server": "*"
+  "bin": {
+    "hjs-dev-server": "bin/hjs-dev-server.js"
   },
   "pre-commit": [
     "lint",

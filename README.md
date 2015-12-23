@@ -76,15 +76,6 @@ Here's some more information about the available loaders and plugins and what th
 
 [`jade-loader`](https://www.npmjs.com/package/jade-loader) Require jade files as compiled functions. Extension: `jade`.
 
-
-### Peer dependencies
-
-`hjs-webpack` does have one `peerDependency` on `webpack-dev-server`. In npm `3.x.x` `peerDependencies` will no longer be installed by default. When this happens, you'll want to run the following to manually install it with the following command:
-
-```
-npm install webpack-dev-server --save-dev
-```
-
 ## usage
 
 #### Step 1. install it into your project
@@ -232,7 +223,7 @@ The most common thing you'd probably want to do while using this module would be
 getConfig({
   in: 'src/app.js',
   out: 'public',
-  clearBeforeBuild: '!(images|static)'  
+  clearBeforeBuild: '!(images|static)'
 })
 
 ```
