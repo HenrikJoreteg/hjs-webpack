@@ -111,7 +111,12 @@ module.exports = function (opts) {
 
     // add react-hot as module loader if it is installed
     if (isInstalled('react-hot-loader') && config.spec.devServer.hot) {
-      config.module.loaders[0].loaders.unshift('react-hot')
+      config.module.loaders.forEach(function (loader) {
+        var loaders = loader.loaders || []
+        if (loaders.indexOf('babel-loader') > -1 || loaders.indexOf('coffee-loader') > -1) {
+          loaders.unshift('react-hot')
+        }
+      })
     }
 
     // Add optional loaders
