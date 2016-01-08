@@ -120,7 +120,7 @@ I usually add something like the following scripts:
 
 ```
 "scripts": {
-  "start": "hjs-dev-server webpack.config.js",
+  "start": "hjs-dev-server",
   "build": "webpack",
   "deploy": "npm run build && surge -p public -d somedomain.com"
 }

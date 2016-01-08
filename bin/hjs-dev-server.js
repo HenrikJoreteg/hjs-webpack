@@ -7,7 +7,7 @@ var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 
-var configFile = process.argv[2]
+var configFile = process.argv[2] || 'webpack.config.js'
 var config
 try {
   config = require(path.join(process.cwd(), configFile))
