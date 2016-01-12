@@ -18,7 +18,7 @@
     "precommit-hook": "^3.0.0",
     "standard": "5.4.1",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^1.14.1"
   },
   "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
   "keywords": [
