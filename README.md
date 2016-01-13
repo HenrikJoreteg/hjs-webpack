@@ -1,6 +1,6 @@
 # hjs-webpack
 
-> Warning: If you are upgrading from version `6.0.0` or less, please read the [upgrade guide](#upgrade-guide).
+> Warning: If you are upgrading from version `6.0.0` or less, please read the [upgrade guide for v7](./CHANGELOG.md#700).
 
 I really dislike setting up build scripts. Most of the time I want to do the exact same thing:
 
@@ -458,20 +458,6 @@ module.exports = config
 ### Changing Babel config
 
 Since `hjs-webpack` already has a babel loader, the easiest way to tweak Babel settings is to create a file at the root of your project called `.babelrc` that contains config settings. See [bablerc docs](https://babeljs.io/docs/usage/babelrc/) for more options.
-
-
-## Upgrade Guide
-
-The hot module loader changed from [react-hot-loader](https://github.com/gaearon/react-hot-loader) to [babel-blugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform). This is a breaking change and means you need to upgrade your installation when trying to use the newest version of hjs-webpack.
-If you want to continue to use hot reloading make sure to add these `devDependencies`
-
-```bash
-$ npm i --save-dev babel-loader babel-plugin-react-transform@^2.0.0-beta1 react-transform-catch-errors react-transform-hmr webpack-hot-middleware
-```
-
-and then you can remove `webpack-dev-server` from your dependencies in `package.json`.
-
-In the `"scripts"` section of your `package.json` you should change `webpack-dev-server` to `hjs-dev-server <path/to/webpack.config.js>`.
 
 
 ## Credits

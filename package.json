@@ -7,18 +7,18 @@
     "url": "https://github.com/henrikjoreteg/hjs-webpack/issues"
   },
   "dependencies": {
-    "extract-text-webpack-plugin": "0.9.1",
+    "extract-text-webpack-plugin": "1.0.1",
     "find-root": "0.1.1",
     "lodash.assign": "3.2.0",
     "lodash.defaults": "3.1.2",
     "lodash.pick": "3.1.0",
-    "rimraf": "^2.4.4"
+    "rimraf": "^2.5.0"
   },
   "devDependencies": {
     "express": "^4.13.3",
     "precommit-hook": "^3.0.0",
     "standard": "5.4.1",
-    "webpack": "^1.12.9",
+    "webpack": "^1.12.11",
     "webpack-dev-middleware": "^1.4.0"
   },
   "homepage": "https://github.com/henrikjoreteg/hjs-webpack",

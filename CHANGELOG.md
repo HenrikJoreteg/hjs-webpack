@@ -1,118 +1,130 @@
 ## Changelog
 
-- 6.1.0
+### 7.0.0
+  The hot module loader changed from [react-hot-loader](https://github.com/gaearon/react-hot-loader) to [babel-blugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform). This is a breaking change and means you need to upgrade your installation when trying to use the newest version of hjs-webpack.
+  If you want to continue to use hot reloading make sure to add these `devDependencies`
+
+  ```bash
+  $ npm i --save-dev babel-loader babel-plugin-react-transform react-transform-catch-errors react-transform-hmr webpack-hot-middleware
+  ```
+
+  and then you can remove `webpack-dev-server` from your dependencies in `package.json`.
+
+  In the `"scripts"` section of your `package.json` you should change `webpack-dev-server` to `hjs-dev-server`.
+
+### 6.1.0
   - Add `react-hot-loader` to `coffee-loader`
 
-- 6.0.0
+### 6.0.0
   - Change font loaders to match query strings and separate all font loaders into separate loader entries. This should now work out of the box with projects like [`bootstrap-webpack`](https://github.com/bline/bootstrap-webpack) and [`font-awesome-webpack`](https://github.com/gowravshekar/font-awesome-webpack). This is a breaking change because existing modifications to font loaders in a user's `webpack.config.js` may clash with the new font loaders. See [#115](https://github.com/HenrikJoreteg/hjs-webpack/issues/115) for more info.
 
-- 5.2.0
+### 5.2.0
   - Use `url-loader` for `.woff2` files
 
-- 5.1.0
+### 5.1.0
   - Add worker-loader
 
-- 5.0.1
+### 5.0.1
   - Update dependencies
 
-- 5.0.0
+### 5.0.0
   - Make `defaultTemplate` render `<div id="root"></div>` into the body by default as a mount point for React. See [#89](https://github.com/HenrikJoreteg/hjs-webpack/issues/89) for reasoning.
 
-- 4.0.0
+### 4.0.0
   - Remove `relative` option from template in lieu of a more flexible `publicPath` option.
 
-- 3.1.0
+### 3.1.0
   - Add support for the following loaders: `coffee cjsx typescript livescript`.
 
-- 3.0.0
+### 3.0.0
   - Remove `peerDependencies` and make them optional. See the [optional dependencies](README.md#optional-dependencies) section in the README for new installation instructions. [#26](https://github.com/HenrikJoreteg/hjs-webpack/issues/26) [#80](https://github.com/HenrikJoreteg/hjs-webpack/pull/80)
 
-- 2.14.1
+### 2.14.1
   - Only use react-hot-loader if specified by devServer `hot` option
 
-- 2.14.0
+### 2.14.0
   - Add https support
 
-- 2.13.2
+### 2.13.2
   - Pin dependencies (setup Greekeeper.io)
 
-- 2.13.1
+### 2.13.1
   - Replace `autoprefixer-core` with `autoprefixer`
   - Update `examples/` dependencies
 
-- 2.13.0
+### 2.13.0
   - use cheap-module-eval-source-map devtool in dev [#63](https://github.com/HenrikJoreteg/hjs-webpack/issues/63)
   - remove noerrors plugin and for react-hot-loader@^1.3.0 [#62](https://github.com/HenrikJoreteg/hjs-webpack/issues/62)
 
-- 2.12.4
+### 2.12.4
   - Update `extract-text-webpack-plugin` and other dependencies
   - Get `npm test` passing for `standard` linting
 
-- 2.12.3
+### 2.12.3
   - Add `react` to peer deps
 
-- 2.12.2
+### 2.12.2
   - Fix `react-hot-loader` is installed check
 
-- 2.12.1
+### 2.12.1
   - Don't assume `process.argv[1]` exists. This can happen if running via `node -p`, thanks [@eins78](http://github.com/eins78).
 
-- 2.12.0
+### 2.12.0
   - Don't force install of React or React Hot-Loader only use them and other optional installs if installed. Thanks [@FWeinb](http://github.com/FWeinb)
 
-- 2.11.0
+### 2.11.0
   - Add ability to pass `metaTags` object as a `defaultTempate` option for easily adding `<meta>` tags.
 
-- 2.10.0
+### 2.10.0
   - Add `sass-loader` for `.scss` and ``sass` files
 
-- 2.9.0
+### 2.9.0
   - Allow globs for `clearBeforeBuild`.
   - Expose webpack `stats` object to context
   - Expose parsed `package.json` object to `html` function context argument.
   - Set `out` folder as `contentBase` for the dev server.
 
-- 2.8.1
+### 2.8.1
   - Fix typo in `examples/just-assets-no-html/README.md`
   - add documentation for relative links in html
 
-- 2.8.0
+### 2.8.0
   - add `serveCustomHtmlInDev` as an explicit option
   - properly document new option and `isDev` in html function
 
-- 2.7.0
+### 2.7.0
   - Expose `isDev` flag to `html` function context
   - Document `replace` option in readme.
 
-- 2.6.1
+### 2.6.1
   - Fix less filename test when in production mode
   - Add documentation about using html function's css context and cssFilename in production mode
 
-- 2.6.0
+### 2.6.0
   - Allow `devServer` options to be passed in
 
-- 2.5.0
+### 2.5.0
   - Use passed in `urlLoaderLimit`
   - Add default url loader for images
 
-- 2.4.0 Resolve `.jsx` extension
+### 2.4.0 Resolve `.jsx` extension
 
-- 2.3.0 configure `isDev` default automatically based on whether the command used contains `webpack-dev-server` or not (still respects explicitly configured, so not a breaking change)
+### 2.3.0 configure `isDev` default automatically based on whether the command used contains `webpack-dev-server` or not (still respects explicitly configured, so not a breaking change)
   - add `clearBeforeBuild` option to clear build folder first.
   - both the above changes allow an app to share configs because you're not having to clear the build dir, or set environment variables two different ways for different platforms (a.k.a. better windows support).
   - doc fixes/improvements
 
-- 2.2.2 use `process.cwd()` over `process.env.PWD` to find root.
+### 2.2.2 use `process.cwd()` over `process.env.PWD` to find root.
 
-- 2.2.1 include `json-loader` by default.
+### 2.2.1 include `json-loader` by default.
 
-- 2.2.0 use `autoprefixer-core` and `postcss-loader` to add autoprefixing to all configured style loaders
+### 2.2.0 use `autoprefixer-core` and `postcss-loader` to add autoprefixing to all configured style loaders
   - don't resolve .styl extensions
 
-- 2.1.0 pre-configure `.jade` and `.less` loaders as optional installs.
+### 2.1.0 pre-configure `.jade` and `.less` loaders as optional installs.
   - add option for `urlLoaderLimit`
 
-- 2.0.0 instead of including our own pre-configured dev server: `hjs-dev-server` you can now just use `webpack-dev-server` in your npm `scripts` and it gets configured via `devServer` property of config.
+### 2.0.0 instead of including our own pre-configured dev server: `hjs-dev-server` you can now just use `webpack-dev-server` in your npm `scripts` and it gets configured via `devServer` property of config.
   - much more complete documentation
   - support for passing options to `defaultTemplate()` function
   - simplified/unified configuration
