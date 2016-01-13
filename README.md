@@ -1,4 +1,6 @@
-#hjs-webpack
+# hjs-webpack
+
+> Warning: If you are upgrading from version `6.0.0` or less, please read the [upgrade guide](#upgrade-guide).
 
 I really dislike setting up build scripts. Most of the time I want to do the exact same thing:
 
@@ -16,7 +18,7 @@ When ready to ship:
   - be ready to just upload it all to something like [surge.sh](http://surge.sh/)
   - sometimes I want to pre-render all known HTML into static HTML files and have React take over once the clientside JS loads.
 
-[webpack](http://webpack.github.io) and the [webpack-dev-server](http://webpack.github.io/docs/webpack-dev-server.html) can do most of those things pretty well out of the box. But, it sure is a pain to set it all up.
+[webpack](http://webpack.github.io) can do most of those things pretty well out of the box. But, it sure is a pain to set it all up.
 
 So, this is just a simplified, opinionated way to configure webpack for development and then build for production. That also supports easily generating more files.
 
@@ -76,15 +78,6 @@ Here's some more information about the available loaders and plugins and what th
 
 [`jade-loader`](https://www.npmjs.com/package/jade-loader) Require jade files as compiled functions. Extension: `jade`.
 
-
-### Peer dependencies
-
-`hjs-webpack` does have one `peerDependency` on `webpack-dev-server`. In npm `3.x.x` `peerDependencies` will no longer be installed by default. When this happens, you'll want to run the following to manually install it with the following command:
-
-```
-npm install webpack-dev-server --save-dev
-```
-
 ## usage
 
 #### Step 1. install it into your project
@@ -127,7 +120,7 @@ I usually add something like the following scripts:
 
 ```
 "scripts": {
-  "start": "webpack-dev-server",
+  "start": "hjs-dev-server",
   "build": "webpack",
   "deploy": "npm run build && surge -p public -d somedomain.com"
 }
@@ -232,7 +225,7 @@ The most common thing you'd probably want to do while using this module would be
 getConfig({
   in: 'src/app.js',
   out: 'public',
-  clearBeforeBuild: '!(images|static)'  
+  clearBeforeBuild: '!(images|static)'
 })
 
 ```
@@ -243,7 +236,7 @@ So, just to be clear, everything that matches the glob string *within* the out f
 
 A boolean to indicate whether or not everything is in production mode (minified, etc.) or development mode (everything hotloaded and unminified).
 
-By default this value is `true` if the command you ran contains `webpack-dev-server` and `false` otherwise. The option exists here in case you need to override the default.
+By default this value is `true` if the command you ran contains `hjs-dev-server` and `false` otherwise. The option exists here in case you need to override the default.
 
 ### `output.filename` (optional, string)
 
@@ -277,7 +270,7 @@ This is the default threshold to use for whether URLs referenced in stylesheets 
 
 ### `devServer` (optional, object)
 
-These options are passed through to the [`webpack-dev-server`](http://webpack.github.io/docs/webpack-dev-server.html#api) with a few defaults:
+These options are passed through to the `hjs-dev-server` with a few defaults:
 
 ```js
 {
@@ -292,7 +285,7 @@ These options are passed through to the [`webpack-dev-server`](http://webpack.gi
 
 ### `https` (optional, boolean, default: `false`)
 
-This is used to start `webpack-dev-server` with its self signed certificate, so you can load the application with an https url.  It also configures hot module replacement to also use https.
+This is used to start `hjs-dev-server` with its self signed certificate, so you can load the application with an https url.  It also configures hot module replacement to also use https.
 
 ### `replace` (optional, object)
 
@@ -465,6 +458,21 @@ module.exports = config
 ### Changing Babel config
 
 Since `hjs-webpack` already has a babel loader, the easiest way to tweak Babel settings is to create a file at the root of your project called `.babelrc` that contains config settings. See [bablerc docs](https://babeljs.io/docs/usage/babelrc/) for more options.
+
+
+## Upgrade Guide
+
+The hot module loader changed from [react-hot-loader](https://github.com/gaearon/react-hot-loader) to [babel-blugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform). This is a breaking change and means you need to upgrade your installation when trying to use the newest version of hjs-webpack.
+If you want to continue to use hot reloading make sure to add these `devDependencies`
+
+```bash
+$ npm i --save-dev babel-loader babel-plugin-react-transform@^2.0.0-beta1 react-transform-catch-errors react-transform-hmr webpack-hot-middleware
+```
+
+and then you can remove `webpack-dev-server` from your dependencies in `package.json`.
+
+In the `"scripts"` section of your `package.json` you should change `webpack-dev-server` to `hjs-dev-server <path/to/webpack.config.js>`.
+
 
 ## Credits
 

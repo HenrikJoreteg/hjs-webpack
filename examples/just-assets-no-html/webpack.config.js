@@ -8,6 +8,7 @@ module.exports = getConfig({
   html: false,
   clearBeforeBuild: true,
   devServer: {
+    hot: false,
     contentBase: __dirname
   }
 })

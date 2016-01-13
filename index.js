@@ -7,11 +7,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var getBaseConfig = require('./lib/base-config')
 var getPackage = require('./lib/get-package')
 var installedStyleLoaders = require('./lib/installed-style-loaders')
-var isInstalled = require('./lib/is-installed')
+var installedHotLoaders = require('./lib/installed-hot-loaders')
 
 // figure out if we're running `webpack` or `webpack-dev-server`
 // we'll use this as the default for `isDev`
-var isDev = (process.argv[1] || '').indexOf('webpack-dev-server') !== -1
+var isDev = (process.argv[1] || '').indexOf('hjs-dev-server') !== -1
 
 module.exports = function (opts) {
   checkRequired(opts)
@@ -45,7 +45,10 @@ module.exports = function (opts) {
       // which is why we also do the manual entry above and the
       // manual adding of the hot module replacment plugin below
       hot: true,
-      contentBase: outputFolder
+      contentBase: outputFolder,
+      port: 3000,
+      hostname: 'localhost',
+      https: false
     })
   })
 
@@ -93,30 +96,15 @@ module.exports = function (opts) {
     // build speed and good rebuild speed
     config.devtool = 'cheap-module-eval-source-map'
 
-    // add dev server and hotloading clientside code
-    config.entry.unshift(
-      'webpack-dev-server/client?' + (spec.https ? 'https://' : 'http://') + spec.hostname + ':' + spec.port,
-      'webpack/hot/only-dev-server'
-    )
-
     config.devServer = spec.devServer
     config.devServer.port = spec.port
     config.devServer.host = spec.hostname
     config.devServer.https = spec.https
 
-    // add dev plugins
-    config.plugins = config.plugins.concat([
-      new webpack.HotModuleReplacementPlugin()
-    ])
-
-    // add react-hot as module loader if it is installed
-    if (isInstalled('react-hot-loader') && config.spec.devServer.hot) {
-      config.module.loaders.forEach(function (loader) {
-        var loaders = loader.loaders || []
-        if (loaders.indexOf('babel-loader') > -1 || loaders.indexOf('coffee-loader') > -1) {
-          loaders.unshift('react-hot')
-        }
-      })
+    // Add react-hot module loader if it is installed
+    if (config.spec.devServer.hot) {
+      // configure babel loader
+      installedHotLoaders.load(config)
     }
 
     // Add optional loaders
