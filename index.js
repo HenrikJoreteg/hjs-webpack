@@ -32,24 +32,12 @@ module.exports = function (opts) {
     package: null,
     replace: null,
     port: 3000,
-    https: false,
     hostname: 'localhost',
     html: true,
     urlLoaderLimit: 10000,
     clearBeforeBuild: false,
     serveCustomHtmlInDev: true,
-    devServer: defaults(opts.devServer || {}, {
-      info: false,
-      historyApiFallback: true,
-      // For some reason simply setting this doesn't seem to be enough
-      // which is why we also do the manual entry above and the
-      // manual adding of the hot module replacment plugin below
-      hot: true,
-      contentBase: outputFolder,
-      port: 3000,
-      hostname: 'localhost',
-      https: false
-    })
+    devServer: {}
   })
 
   spec.package = getPackage(spec.package)
@@ -63,9 +51,6 @@ module.exports = function (opts) {
   }
 
   var config = getBaseConfig(spec)
-
-  // re-attach original spec items so they can be accessed from dev-server script
-  config.spec = spec
 
   // check for any module replacements
   if (spec.replace) {
@@ -96,13 +81,23 @@ module.exports = function (opts) {
     // build speed and good rebuild speed
     config.devtool = 'cheap-module-eval-source-map'
 
-    config.devServer = spec.devServer
-    config.devServer.port = spec.port
-    config.devServer.host = spec.hostname
-    config.devServer.https = spec.https
+    // Create our dev server config for use in bin/hjs-dev-server
+    config.devServer = defaults(spec.devServer, {
+      // For webpack-dev-middleware
+      noInfo: true,
+      quiet: false,
+      lazy: false,
+      publicPath: spec.output.publicPath,
+      // Our own options for hjs-dev-server
+      historyApiFallback: true,
+      hot: true,
+      contentBase: outputFolder,
+      port: spec.port,
+      hostname: spec.hostname || spec.host
+    })
 
     // Add react-hot module loader if it is installed
-    if (config.spec.devServer.hot) {
+    if (config.devServer.hot) {
       // configure babel loader
       installedHotLoaders.load(config)
     }

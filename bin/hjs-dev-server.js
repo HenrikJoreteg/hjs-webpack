@@ -21,14 +21,16 @@ try {
 }
 
 var serverConfig = config.devServer
-
 var app = express()
 var compiler = webpack(config)
 
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath
-}))
+if (serverConfig.historyApiFallback) {
+  app.use(require('connect-history-api-fallback')({
+    verbose: false
+  }))
+}
+
+app.use(require('webpack-dev-middleware')(compiler, config.devServer))
 
 if (serverConfig.hot) {
   app.use(require('webpack-hot-middleware')(compiler))
@@ -38,11 +40,11 @@ if (serverConfig.contentBase) {
   app.use(express.static(serverConfig.contentBase))
 }
 
-app.listen(serverConfig.port, serverConfig.host, function (err) {
+app.listen(serverConfig.port, serverConfig.hostname, function (err) {
   if (err) {
     console.error(err)
     return
   }
 
-  console.log('Listening at http://' + serverConfig.host + ':' + serverConfig.port)
+  console.log('Listening at http://' + serverConfig.hostname + ':' + serverConfig.port)
 })

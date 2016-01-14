@@ -10,6 +10,7 @@
     "url": "https://github.com/henrikjoreteg/hjs-webpack/issues"
   },
   "dependencies": {
+    "connect-history-api-fallback": "^1.1.0",
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "1.0.1",
     "find-root": "0.1.1",
@@ -18,7 +19,8 @@
     "lodash.pick": "3.1.0",
     "rimraf": "^2.5.0",
     "webpack": "^1.12.11",
-    "webpack-dev-middleware": "^1.4.0"
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-hot-middleware": "^2.6.0"
   },
   "devDependencies": {
     "precommit-hook": "^3.0.0",

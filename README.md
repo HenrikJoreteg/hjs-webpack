@@ -130,7 +130,7 @@ Assuming you've got some JS written that you've set as your `in` in the `webpack
 
 When you're wanting to do a build, just run `npm run build`. The build will generate your files into `public`.
 
-Now there's a static site in `public` that can be deployed to something like [Surge.sh](http://surge.sh) or [DivShot](http://divshot.com), which I do by running `npm run deploy`.
+Now there's a static site in `public` that can be deployed to something like [Surge.sh](http://surge.sh), which I do by running `npm run deploy`.
 
 #### Step 4. Dealing with styles
 
@@ -270,16 +270,19 @@ This is the default threshold to use for whether URLs referenced in stylesheets 
 
 ### `devServer` (optional, object)
 
-These options are passed through to the `hjs-dev-server` with a few defaults:
+These options are passed through to the `hjs-dev-server` with a few defaults. Some of these options are passed directly to [`webpack-dev-middleware`](https://github.com/webpack/webpack-dev-middleware), see those docs for all available options.
 
 ```js
 {
   port, // pulled from top level option "port"
-  host, // // pulled from top level option "hostname"
-  info: false,
+  hostname, // // pulled from top level option "hostname"
   historyApiFallback: true,
-  hot: true,
-  https // pulled from top level option "https"
+  hot: true
+  // The following options are for webpack-dev-middleware
+  noInfo: true,
+  quiet: false,
+  lazy: false,
+  publicPath // pulled from top level option "output.publicPath"
 }
 ```
 
@@ -458,6 +461,28 @@ module.exports = config
 ### Changing Babel config
 
 Since `hjs-webpack` already has a babel loader, the easiest way to tweak Babel settings is to create a file at the root of your project called `.babelrc` that contains config settings. See [bablerc docs](https://babeljs.io/docs/usage/babelrc/) for more options.
+
+There are some babel presets that work well with `hjs-webpack`. You can check out an example of using presets in the [examples directory](./examples). There's one with [hot reloading](./examples/assets-and-index-html/.babelrc) and one [without](/examples/just-assets-no-html/.babelrc). You'll need to install these presets just like any other dev dependencies.
+
+Here's a quick example if you like copy/pasting:
+
+```sh
+npm install babel-preset-es2015 babel-preset-react babel-preset-react-hmre --save-dev
+```
+
+and then you `.babelrc`
+
+```json
+{
+  "presets": ["es2015", "react"],
+  "env": {
+    "development": {
+      "presets": ["react-hmre"]
+    }
+  }
+}
+```
+
 
 
 ## Credits
