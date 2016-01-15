@@ -3,10 +3,10 @@
 ### 7.0.0
   The hot module loader changed from [react-hot-loader](https://github.com/gaearon/react-hot-loader) to [babel-blugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform). This is a breaking change and means you need to upgrade your installation when trying to use the newest version of hjs-webpack.
 
-  If you want to continue to use hot reloading make sure to add these `devDependencies` to your project:
+  If you want to continue to use hot reloading make sure to add this preset to your project's `devDependencies` to your project:
 
   ```bash
-  npm i --save-dev babel-plugin-react-transform react-transform-catch-errors react-transform-hmr redbox-react babel-preset-react-hmre
+  npm i --save-dev babel-preset-react-hmre
   ```
 
   You can then remove `webpack-dev-server` by running:
