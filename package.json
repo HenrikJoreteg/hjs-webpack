@@ -20,7 +20,7 @@
     "rimraf": "^2.5.0",
     "webpack": "^1.12.11",
     "webpack-dev-middleware": "^1.4.0",
-    "webpack-hot-middleware": "^2.6.0"
+    "webpack-hot-middleware": "^2.6.4"
   },
   "devDependencies": {
     "precommit-hook": "^3.0.0",
