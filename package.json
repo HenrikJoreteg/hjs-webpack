@@ -14,7 +14,7 @@
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "1.0.1",
     "find-root": "0.1.1",
-    "lodash.assign": "3.2.0",
+    "lodash.assign": "4.0.2",
     "lodash.defaults": "3.1.2",
     "lodash.pick": "3.1.0",
     "rimraf": "^2.5.0",
