@@ -286,10 +286,6 @@ These options are passed through to the `hjs-dev-server` with a few defaults. So
 }
 ```
 
-### `https` (optional, boolean, default: `false`)
-
-This is used to start `hjs-dev-server` with its self signed certificate, so you can load the application with an https url.  It also configures hot module replacement to also use https.
-
 ### `replace` (optional, object)
 
 You can supply an object of require names with paths to the files you want that name to represent. This makes it easy to do things like swapping out config files based on build mode, etc.
