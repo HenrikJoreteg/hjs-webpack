@@ -1,5 +1,8 @@
 ## Changelog
 
+### 7.1.0
+  - Add `lang` option to default html template [#151](https://github.com/HenrikJoreteg/hjs-webpack/issues/151)
+
 ### 7.0.0
   The hot module loader changed from [react-hot-loader](https://github.com/gaearon/react-hot-loader) to [babel-blugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform). This is a breaking change and means you need to upgrade your installation when trying to use the newest version of hjs-webpack.
 
