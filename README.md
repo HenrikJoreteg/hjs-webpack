@@ -384,6 +384,7 @@ Your `html` function will be called with a context object that contains the foll
   - `{metaViewport: false}` set to false if you don't want the default viewport tag
   - `{publicPath: 'http://mycdn.com/'}`  (default `/`) pass in path that will prefix the generated css/js files in the template. Note, there is `output.publicPath` provided by webpack, but doesn't easily allow for switching based on envirnoment. In this method we've got access to `context.isDev` and can easily switch based on that.
   - `{metaTags: {}}` lets you easily add `<meta>` tags to the document head. Takes an object where the key is the `name` and the value is the `content`.
+  - `{lang: 'en-US'}` sets the `lang` attribute on the `<html>` tag.
 4. `context.isDev`: boolean specifying whether or not we're in dev mode.
 5. `context.package`: the parsed `package.json` file as an object.
 6. `context.stats`: the stats object returned by webpack. Of likely interest is `context.stats.hash` (a hash of current build). `context.stats.assets` is an array of all the assets that will be generated. This can be useful for generating cache manifests, etc. Overall, this is a big object that lists all the modules in your whole app. You likely won't need most of it, but it's all there in case you do. ([A sample can be found here](https://raw.githubusercontent.com/webpack/analyse/master/app/pages/upload/example.json)).
