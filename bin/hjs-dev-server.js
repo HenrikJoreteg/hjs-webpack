@@ -3,6 +3,7 @@
 // Based on
 // https://github.com/gaearon/react-transform-boilerplate/blob/master/devServer.js
 
+var fs = require('fs')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
@@ -21,7 +22,21 @@ try {
 }
 
 var serverConfig = config.devServer
+var https = serverConfig.https
 var app = express()
+
+var createServer = require(https ? 'https' : 'http').createServer
+var server
+
+if (https) {
+  server = createServer({
+    key: fs.readFileSync(path.resolve(__dirname, '../resources/hjs-webpack-localhost.key')),
+    cert: fs.readFileSync(path.resolve(__dirname, '../resources/hjs-webpack-localhost.crt'))
+  }, app)
+} else {
+  server = createServer(app)
+}
+
 var compiler = webpack(config)
 
 if (serverConfig.historyApiFallback) {
@@ -40,11 +55,12 @@ if (serverConfig.contentBase) {
   app.use(express.static(serverConfig.contentBase))
 }
 
-app.listen(serverConfig.port, serverConfig.hostname, function (err) {
+server.listen(serverConfig.port, serverConfig.hostname, function (err) {
   if (err) {
     console.error(err)
     return
   }
 
-  console.log('Listening at http://' + serverConfig.hostname + ':' + serverConfig.port)
+  var protocol = https ? 'https' : 'http'
+  console.log('Listening at ' + protocol + '://' + serverConfig.hostname + ':' + serverConfig.port)
 })
