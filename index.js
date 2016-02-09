@@ -31,6 +31,7 @@ module.exports = function (opts) {
     isDev: isDev,
     package: null,
     replace: null,
+    https: false,
     port: 3000,
     hostname: 'localhost',
     html: true,
@@ -93,6 +94,7 @@ module.exports = function (opts) {
       hot: true,
       contentBase: outputFolder,
       port: spec.port,
+      https: spec.https,
       hostname: spec.hostname || spec.host
     })
 
