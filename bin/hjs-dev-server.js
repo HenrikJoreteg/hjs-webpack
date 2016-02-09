@@ -7,6 +7,7 @@ var fs = require('fs')
 var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
+var assign = require('lodash.assign')
 
 var configFile = process.argv[2] || 'webpack.config.js'
 var config
@@ -29,10 +30,16 @@ var createServer = require(https ? 'https' : 'http').createServer
 var server
 
 if (https) {
-  server = createServer({
+  var httpsConfig = {
     key: fs.readFileSync(path.resolve(__dirname, '../resources/hjs-webpack-localhost.key')),
     cert: fs.readFileSync(path.resolve(__dirname, '../resources/hjs-webpack-localhost.crt'))
-  }, app)
+  }
+
+  if (typeof https === 'object') {
+    assign(httpsConfig, https)
+  }
+
+  server = createServer(httpsConfig, app)
 } else {
   server = createServer(app)
 }
@@ -45,7 +52,7 @@ if (serverConfig.historyApiFallback) {
   }))
 }
 
-app.use(require('webpack-dev-middleware')(compiler, config.devServer))
+app.use(require('webpack-dev-middleware')(compiler, serverConfig))
 
 if (serverConfig.hot) {
   app.use(require('webpack-hot-middleware')(compiler))
