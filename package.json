@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "precommit-hook": "^3.0.0",
-    "standard": "5.4.1"
+    "standard": "^6.0.4"
   },
   "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
   "keywords": [
