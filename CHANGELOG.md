@@ -1,5 +1,8 @@
 ## Changelog
 
+### 7.2.0
+  - Add `https` option to dev server [#159](https://github.com/HenrikJoreteg/hjs-webpack/issues/159)
+
 ### 7.1.0
   - Add `lang` option to default html template [#151](https://github.com/HenrikJoreteg/hjs-webpack/issues/151)
 
