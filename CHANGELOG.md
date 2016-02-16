@@ -1,5 +1,8 @@
 ## Changelog
 
+### 7.2.1
+  - Fix HMR when using npm2 [#161](https://github.com/HenrikJoreteg/hjs-webpack/issues/161)
+
 ### 7.2.0
   - Add `https` option to dev server [#159](https://github.com/HenrikJoreteg/hjs-webpack/issues/159)
 
