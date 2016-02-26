@@ -426,8 +426,8 @@ Here's an example where `hjs-webpack` is used to create the base `webpack` confi
 
 ```js
 var webpack = require('webpack')
-var createConfig = require('hjs-webpack')
-var config = createConfig(myHjsWebpackOptions)
+var getConfig = require('hjs-webpack')
+var config = getConfig(myHjsWebpackOptions)
 
 // Add xml-loader
 config.module.loaders.push({ test: /\.xml$/, loader: 'xml-loader' })
