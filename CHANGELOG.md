@@ -1,5 +1,9 @@
 ## Changelog
 
+### 7.3.0
+  - Add option for enabling zoom on mobile devices [#176](https://github.com/HenrikJoreteg/hjs-webpack/issues/176)
+  - Move `<script>` inside body tag [#177](https://github.com/HenrikJoreteg/hjs-webpack/issues/177)
+
 ### 7.2.1
   - Fix HMR when using npm2 [#161](https://github.com/HenrikJoreteg/hjs-webpack/issues/161)
 
