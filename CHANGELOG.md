@@ -1,5 +1,8 @@
 ## Changelog
 
+### 7.3.1
+  - Update dependencies, and pin `webpack-hot-middleware` to `2.7.1` for now to avoid [this issue](https://github.com/glenjamin/webpack-hot-middleware/issues/80)
+
 ### 7.3.0
   - Add option for enabling zoom on mobile devices [#176](https://github.com/HenrikJoreteg/hjs-webpack/issues/176)
   - Move `<script>` inside body tag [#177](https://github.com/HenrikJoreteg/hjs-webpack/issues/177)
