@@ -1,5 +1,8 @@
 ## Changelog
 
+### 7.3.2
+  - Update `webpack-hot-middleware` to `^2.8.1`
+
 ### 7.3.1
   - Update dependencies, and pin `webpack-hot-middleware` to `2.7.1` for now to avoid [this issue](https://github.com/glenjamin/webpack-hot-middleware/issues/80)
 
