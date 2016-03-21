@@ -1,5 +1,10 @@
 ## Changelog
 
+### 8.0.0
+  Since hot module reloading can be done in many different forms (see [this blog post](https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf#.r3jfruhdm) and [this PR](https://github.com/reactjs/redux/pull/1455/files) for more info), `hjs-webpack` no longer looks at which loaders/plugins you have installed to determine if HMR should be turned on or off, and instead only looks at the config option `devServer.hot` to determine if the HMR entry path and plugins should be added to the config.
+
+  By default, HMR has always been set to `true`, but previously if you didn't have a specific set of plugins installed `hjs-webpack` would set it to `false`. This is no longer the case, and is the reason why this is a major update. **If you are not using HMR, then you now need to set `devServer.hot = false` in your config to turn it off.**
+
 ### 7.3.2
   - Update `webpack-hot-middleware` to `^2.8.1`
 
