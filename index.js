@@ -151,6 +151,16 @@ module.exports = function (opts) {
       config.module.loaders.push(item.production)
     })
   }
+  
+  //Mock node modules from browserified/webpack context
+  //https://github.com/insin/nwb/issues/68
+  config.node =  {
+    console: true,
+    fs: 'empty',
+    dns: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  }
 
   return config
 }
