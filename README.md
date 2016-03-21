@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/hjs-webpack.svg)](https://badge.fury.io/js/hjs-webpack)
 
-> Warning: If you are upgrading from version `6.0.0` or less, please read the [upgrade guide for v7](./CHANGELOG.md#700).
+> Warning: If you are upgrading across major versions, please read the [release notes in the changelog](./CHANGELOG.md).
 
 I really dislike setting up build scripts. Most of the time I want to do the exact same thing:
 
