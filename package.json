@@ -10,7 +10,7 @@
     "url": "https://github.com/henrikjoreteg/hjs-webpack/issues"
   },
   "dependencies": {
-    "connect-history-api-fallback": "^1.1.0",
+    "connect-history-api-fallback": "^1.2.0",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "find-root": "^1.0.0",
