@@ -14,6 +14,7 @@
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "find-root": "^1.0.0",
+    "http-proxy-middleware": "^0.13.0",
     "lodash.assign": "^4.0.6",
     "lodash.defaults": "^4.0.1",
     "lodash.pick": "^4.1.0",
