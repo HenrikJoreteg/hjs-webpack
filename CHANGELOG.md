@@ -1,5 +1,8 @@
 ## Changelog
 
+### 8.1.0
+  - Add support for dev server proxies with `http-proxy-middleware` [#198](https://github.com/HenrikJoreteg/hjs-webpack/pull/198)
+
 ### 8.0.0
   Since hot module reloading can be done in many different forms (see [this blog post](https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf#.r3jfruhdm) and [this PR](https://github.com/reactjs/redux/pull/1455/files) for more info), `hjs-webpack` no longer looks at which loaders/plugins you have installed to determine if HMR should be turned on or off, and instead only looks at the config option `devServer.hot` to determine if the HMR entry path and plugins should be added to the config.
 
