@@ -396,6 +396,31 @@ By default, if you supply an `html` function it will always be used, whether you
 
 Set this option to `false` to only use your `html` function when building for production. Note, that `.isDev` is attached to the context object passed to the `html` function as described above, so alternately you could just use that value to branch your logic within that function. Using this option circumvents the custom `html` function entirely during development.
 
+## Proxy
+
+The dev server uses [http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware) to optionally proxy requests to a separate, possibly external, backend server. Proxies can be specified with `devServer.proxy`. This can be a single proxy, or an array of proxies. The proxy context and options are passed directly to `http-proxy-middleware`.
+
+```js
+getConfig({
+  in: 'src/app.js',
+  out: 'public',
+  clearBeforeBuild: true,
+
+  // Use devServer.proxy to specify proxies
+  devServer: {
+    proxy: {
+      context: "/api",
+      options: {
+        target: "http://localhost:3001",
+        pathRewrite: {
+          "^/api": ""
+        }
+      }
+    }
+  }
+})
+```
+
 ## Developing on multiple devices at once
 
 If you're building an app that you want to look good on all devices it's nice to be able to run them all at once.

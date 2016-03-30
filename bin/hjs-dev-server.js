@@ -8,6 +8,7 @@ var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 var assign = require('lodash.assign')
+var httpProxyMiddleware = require('http-proxy-middleware')
 
 var configFile = process.argv[2] || 'webpack.config.js'
 var config
@@ -45,6 +46,18 @@ if (https) {
 }
 
 var compiler = webpack(config)
+
+if (serverConfig.proxy) {
+  if (!Array.isArray(serverConfig.proxy)) {
+    serverConfig.proxy = [serverConfig.proxy]
+  }
+  serverConfig.proxy.forEach(function (proxyConfig) {
+    var proxy = httpProxyMiddleware(proxyConfig.context, proxyConfig.options)
+    app.use(function (req, res, next) {
+      next()
+    }, proxy)
+  })
+}
 
 if (serverConfig.historyApiFallback) {
   app.use(require('connect-history-api-fallback')({
