@@ -28,6 +28,6 @@
   "main": "app.js",
   "scripts": {
     "start": "hjs-dev-server",
-    "build": "webpack"
+    "build": "NODE_ENV=production webpack"
   }
 }
