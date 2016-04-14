@@ -161,6 +161,9 @@ module.exports = function (opts) {
     net: 'empty',
     tls: 'empty'
   }
+  
+  //For Dev
+  config.devtool = 'cheap-module-eval-source-map'
 
   return config
 }
