@@ -13,11 +13,11 @@ const Router = AmpRouter.extend({
   },
 
   home: function () {
-    render(<HomePage/>, document.getElementById('root'))
+    render(<HomePage />, document.getElementById('root'))
   },
 
   other: function () {
-    render(<OtherPage/>, document.getElementById('root'))
+    render(<OtherPage />, document.getElementById('root'))
   }
 })
 
