@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "git-validate": "^2.1.4",
-    "standard": "^7.0.0"
+    "standard": "^7.0.1"
   },
   "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
   "keywords": [
