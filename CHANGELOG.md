@@ -1,5 +1,9 @@
 ## Changelog
 
+### 8.2.0
+  - Add file extension `.tsx` to typescript loader [#223](https://github.com/HenrikJoreteg/hjs-webpack/pull/223)
+  - Update `http-proxy-middleware` [#216](https://github.com/HenrikJoreteg/hjs-webpack/pull/216)
+
 ### 8.1.0
   - Add support for dev server proxies with `http-proxy-middleware` [#198](https://github.com/HenrikJoreteg/hjs-webpack/pull/198)
 
