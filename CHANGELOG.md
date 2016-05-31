@@ -155,24 +155,31 @@
   - Use passed in `urlLoaderLimit`
   - Add default url loader for images
 
-### 2.4.0 Resolve `.jsx` extension
+### 2.4.0
+  - Resolve `.jsx` extension
 
-### 2.3.0 configure `isDev` default automatically based on whether the command used contains `webpack-dev-server` or not (still respects explicitly configured, so not a breaking change)
+### 2.3.0
+  - configure `isDev` default automatically based on whether the command used contains `webpack-dev-server` or not (still respects explicitly configured, so not a breaking change)
   - add `clearBeforeBuild` option to clear build folder first.
   - both the above changes allow an app to share configs because you're not having to clear the build dir, or set environment variables two different ways for different platforms (a.k.a. better windows support).
   - doc fixes/improvements
 
-### 2.2.2 use `process.cwd()` over `process.env.PWD` to find root.
+### 2.2.2
+  - use `process.cwd()` over `process.env.PWD` to find root.
 
-### 2.2.1 include `json-loader` by default.
+### 2.2.1
+  - include `json-loader` by default.
 
-### 2.2.0 use `autoprefixer-core` and `postcss-loader` to add autoprefixing to all configured style loaders
+### 2.2.0
+  - use `autoprefixer-core` and `postcss-loader` to add autoprefixing to all configured style loaders
   - don't resolve .styl extensions
 
-### 2.1.0 pre-configure `.jade` and `.less` loaders as optional installs.
+### 2.1.0
+  - pre-configure `.jade` and `.less` loaders as optional installs.
   - add option for `urlLoaderLimit`
 
-### 2.0.0 instead of including our own pre-configured dev server: `hjs-dev-server` you can now just use `webpack-dev-server` in your npm `scripts` and it gets configured via `devServer` property of config.
+### 2.0.0
+  - instead of including our own pre-configured dev server: `hjs-dev-server` you can now just use `webpack-dev-server` in your npm `scripts` and it gets configured via `devServer` property of config.
   - much more complete documentation
   - support for passing options to `defaultTemplate()` function
   - simplified/unified configuration
