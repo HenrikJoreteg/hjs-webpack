@@ -41,7 +41,16 @@ module.exports = function (opts) {
     urlLoaderLimit: 10000,
     clearBeforeBuild: false,
     serveCustomHtmlInDev: true,
-    devServer: {}
+    devServer: {},
+    uglify: defaults(opts.uglify || {}, {
+      compress: {
+        warnings: false
+      },
+      output: {
+        comments: false
+      },
+      sourceMap: false
+    })
   })
 
   spec.package = getPackage(spec.package)
@@ -145,15 +154,7 @@ module.exports = function (opts) {
     config.plugins.push(
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.OccurenceOrderPlugin(true),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          warnings: false
-        },
-        output: {
-          comments: false
-        },
-        sourceMap: false
-      }),
+      new webpack.optimize.UglifyJsPlugin(spec.uglify),
       new ExtractTextPlugin(config.output.cssFilename, {
         allChunks: true
       }),
