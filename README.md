@@ -16,7 +16,7 @@ When ready to ship:
 
   - minify and bundle all the things
   - output minified, uniquely named static files into public directory
-  - be able to generate/customized static HTML file(s) used to deliver my JS app
+  - be able to generate customized static HTML file(s) used to deliver my JS app
   - be ready to just upload it all to something like [surge.sh](http://surge.sh/)
   - sometimes I want to pre-render all known HTML into static HTML files and have React take over once the clientside JS loads.
 
