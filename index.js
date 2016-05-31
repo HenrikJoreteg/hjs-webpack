@@ -8,6 +8,7 @@ var getBaseConfig = require('./lib/base-config')
 var getPackage = require('./lib/get-package')
 var installedStyleLoaders = require('./lib/installed-style-loaders')
 var installedHotLoaders = require('./lib/installed-hot-loaders')
+var isInstalled = require('./lib/is-installed')
 
 // figure out if we're running `webpack` or `webpack-dev-server`
 // we'll use this as the default for `isDev`
@@ -108,6 +109,13 @@ module.exports = function (opts) {
     installedStyleLoaders.forEach(function (item) {
       config.module.loaders.push(item.dev)
     })
+
+    // Add visualizer plugin
+    if (isInstalled('webpack-visualizer-plugin')) {
+      config.plugins.push(
+        new (require('webpack-visualizer-plugin'))
+      )
+    }
   } else {
     // clear out output folder if so configured
     if (spec.clearBeforeBuild) {
