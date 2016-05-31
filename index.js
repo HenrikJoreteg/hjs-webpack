@@ -4,6 +4,7 @@ var rimraf = require('rimraf')
 var webpack = require('webpack')
 var defaults = require('lodash.defaults')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var containsPath = require('contains-path')
 var getBaseConfig = require('./lib/base-config')
 var getPackage = require('./lib/get-package')
 var installedStyleLoaders = require('./lib/installed-style-loaders')
@@ -17,6 +18,7 @@ var isDev = (process.argv[1] || '').indexOf('hjs-dev-server') !== -1
 module.exports = function (opts) {
   checkRequired(opts)
   var outputFolder = path.resolve(opts.out)
+  var cwd = process.cwd()
 
   // add in our defaults
   var spec = defaults(opts, {
@@ -119,6 +121,12 @@ module.exports = function (opts) {
   } else {
     // clear out output folder if so configured
     if (spec.clearBeforeBuild) {
+      // Throw error if trying to clear output directory but it contains the cwd
+      // See https://github.com/HenrikJoreteg/hjs-webpack/issues/186
+      if (containsPath(cwd, outputFolder)) {
+        throw new Error('Cannot clear out directory since it contains the current working directory.\nTried to clear ' + outputFolder + ' from ' + cwd)
+      }
+
       // allow passing a glob (limit to within folder though)
       if (typeof spec.clearBeforeBuild === 'string') {
         // create the output folder if it doesn't exist
