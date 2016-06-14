@@ -312,9 +312,8 @@ This option is `true` by default. This means, by default, we'll serve and genera
 <!doctype html>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
-<link rel="stylesheet" href="/assets-and-index-html.1.0.0.css"/>
-<body><div id="root"></div></body>
-<script src="/app.js"></script>
+<link rel="stylesheet" href="/package-name.1.0.0.css"/>
+<body><div id="root"></div><script src="/package-name.1.0.0.js"></script></body>
 ```
 
 Note the `<meta charset>` tag and mobile viewport settings are there by default.
