@@ -80,6 +80,10 @@ Here's some more information about the available loaders and plugins and what th
 
 [`jade-loader`](https://www.npmjs.com/package/jade-loader) Require jade files as compiled functions. Extension: `jade`.
 
+#### Development
+
+[`visualizer-plugin`](https://github.com/chrisbateman/webpack-visualizer) A plugin to visualize and analyze your Webpack bundle to see which modules are taking up space and which might be duplicates.
+
 ## usage
 
 #### Step 1. install it into your project
@@ -239,6 +243,18 @@ So, just to be clear, everything that matches the glob string *within* the out f
 A boolean to indicate whether or not everything is in production mode (minified, etc.) or development mode (everything hotloaded and unminified).
 
 By default this value is `true` if the command you ran contains `hjs-dev-server` and `false` otherwise. The option exists here in case you need to override the default.
+
+### `uglify` (optional, object)
+
+Options passed directly to the [`UglifyJSPlugin`](https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin). Only used if `isDev` is `false`. Default:
+
+```js
+{
+  compress: { warnings: false },
+  output: { comments: false },
+  sourceMap: false
+}
+```
 
 ### `output.filename` (optional, string)
 
