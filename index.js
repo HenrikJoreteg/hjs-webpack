@@ -11,8 +11,7 @@ var installedStyleLoaders = require('./lib/installed-style-loaders')
 var installedHotLoaders = require('./lib/installed-hot-loaders')
 var isInstalled = require('./lib/is-installed')
 
-// figure out if we're running `webpack` or `webpack-dev-server`
-// we'll use this as the default for `isDev`
+// default to `true` if running `hjs-dev-server`
 var isDev = (process.argv[1] || '').indexOf('hjs-dev-server') !== -1
 
 module.exports = function (opts) {
@@ -110,9 +109,8 @@ module.exports = function (opts) {
       hostname: spec.hostname || spec.host
     })
 
-    // Add react-hot module loader if it is installed
+    // Enable Webpack HMR unless explictly disabled
     if (config.devServer.hot) {
-      // configure babel loader
       installedHotLoaders.load(config)
     }
 

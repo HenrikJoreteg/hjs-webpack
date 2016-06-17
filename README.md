@@ -497,7 +497,7 @@ Here's a quick example if you like copy/pasting:
 npm install babel-preset-es2015 babel-preset-react babel-preset-react-hmre --save-dev
 ```
 
-and then you `.babelrc`
+and then your `.babelrc`
 
 ```json
 {
