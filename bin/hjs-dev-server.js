@@ -8,6 +8,7 @@ var path = require('path')
 var express = require('express')
 var webpack = require('webpack')
 var assign = require('lodash.assign')
+var compress = require('compression')
 var httpProxyMiddleware = require('http-proxy-middleware')
 
 var configFile = process.argv[2] || 'webpack.config.js'
@@ -29,6 +30,10 @@ var app = express()
 
 var createServer = require(https ? 'https' : 'http').createServer
 var server
+
+if (serverConfig.compress) {
+  app.use(compress())
+}
 
 if (https) {
   var httpsConfig = {
