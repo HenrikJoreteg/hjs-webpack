@@ -295,7 +295,8 @@ These options are passed through to the `hjs-dev-server` with a few defaults. So
   port, // pulled from top level option "port"
   hostname, // // pulled from top level option "hostname"
   historyApiFallback: true,
-  hot: true
+  hot: true,
+  compress: true, // enable express compression to faster index reload (default: false)
   // The following options are for webpack-dev-middleware
   noInfo: true,
   quiet: false,
