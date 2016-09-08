@@ -78,7 +78,7 @@ Here's some more information about the available loaders and plugins and what th
 
 #### Templates
 
-[`jade-loader`](https://www.npmjs.com/package/jade-loader) Require jade files as compiled functions. Extension: `jade`.
+[`pug-loader`](https://www.npmjs.com/package/pug-loader) Require pug files as compiled functions. Extension: `pug` (legacy `jade` also supported).
 
 #### Development
 
