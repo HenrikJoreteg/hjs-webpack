@@ -1,5 +1,11 @@
 ## Changelog
 
+### 8.4.0
+  - Add `compression` option to dev server [#240](https://github.com/HenrikJoreteg/hjs-webpack/issues/240)
+  - Add `pug-loader` to work with `.pug` files (and be backward compatible with `.jade` files) [#271](https://github.com/HenrikJoreteg/hjs-webpack/issues/271)
+  - Add option to set `devtool` when `isDev` is true [#276](https://github.com/HenrikJoreteg/hjs-webpack/issues/276)
+  - Use a default `package.name` and `package.version` so it doesn't error without them [#255](https://github.com/HenrikJoreteg/hjs-webpack/issues/255)
+
 ### 8.3.0
   - Add support for `webpack-visualizer-plugin` [#190](https://github.com/HenrikJoreteg/hjs-webpack/issues/190)
   - Throw error if trying to clear a directory containing the current working directory [#186](https://github.com/HenrikJoreteg/hjs-webpack/issues/186)
