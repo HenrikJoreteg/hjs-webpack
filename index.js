@@ -122,7 +122,7 @@ module.exports = function (opts) {
     // Add visualizer plugin
     if (isInstalled('webpack-visualizer-plugin')) {
       config.plugins.push(
-        new (require('webpack-visualizer-plugin'))
+        new (require('webpack-visualizer-plugin'))()
       )
     }
   } else {
