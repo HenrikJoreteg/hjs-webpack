@@ -244,6 +244,10 @@ A boolean to indicate whether or not everything is in production mode (minified,
 
 By default this value is `true` if the command you ran contains `hjs-dev-server` and `false` otherwise. The option exists here in case you need to override the default.
 
+### `devtool` (optional, string, default='cheap-module-eval-source-map')
+
+A webpack developer tool to enhance debugging. See [the webpack docs for more options](https://webpack.github.io/docs/configuration.html#devtool).
+
 ### `uglify` (optional, object)
 
 Options passed directly to the [`UglifyJSPlugin`](https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin). Only used if `isDev` is `false`. Default:
