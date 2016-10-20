@@ -31,7 +31,7 @@ module.exports = function (opts) {
     }),
     configFile: null,
     isDev: isDev,
-    package: null,
+    package: { name: 'built-by-hjs-webpack', version: '0.0.0' },
     replace: null,
     https: false,
     port: 3000,
