@@ -1,5 +1,8 @@
 ## Changelog
 
+### 8.4.1
+  - Add `compression` to dependencies [#291](https://github.com/HenrikJoreteg/hjs-webpack/issues/291)
+
 ### 8.4.0
   - Add `compression` option to dev server [#240](https://github.com/HenrikJoreteg/hjs-webpack/issues/240)
   - Add `pug-loader` to work with `.pug` files (and be backward compatible with `.jade` files) [#271](https://github.com/HenrikJoreteg/hjs-webpack/issues/271)
