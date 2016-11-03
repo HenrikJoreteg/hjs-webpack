@@ -1,5 +1,8 @@
 ## Changelog
 
+### 8.4.2
+  - Change how default name and version are specified for [#255](https://github.com/HenrikJoreteg/hjs-webpack/issues/255)
+
 ### 8.4.1
   - Add `compression` to dependencies [#291](https://github.com/HenrikJoreteg/hjs-webpack/issues/291)
 
