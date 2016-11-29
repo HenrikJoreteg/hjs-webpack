@@ -1,5 +1,8 @@
 ## Changelog
 
+### 8.4.3
+  - Do not replace all environment variables in production [#296](https://github.com/HenrikJoreteg/hjs-webpack/issues/296)
+
 ### 8.4.2
   - Change how default name and version are specified for [#255](https://github.com/HenrikJoreteg/hjs-webpack/issues/255)
 
