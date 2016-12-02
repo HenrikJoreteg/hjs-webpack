@@ -26,7 +26,7 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "devDependencies": {
-    "git-validate": "^2.2.0",
+    "git-validate": "^2.2.1",
     "standard": "^8.0.0"
   },
   "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
