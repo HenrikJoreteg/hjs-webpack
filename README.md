@@ -78,7 +78,7 @@ Here's some more information about the available loaders and plugins and what th
 
 #### Templates
 
-[`jade-loader`](https://www.npmjs.com/package/jade-loader) Require jade files as compiled functions. Extension: `jade`.
+[`pug-loader`](https://www.npmjs.com/package/pug-loader) Require pug files as compiled functions. Extension: `pug` (legacy `jade` also supported).
 
 #### Development
 
@@ -243,6 +243,10 @@ So, just to be clear, everything that matches the glob string *within* the out f
 A boolean to indicate whether or not everything is in production mode (minified, etc.) or development mode (everything hotloaded and unminified).
 
 By default this value is `true` if the command you ran contains `hjs-dev-server` and `false` otherwise. The option exists here in case you need to override the default.
+
+### `devtool` (optional, string, default='cheap-module-eval-source-map')
+
+A webpack developer tool to enhance debugging. See [the webpack docs for more options](https://webpack.github.io/docs/configuration.html#devtool).
 
 ### `uglify` (optional, object)
 

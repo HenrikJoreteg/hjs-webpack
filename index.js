@@ -91,7 +91,7 @@ module.exports = function (opts) {
     // https://github.com/HenrikJoreteg/hjs-webpack/issues/63
     // Supports original code (before transforms) with pretty good initial
     // build speed and good rebuild speed
-    config.devtool = 'cheap-module-eval-source-map'
+    config.devtool = spec.devtool || 'cheap-module-eval-source-map'
 
     // Create our dev server config for use in bin/hjs-dev-server
     config.devServer = defaults(spec.devServer, {
@@ -122,7 +122,7 @@ module.exports = function (opts) {
     // Add visualizer plugin
     if (isInstalled('webpack-visualizer-plugin')) {
       config.plugins.push(
-        new (require('webpack-visualizer-plugin'))
+        new (require('webpack-visualizer-plugin'))()
       )
     }
   } else {
@@ -157,7 +157,7 @@ module.exports = function (opts) {
         allChunks: true
       }),
       new webpack.DefinePlugin({
-        'process.env': {NODE_ENV: JSON.stringify('production')}
+        'process.env.NODE_ENV': '"production"'
       })
     )
 
