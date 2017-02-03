@@ -151,7 +151,6 @@ module.exports = function (opts) {
     // minify in production
     config.plugins.push(
       new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.OccurenceOrderPlugin(true),
       new webpack.optimize.UglifyJsPlugin(spec.uglify),
       new ExtractTextPlugin(config.output.cssFilename, {
         allChunks: true
