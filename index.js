@@ -116,7 +116,7 @@ module.exports = function (opts) {
 
     // Add optional loaders
     installedStyleLoaders.forEach(function (item) {
-      config.module.loaders.push(item.dev)
+      config.module.rules.push(item.dev)
     })
 
     // Add visualizer plugin
@@ -163,7 +163,7 @@ module.exports = function (opts) {
 
     // Add optional loaders
     installedStyleLoaders.forEach(function (item) {
-      config.module.loaders.push(item.production)
+      config.module.rules.push(item.production)
     })
   }
 

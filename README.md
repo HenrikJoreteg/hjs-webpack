@@ -475,7 +475,7 @@ var getConfig = require('hjs-webpack')
 var config = getConfig(myHjsWebpackOptions)
 
 // Add xml-loader
-config.module.loaders.push({ test: /\.xml$/, loader: 'xml-loader' })
+config.module.rules.push({ test: /\.xml$/, loader: 'xml-loader' })
 
 // Add module noParse option
 config.module.noParse = [/dont-parse-this/, /also-this/]

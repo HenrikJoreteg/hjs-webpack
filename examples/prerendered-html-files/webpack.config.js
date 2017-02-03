@@ -38,6 +38,6 @@ var config = getConfig({
 // so wait until that is done and then add it here via the loader query
 const babelrc = JSON.parse(fs.readFileSync('./.babelrc'))
 babelrc.env = {development: {presets: ['react-hmre']}}
-config.module.loaders[0].query = babelrc
+config.module.rules[0].query = babelrc
 
 module.exports = config
