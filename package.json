@@ -20,7 +20,7 @@
     "lodash.assign": "^4.0.6",
     "lodash.defaults": "^4.0.1",
     "lodash.pick": "^4.1.0",
-    "rimraf": "^2.5.2",
+    "rimraf": "^2.6.1",
     "webpack": "^1.12.14",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.10.0"
