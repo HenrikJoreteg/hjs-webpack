@@ -42,13 +42,9 @@ module.exports = function (opts) {
     serveCustomHtmlInDev: true,
     devServer: {},
     uglify: defaults(opts.uglify || {}, {
-      compress: {
-        warnings: false
-      },
       output: {
         comments: false
-      },
-      sourceMap: false
+      }
     })
   })
 
@@ -150,7 +146,6 @@ module.exports = function (opts) {
 
     // minify in production
     config.plugins.push(
-      new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin(spec.uglify),
       new ExtractTextPlugin(config.output.cssFilename, {
         allChunks: true
