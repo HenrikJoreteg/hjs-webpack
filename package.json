@@ -1,7 +1,7 @@
 {
   "name": "hjs-webpack",
   "description": "Presets for setting up webpack with hotloading react and ES6(2015) using Babel.",
-  "version": "8.4.3",
+  "version": "9.0.0",
   "author": "Henrik Joreteg <henrik@andyet.net>",
   "bin": {
     "hjs-dev-server": "bin/hjs-dev-server.js"
@@ -14,7 +14,7 @@
     "connect-history-api-fallback": "^1.2.0",
     "contains-path": "^0.1.0",
     "express": "^4.14.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "find-root": "^1.0.0",
     "http-proxy-middleware": "^0.17.0",
     "lodash.assign": "^4.0.6",
