@@ -35,9 +35,15 @@ var config = getConfig({
 })
 
 // Having hmre present in the .babelrc will break with the `babel-core/register` above
-// so wait until that is done and then add it here via the loader query
+// so wait until that is done and then add it here via the loader options
 const babelrc = JSON.parse(fs.readFileSync('./.babelrc'))
 babelrc.env = {development: {presets: ['react-hmre']}}
-config.module.rules[0].query = babelrc
-
+config.module.rules[0].use = [{
+    loader: 'babel-loader',
+    options: {
+        env: {
+            development: { presets: ['react-hmre'] }
+        }
+    }
+}];
 module.exports = config
