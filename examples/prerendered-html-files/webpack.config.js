@@ -2,7 +2,6 @@
 require('babel-core/register')
 
 // require React and our two React components
-var fs = require('fs')
 var React = require('react')
 var ReactDOMServer = require('react-dom/server')
 var HomePage = require('./src/home-page').default
@@ -34,10 +33,6 @@ var config = getConfig({
   }
 })
 
-// Having hmre present in the .babelrc will break with the `babel-core/register` above
-// so wait until that is done and then add it here via the loader options
-const babelrc = JSON.parse(fs.readFileSync('./.babelrc'))
-babelrc.env = {development: {presets: ['react-hmre']}}
 config.module.rules[0].use = [{
   loader: 'babel-loader',
   options: {
