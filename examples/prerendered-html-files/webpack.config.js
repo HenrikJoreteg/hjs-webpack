@@ -39,11 +39,11 @@ var config = getConfig({
 const babelrc = JSON.parse(fs.readFileSync('./.babelrc'))
 babelrc.env = {development: {presets: ['react-hmre']}}
 config.module.rules[0].use = [{
-    loader: 'babel-loader',
-    options: {
-        env: {
-            development: { presets: ['react-hmre'] }
-        }
+  loader: 'babel-loader',
+  options: {
+    env: {
+      development: { presets: ['react-hmre'] }
     }
-}];
+  }
+}]
 module.exports = config
