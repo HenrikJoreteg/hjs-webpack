@@ -1,5 +1,13 @@
 ## Changelog
 
+### 9.0.0
+  - Add support for webpack 2. Although there are no differences in the API, this version requires you
+  to migrate to webpack@^2.2.1. You will also have to update your loader dependencies to their newest majors
+  as well, as many of them have come out with webpack 2 support.
+  If you have extended the configuration created by `hjs-webpack`, you will have to migrate those changes as
+  well. Please have a look at the [official migration guide](https://webpack.js.org/guides/migrating/) for
+  advice on how to do this.
+
 ### 8.4.3
   - Do not replace all environment variables in production [#296](https://github.com/HenrikJoreteg/hjs-webpack/issues/296)
 
