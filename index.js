@@ -42,13 +42,9 @@ module.exports = function (opts) {
     serveCustomHtmlInDev: true,
     devServer: {},
     uglify: defaults(opts.uglify || {}, {
-      compress: {
-        warnings: false
-      },
       output: {
         comments: false
-      },
-      sourceMap: false
+      }
     })
   })
 
@@ -116,7 +112,7 @@ module.exports = function (opts) {
 
     // Add optional loaders
     installedStyleLoaders.forEach(function (item) {
-      config.module.loaders.push(item.dev)
+      config.module.rules.push(item.dev)
     })
 
     // Add visualizer plugin
@@ -150,10 +146,9 @@ module.exports = function (opts) {
 
     // minify in production
     config.plugins.push(
-      new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.OccurenceOrderPlugin(true),
       new webpack.optimize.UglifyJsPlugin(spec.uglify),
-      new ExtractTextPlugin(config.output.cssFilename, {
+      new ExtractTextPlugin({
+        filename: spec.output.cssFilename,
         allChunks: true
       }),
       new webpack.DefinePlugin({
@@ -163,7 +158,7 @@ module.exports = function (opts) {
 
     // Add optional loaders
     installedStyleLoaders.forEach(function (item) {
-      config.module.loaders.push(item.production)
+      config.module.rules.push(item.production)
     })
   }
 

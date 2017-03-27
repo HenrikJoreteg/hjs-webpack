@@ -60,8 +60,6 @@ Here's some more information about the available loaders and plugins and what th
 
 [`babel-loader`](https://www.npmjs.com/package/babel-loader) Require transpiled JS with built-in support for ES2015 and JSX. Extensions: `js jsx babel`.
 
-[`json-loader`](https://www.npmjs.com/package/json-loader) Require parsed JSON objects. Extension: `json`.
-
 [`coffee-loader`](https://www.npmjs.com/package/coffee-loader) Require CoffeeScript. Extension: `coffee`.
 
 [`cjsx-loader`](https://www.npmjs.com/package/cjsx-loader) Require CoffeeScript with support for JSX. `coffee-loader` must also be installed. Extension: `cjsx`.
@@ -84,7 +82,7 @@ Here's some more information about the available loaders and plugins and what th
 
 [`visualizer-plugin`](https://github.com/chrisbateman/webpack-visualizer) A plugin to visualize and analyze your Webpack bundle to see which modules are taking up space and which might be duplicates.
 
-## usage
+## Usage
 
 #### Step 1. install it into your project
 
@@ -284,8 +282,6 @@ By default a filename is created for you based on the following rules:
 
 This is used in conjunction with the `output.filename` and `output.cssFilename` options above, and is only used if `isDev` is `false`. If `hash` is `true` then the filenames of your JS and CSS files will contain the hash of the compiled file. This is useful to fingerprint your asset files so that they can be cached for as long as possible.
 
-Note that as per the suggestion [in the webpack docs](https://github.com/webpack/docs/wiki/configuration#output), the `OccurenceOrderPlugin` is already used so you will get consistent ordering of modules.
-
 ### `urlLoaderLimit` (optional, number, default: `10000`)
 
 This is the default threshold to use for whether URLs referenced in stylesheets will be inlined or extracted during build (we're just pre-configuring the [url-loader](https://github.com/webpack/url-loader)).
@@ -475,10 +471,7 @@ var getConfig = require('hjs-webpack')
 var config = getConfig(myHjsWebpackOptions)
 
 // Add xml-loader
-config.module.loaders.push({ test: /\.xml$/, loader: 'xml-loader' })
-
-// Add module noParse option
-config.module.noParse = [/dont-parse-this/, /also-this/]
+config.module.rules.push({ test: /\.xml$/, use: ['xml-loader'] })
 
 // Add webpack PrefetchPlugin
 config.plugins.push(new webpack.PrefetchPlugin([context], request))
@@ -508,7 +501,7 @@ module.exports = config
 
 ### Changing Babel config
 
-Since `hjs-webpack` already has a babel loader, the easiest way to tweak Babel settings is to create a file at the root of your project called `.babelrc` that contains config settings. See [bablerc docs](https://babeljs.io/docs/usage/babelrc/) for more options.
+Since `hjs-webpack` already has a babel loader, the easiest way to tweak Babel settings is to create a file at the root of your project called `.babelrc` that contains config settings. See [babelrc docs](https://babeljs.io/docs/usage/babelrc/) for more options.
 
 There are some babel presets that work well with `hjs-webpack`. You can check out an example of using presets in the [examples directory](./examples). There's one with [hot reloading](./examples/assets-and-index-html/.babelrc) and one [without](/examples/just-assets-no-html/.babelrc). You'll need to install these presets just like any other dev dependencies.
 
