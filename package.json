@@ -27,7 +27,9 @@
   },
   "devDependencies": {
     "git-validate": "^2.2.0",
-    "standard": "^8.0.0"
+    "husky": "^0.13.3",
+    "lint-staged": "^3.4.0",
+    "prettier": "^0.22.0"
   },
   "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
   "keywords": [
@@ -37,22 +39,20 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "pre-commit": [
-    "lint",
-    "validate"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/henrikjoreteg/hjs-webpack"
   },
   "scripts": {
     "lint": "standard",
+		"precommit": "lint-staged",
+    "prettier": "prettier --write --single-quote --bracket-spaces --trailing-comma all \"{lib,bin}/**.js\"",
     "validate": "npm ls"
   },
-  "standard": {
-    "ignore": [
-      "examples/*/public/*",
-      "examples/*/node_modules/*"
+  "lint-staged": {
+    "*.js": [
+      "npm run prettier",
+      "git add"
     ]
   }
 }
