@@ -404,6 +404,7 @@ Your `html` function will be called with a context object that contains the foll
   - `{metaViewport: boolean|object}` set to false if you don't want the default viewport tag. Set to an object with `userScalable` true if you don't want to block user-zoom on mobile
   - `{publicPath: 'http://mycdn.com/'}`  (default `/`) pass in path that will prefix the generated css/js files in the template. Note, there is `output.publicPath` provided by webpack, but doesn't easily allow for switching based on envirnoment. In this method we've got access to `context.isDev` and can easily switch based on that.
   - `{metaTags: {}}` lets you easily add `<meta>` tags to the document head. Takes an object where the key is the `name` and the value is the `content`.
+  - `{links: {}}` lets you easily add `<link>` tags to the document head. Takes an object where the key is the `rel` and the value is the `href`.
   - `{lang: 'en-US'}` sets the `lang` attribute on the `<html>` tag.
 4. `context.isDev`: boolean specifying whether or not we're in dev mode.
 5. `context.package`: the parsed `package.json` file as an object.
