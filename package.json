@@ -29,8 +29,7 @@
     "git-validate": "^2.2.0",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
-    "prettier": "^0.22.0",
-    "standard": "^8.0.0"
+    "prettier": "^0.22.0"
   },
   "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
   "keywords": [
