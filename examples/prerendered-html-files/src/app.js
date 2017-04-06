@@ -1,10 +1,10 @@
-require('./styles.styl')
-
 import React from 'react'
 import {render} from 'react-dom'
 import AmpRouter from 'ampersand-router'
 import HomePage from './home-page'
 import OtherPage from './other-page'
+
+import './styles.styl'
 
 const Router = AmpRouter.extend({
   routes: {
