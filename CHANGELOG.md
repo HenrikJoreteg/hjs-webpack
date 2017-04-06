@@ -1,5 +1,8 @@
 ## Changelog
 
+### 9.1.0
+  - Add support for using `postcss.config.js` to configure PostCSS
+
 ### 9.0.0
   - Add support for webpack 2. Although there are no differences in the API, this version requires you
   to migrate to webpack@^2.2.1. You will also have to update your loader dependencies to their newest majors
