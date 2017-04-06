@@ -1,7 +1,13 @@
 ## Changelog
 
 ### 9.1.0
+  - Update examples to confirm with new linting rules ([#333](https://github.com/HenrikJoreteg/hjs-webpack/pull/333))
+  - Add support for using different NODE_ENV values than `production` in production build
+  ([#332](https://github.com/HenrikJoreteg/hjs-webpack/pull/332))
+  - Add CORS headers to response on static files served by dev server
+  ([#242](https://github.com/HenrikJoreteg/hjs-webpack/pull/242))
   - Add support for using `postcss.config.js` to configure PostCSS
+  ([#327](https://github.com/HenrikJoreteg/hjs-webpack/pull/327))
 
 ### 9.0.0
   - Add support for webpack 2. Although there are no differences in the API, this version requires you
