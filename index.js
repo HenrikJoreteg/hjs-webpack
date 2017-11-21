@@ -4,6 +4,7 @@ var rimraf = require('rimraf')
 var webpack = require('webpack')
 var defaults = require('lodash.defaults')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 var containsPath = require('contains-path')
 var getBaseConfig = require('./lib/base-config')
 var getPackage = require('./lib/get-package')
@@ -146,7 +147,7 @@ module.exports = function (opts) {
 
     // minify in production
     config.plugins.push(
-      new webpack.optimize.UglifyJsPlugin(spec.uglify),
+      new UglifyJsPlugin(spec.uglify),
       new ExtractTextPlugin({
         filename: spec.output.cssFilename,
         allChunks: true
