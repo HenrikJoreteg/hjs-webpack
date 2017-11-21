@@ -42,11 +42,7 @@ module.exports = function (opts) {
     clearBeforeBuild: false,
     serveCustomHtmlInDev: true,
     devServer: {},
-    uglify: defaults(opts.uglify || {}, {
-      output: {
-        comments: false
-      }
-    })
+    uglify: opts.uglify
   })
 
   spec.package = getPackage(spec.package)
