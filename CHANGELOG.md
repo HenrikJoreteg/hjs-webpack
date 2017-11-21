@@ -1,5 +1,9 @@
 ## Changelog
 
+### 9.2.0
+  - Update dependencies to their latest versions, including webpack to version 3 ([#349](https://github.com/HenrikJoreteg/hjs-webpack/pull/349))
+  - Use UglifyJS directly to make use of a version that supports ES2015 code ([#349](https://github.com/HenrikJoreteg/hjs-webpack/pull/349))
+
 ### 9.1.0
   - Update examples to confirm with new linting rules ([#333](https://github.com/HenrikJoreteg/hjs-webpack/pull/333))
   - Add support for using different NODE_ENV values than `production` in production build
