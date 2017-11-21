@@ -10,24 +10,25 @@
     "url": "https://github.com/henrikjoreteg/hjs-webpack/issues"
   },
   "dependencies": {
-    "compression": "^1.6.2",
-    "connect-history-api-fallback": "^1.2.0",
-    "contains-path": "^0.1.0",
-    "express": "^4.14.0",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "find-root": "^1.0.0",
-    "http-proxy-middleware": "^0.17.0",
-    "lodash.assign": "^4.0.6",
-    "lodash.defaults": "^4.0.1",
-    "lodash.pick": "^4.1.0",
-    "rimraf": "^2.5.2",
-    "webpack": "^2.2.1",
-    "webpack-dev-middleware": "^1.10.0",
-    "webpack-hot-middleware": "^2.16.1"
+    "compression": "^1.7.1",
+    "connect-history-api-fallback": "^1.5.0",
+    "contains-path": "^1.0.0",
+    "express": "^4.16.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "find-root": "^1.1.0",
+    "http-proxy-middleware": "^0.17.4",
+    "lodash.assign": "^4.2.0",
+    "lodash.defaults": "^4.2.0",
+    "lodash.pick": "^4.4.0",
+    "rimraf": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.1.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.20.0"
   },
   "devDependencies": {
-    "git-validate": "^2.2.0",
-    "standard": "^10.0.0"
+    "git-validate": "^2.2.2",
+    "standard": "^10.0.3"
   },
   "homepage": "https://github.com/henrikjoreteg/hjs-webpack",
   "keywords": [
