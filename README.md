@@ -148,7 +148,7 @@ Simply do this in your application code:
 require('./path/to/your/css/main.css')
 ```
 
-Be sure to include the extension: `.css` in your require statment. If you use `.styl` you can write [Stylus](https://learnboost.github.io/stylus/) seamlessly and at the top of your stylus files you've got access to [yeti.css](http://yeticss.com/) for easy styling.
+Be sure to include the extension: `.css` in your require statement. If you use `.styl` you can write [Stylus](https://learnboost.github.io/stylus/) seamlessly and at the top of your stylus files you've got access to [yeti.css](http://yeticss.com/) for easy styling.
 
 Try creating a file called `main.styl` containing:
 
