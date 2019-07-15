@@ -73,7 +73,14 @@ if (serverConfig.historyApiFallback) {
 app.use(require('webpack-dev-middleware')(compiler, serverConfig))
 
 if (serverConfig.hot) {
-  app.use(require('webpack-hot-middleware')(compiler))
+  var hotMiddleware = require('webpack-hot-middleware')(compiler)
+  if (serverConfig.customWatch) {
+    Object.keys(serverConfig.customWatch).forEach(type => {
+      chokidar.watch(serverConfig.customWatch[type], {ignoreInitial: true})
+      .on('all', (event, file) => hotMiddleware.publish({type, file}))
+    })
+  }
+  app.use(hotMiddleware)
 }
 
 if (serverConfig.contentBase) {
